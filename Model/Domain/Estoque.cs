@@ -10,5 +10,10 @@ using System.Data;
         public int EstoqueId { get; set; }
         public string Modelo { get; set; }
         public string Marca { get; set; }
+        public string PosicaoEstoque { get; set; }
+        public int QuantidadeSaida {get; set; }
+        public string Conferencia { get; set; }
+        public string DataEnvio { get; set; }
+
     }
 }
