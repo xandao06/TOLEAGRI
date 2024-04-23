@@ -1,12 +1,15 @@
-﻿using TOLEAGRI.Model.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using TOLEAGRI.Model.Domain;
+using TOLEAGRI.Model.Persistence;
+
 
 namespace TOLEAGRI.Model.Services
 {
     public class EstoqueService
     {
-        private readonly TOLEAGRIDbContext dbContext;
+        private readonly TOLEDbContext dbContext;
 
-        public EstoqueService(TOLEAGRIDbContext dbContext)
+        public EstoqueService(TOLEDbContext dbContext)
         {
             this.dbContext = dbContext;
         }

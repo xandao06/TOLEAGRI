@@ -1,4 +1,8 @@
-﻿namespace TOLEAGRI.Model.Domain
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data;
+    
+    
+    namespace TOLEAGRI.Model.Domain
 {
     public class Estoque
     {

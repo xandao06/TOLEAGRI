@@ -1,7 +1,16 @@
+using TOLEAGRI.Model.Persistence;
+using TOLEAGRI.Model.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<EstoqueService>();
+
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<TOLEDbContext>(options => options.UseSqlServer("name=ConnectionStrings:TOLEconnectionString"));
 
 var app = builder.Build();
 
@@ -20,6 +29,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapRazorPages();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Estoque}/{action=Index}/{id?}");
 
 app.Run();
