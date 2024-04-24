@@ -5,7 +5,7 @@
 namespace TOLEAGRI.Migrations
 {
     /// <inheritdoc />
-    public partial class TOLEAGRI : Migration
+    public partial class TOLE : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,8 +17,14 @@ namespace TOLEAGRI.Migrations
                     EstoqueId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
+                    Observacao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CodigoSistema = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Modelo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Locacao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    QuantidadeSaida = table.Column<int>(type: "int", nullable: false),
+                    Conferencia = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DataEnvio = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
