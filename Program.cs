@@ -1,5 +1,6 @@
 using TOLEAGRI.Model.Persistence;
 using TOLEAGRI.Model.Services;
+using TOLEAGRI.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
