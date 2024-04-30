@@ -7,18 +7,17 @@
 <div style="padding:40px" id="container" class="justify-content-between">
     <div>
         <h1 class="text-center mb-3">Estoque</h1>
-        @* <div class="mb-4" style="display:flex;justify-content:space-between">
-            <div>
-                <a class="btn btn-outline-dark" id="btn-CriarChamado">Criar um chamado</a>
-                <a type="button" asp-controller="Cliente" asp-action="Index" class="btn btn-outline-dark">Clientes</a>
-                <a type="button" asp-controller="Chamado" asp-action="Historico" class="btn btn-outline-dark">Histórico</a>
-            </div>
+        <div class="mb-4" style="display:flex;justify-content:space-between">
+            @* <div>
+            <a class="btn btn-outline-dark" id="btn-CriarChamado">Criar um chamado</a>
+            <a type="button" asp-controller="Cliente" asp-action="Index" class="btn btn-outline-dark">Clientes</a>
+            <a type="button" asp-controller="Chamado" asp-action="Historico" class="btn btn-outline-dark">Histórico</a>
+            </div> *@
             <div style="display:flex">
                 <input type="text" id="Pesquisa" class="form-control" placeholder="Buscar">
             </div>
-        </div> *@
+        </div>
     </div>
-    <div">
     <table class="table">
         <thead>
             <tr>
@@ -30,13 +29,13 @@
                 <th>Quantidade de saida</th>
                 <th>Data de envio</th>
                 <th>Observação</th>
-                <th style="width:75px">Opções</th>
+                <th>Opções</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in estoquesOrdenados)
             {
-                <tr>
+                <tr class="row">
                     <td>@item.CodigoSistema</td>
                     <td>@item.Locacao</td>
                     <td>@item.Marca</td>
@@ -49,5 +48,4 @@
             }
         </tbody>
     </table>
-    </div>
 </div>

@@ -2,6 +2,7 @@
 using TOLEAGRI.Model.Services;
 using TOLEAGRI.Model.Domain;
 using TOLEAGRI.Model.Persistence;
+using TOLEAGRI.Model;
 using System.Diagnostics;
 
 namespace TOLEAGRI.Controllers
