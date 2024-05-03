@@ -43,5 +43,15 @@ namespace TOLEAGRI.Model.Services
             dbContext.Set<Estoque>().Remove(estoque);
             dbContext.SaveChanges();
         }
+        public Estoque GetByCodigoSistema(string codigoSistema)
+        {
+            return dbContext.Estoques.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
+        }
+
+        public void Create(Estoque estoque)
+        {
+            dbContext.Estoques.Add(estoque);
+            dbContext.SaveChanges();
+        }
     }
 }

@@ -22,9 +22,10 @@ namespace TOLEAGRI.Migrations
                     Modelo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Marca = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Locacao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    QuantidadeEntrada = table.Column<int>(type: "int", nullable: false),
                     QuantidadeSaida = table.Column<int>(type: "int", nullable: false),
-                    Conferencia = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DataEnvio = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    DataEntrada = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DataSaida = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

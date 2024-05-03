@@ -33,11 +33,11 @@ namespace TOLEAGRI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Conferencia")
+                    b.Property<string>("DataEntrada")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DataEnvio")
+                    b.Property<string>("DataSaida")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -58,6 +58,9 @@ namespace TOLEAGRI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuantidadeEntrada")
                         .HasColumnType("int");
 
                     b.Property<int>("QuantidadeSaida")

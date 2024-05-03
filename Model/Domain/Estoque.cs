@@ -13,9 +13,10 @@ using System.Data;
         public string Modelo { get; set; }
         public string Marca { get; set; }
         public string Locacao { get; set; }
+        public int QuantidadeEntrada { get; set; }
         public int QuantidadeSaida {get; set; }
-        public string Conferencia { get; set; }
-        public string DataEnvio { get; set; }
+        public string DataEntrada { get; set; }
+        public string DataSaida { get; set; }
 
     }
 }
