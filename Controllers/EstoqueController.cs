@@ -22,27 +22,26 @@ namespace TOLEAGRI.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult BuscarOuCriarEstoque(string codigoSistema)
+        [HttpGet]
+        
+        public IActionResult ModalEntradaEstoque()
         {
-            Estoque estoque = estoqueService.GetByCodigoSistema(codigoSistema);
-
-            if (estoque == null)
-            {
-                // Se o estoque não existir, crie um novo
-                estoque = new Estoque { CodigoSistema = codigoSistema };
-                estoqueService.Create(estoque);
-            }
-
-            return Json(estoque); // Retorna o estoque encontrado ou criado
+            return PartialView("Modal/EntradaEstoque", new Estoque());
         }
 
+        [HttpPost]
+
+        public IActionResult EntradaEstoque(string codigoSistema)
+        {
+            estoqueService.BuscarOuCriar(codigoSistema);
+            return RedirectToAction("Index");
+        }
 
         [HttpGet]
         public IActionResult ModalSaidaEstoque(string codigoSistema)
         {
-            Estoque estoque = estoqueService.GetByCodigoSistema(codigoSistema);
-            return View("Modal/ModalSaidaEstoque", estoque);
+            Estoque estoque = estoqueService.BuscarOuCriar(codigoSistema);
+            return View("Modal/SaidaEstoque", estoque);
         }
 
         [HttpPost]

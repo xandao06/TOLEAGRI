@@ -16,6 +16,6 @@ namespace TOLEAGRI.Model.Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(TOLEDbContext).Assembly);
         }
 
-        public DbSet<Estoque> Estoques { get; set;}
+        public DbSet<Estoque> Estoques { get; set; }
     }
 }

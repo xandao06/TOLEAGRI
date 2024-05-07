@@ -32,24 +32,13 @@
         <tbody>
             @foreach (var item in estoquesOrdenados)
             {
-                <tr class="row">
+                <tr class="estoque-row">
                     <td>@item.CodigoSistema</td>
                     <td>@item.Locacao</td>
                     <td>@item.Marca</td>
                     <td>@item.Modelo</td>
-                    <td>@item.Quantidade</td>
+                    <td>@item.QuantidadeEntrada</td>
                     <td>@item.Observacao</td>
-                    @* <td style="width:1px">
-                        <a onClick="AdicionarEntrada(@item.Id)">
-                            <i class="bi bi-check-square"></i>
-                        </a>
-                        <a onClick="AdicionarSaida(@item.Id)">
-                            <i class="bi-pencil-square"></i>
-                        </a>
-                        <a onClick="Deletar(@item.Id)">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
-                    </td> *@
                 </tr>
             }
         </tbody>
@@ -62,22 +51,23 @@
     
     $(document).ready(function () {
         $("#btn-EntradaEstoque").click(function (event) {
+            event.preventDefault();
 
-            $.get("/Estoque/BuscarOuCriarEstoque", function (data) {
+            $.get("/Estoque/ModalEntradaEstoque", function (data) {
                 $("#modalTOLEAGRI").html(data);
                 $("#modalEntradaEstoque").modal("show");
             });
         });
     });
 
-            function ModalSaidaEstoque(idEstoque) {
-                event.preventDefault();
+    //         function ModalSaidaEstoque(idEstoque) {
+    //             event.preventDefault();
 
-                $.get("/Estoque/ModalSaidaEstoque", function (data) {
-                    $("#modalTOLEAGRI").html(data);
-                    $("#modalSaidaEstoque").modal("show");
-                });
-            });
-    });
+    //             $.get("/Estoque/ModalSaidaEstoque", function (data) {
+    //                 $("#modalTOLEAGRI").html(data);
+    //                 $("#modalSaidaEstoque").modal("show");
+    //             });
+    //         });
+    // });
 
 </script>

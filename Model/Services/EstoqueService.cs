@@ -25,7 +25,7 @@ namespace TOLEAGRI.Model.Services
         {
             return dbContext.Set<Estoque>().Find(id);
         }
-        
+
         public IReadOnlyList<Estoque> GetAll()
         {
             return dbContext.Set<Estoque>().ToList();
@@ -43,15 +43,19 @@ namespace TOLEAGRI.Model.Services
             dbContext.Set<Estoque>().Remove(estoque);
             dbContext.SaveChanges();
         }
-        public Estoque GetByCodigoSistema(string codigoSistema)
-        {
-            return dbContext.Estoques.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
-        }
 
-        public void Create(Estoque estoque)
+        public Estoque BuscarOuCriar(string codigoSistema)
         {
-            dbContext.Estoques.Add(estoque);
-            dbContext.SaveChanges();
+            Estoque estoque = dbContext.Estoques.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
+
+            if (estoque == null)
+            {
+                // Se o estoque não existir, crie um novo
+                estoque = new Estoque { CodigoSistema = codigoSistema };
+                dbContext.Estoques.Add(estoque);
+                dbContext.SaveChanges();
+            }
+            return estoque;
         }
     }
 }

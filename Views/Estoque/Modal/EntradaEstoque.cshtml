@@ -20,7 +20,7 @@
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
                         <input asp-for="Marca" type="text" class="form-control mb-2" id="Marca" placeholder="Marca">
                         <input asp-for="Modelo" type="text" class="form-control mb-2" id="Modelo" placeholder="Modelo">
-                        <input required asp-for="QuantidadeEntrada" type="text" class="form-control mb-2" id="QuantidadeSaida" placeholder="Quantidade de Entrada">
+                        <input required asp-for="QuantidadeEntrada" value="" type="text" class="form-control mb-2" id="QuantidadeEntrada" placeholder="Quantidade de Entrada">
                         <input required asp-for="Observacao" type="text" class="form-control mb-2" id="Observacao" placeholder="Observação">
                     </div>
                 </div>
@@ -33,15 +33,17 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+@* <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
+    $(document).ready(function () {
                         $('#codigoSistema').keypress(function(event) {
     if (event.which === 13) { // 13 é o código da tecla "Enter"
         event.preventDefault(); // Previne o comportamento padrão de submissão do formulário
         var codigoSistema = $(this).val();
         $.ajax({
-            url: '/Estoque/BuscarOuCriarEstoque',
+            url: '/Estoque/EntradaEstoque',
             type: 'POST',
             data: { codigoSistema: codigoSistema },
             success: function(response) {
@@ -50,4 +52,5 @@
         });
     }
 });
-</script>
+    }
+</script> *@
