@@ -31,25 +31,30 @@ namespace TOLEAGRI.Controllers
 
         [HttpPost]
 
-        public IActionResult EntradaEstoque(string codigoSistema)
+        public IActionResult EntradaEstoque (Peca peca)
         {
-            estoqueService.BuscarOuCriar(codigoSistema);
+            estoqueService.BuscarOuCriar(peca);
             return RedirectToAction("Index");
         }
+        //public IActionResult EntradaEstoque(string codigoSistema)
+        //{
+        //    estoqueService.BuscarOuCriar(codigoSistema);
+        //    return RedirectToAction("Index");
+        //}
 
-        [HttpGet]
-        public IActionResult ModalSaidaEstoque(string codigoSistema)
-        {
-            Peca peca = estoqueService.BuscarOuCriar(codigoSistema);
-            return View("Modal/SaidaEstoque", peca);
-        }
+        //[HttpGet]
+        //public IActionResult ModalSaidaEstoque(string codigoSistema)
+        //{
+        //    Peca peca = estoqueService.BuscarOuCriar(codigoSistema);
+        //    return View("Modal/SaidaEstoque", peca);
+        //}
 
-        [HttpPost]
-        public IActionResult SaidaEstoque(Peca Peca)
-        {
-            estoqueService.Update(Peca);
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //public IActionResult SaidaEstoque(Peca peca)
+        //{
+        //    estoqueService.Update(peca);
+        //    return RedirectToAction("Index");
+        //}
     }
 }
 

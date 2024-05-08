@@ -30,15 +30,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in PecasOrdenados)
+            @foreach (var peca in Model)
             {
                 <tr class="peca-row">
-                    <td>@item.CodigoSistema</td>
-                    <td>@item.Locacao</td>
-                    <td>@item.Marca</td>
-                    <td>@item.Modelo</td>
-                    <td>@item.QuantidadeEntrada</td>
-                    <td>@item.Observacao</td>
+                    <td>@peca.CodigoSistema</td>
+                    <td>@peca.Locacao</td>
+                    <td>@peca.Marca</td>
+                    <td>@peca.Modelo</td>
+                    <td>@peca.QuantidadeEntrada</td>
+                    <td>@peca.Observacao</td>
                 </tr>
             }
         </tbody>

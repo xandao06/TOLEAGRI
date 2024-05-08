@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Data;
-    
-    
-    namespace TOLEAGRI.Model.Domain
+﻿namespace TOLEAGRI.Model.Domain
 {
     public class Peca
     {

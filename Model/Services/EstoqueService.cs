@@ -14,16 +14,16 @@ namespace TOLEAGRI.Model.Services
             this.dbContext = dbContext;
         }
 
-        public Peca Add(Peca entity)
+        public Peca Add(Peca peca)
         {
-            dbContext.Add(entity);
+            dbContext.Add(peca);
             dbContext.SaveChanges();
-            return entity;
+            return peca;
         }
 
-        public Peca Get(int id)
+        public Peca Get(int pecaId)
         {
-            return dbContext.Set<Peca>().Find(id);
+            return dbContext.Set<Peca>().Find(pecaId);
         }
 
         public IReadOnlyList<Peca> GetAll()
@@ -37,25 +37,49 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(int pecaId)
         {
-            Peca peca = Get(id);
+            Peca peca = Get(pecaId);
             dbContext.Set<Peca>().Remove(peca);
             dbContext.SaveChanges();
         }
 
-        public Peca BuscarOuCriar(string codigoSistema)
+        public void BuscarOuCriar(Peca peca)
         {
-            Peca peca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
+            Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
 
-            if (peca == null)
+            if (existingPeca == null)
             {
-                // Se o estoque não existir, crie um novo
-                peca = new Peca { CodigoSistema = codigoSistema };
                 dbContext.Pecas.Add(peca);
-                dbContext.SaveChanges();
             }
-            return peca;
+            else
+            {
+                existingPeca.Locacao = peca.Locacao;
+                existingPeca.Marca = peca.Marca;
+                existingPeca.Modelo = peca.Modelo;
+                existingPeca.QuantidadeEntrada = peca.QuantidadeEntrada;
+                existingPeca.Observacao = peca.Observacao;
+
+                dbContext.Pecas.Update(existingPeca);
+            }
+
+            dbContext.SaveChanges();
         }
     }
 }
+
+
+
+//public Peca BuscarOuCriar(string codigoSistema)
+//{
+//    Peca peca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
+
+//    if (peca == null)
+//    {
+//        // Se o estoque não existir, crie um novo
+//        peca = new Peca { CodigoSistema = codigoSistema };
+//        dbContext.Pecas.Add(peca);
+//        dbContext.SaveChanges();
+//    }
+//    return peca;
+//}

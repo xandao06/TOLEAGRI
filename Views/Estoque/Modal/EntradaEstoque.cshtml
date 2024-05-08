@@ -7,7 +7,7 @@
 <div id="modalEntradaEstoque" class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" asp-action="EntradaEstoque">
+            <form id="formEntradaEstoque" method="post" asp-action="EntradaEstoque">
                 <div class="modal-header">
                     <h5 class="modal-title">Entrada do Estoque</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -20,7 +20,7 @@
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
                         <input asp-for="Marca" type="text" class="form-control mb-2" id="Marca" placeholder="Marca">
                         <input asp-for="Modelo" type="text" class="form-control mb-2" id="Modelo" placeholder="Modelo">
-                        <input required asp-for="QuantidadeEntrada" value="" type="text" class="form-control mb-2" id="QuantidadeEntrada" placeholder="Quantidade de Entrada">
+                        <input required asp-for="QuantidadeEntrada" type="int" class="form-control mb-2" id="QuantidadeEntrada" placeholder="Quantidade de Entrada">
                         <input required asp-for="Observacao" type="text" class="form-control mb-2" id="Observacao" placeholder="Observação">
                     </div>
                 </div>
@@ -33,105 +33,41 @@
     </div>
 </div>
 
-@* <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
     $(document).ready(function () {
-                        $('#codigoSistema').keypress(function(event) {
-    if (event.which === 13) { // 13 é o código da tecla "Enter"
-        event.preventDefault(); // Previne o comportamento padrão de submissão do formulário
-        var codigoSistema = $(this).val();
-        $.ajax({
-            url: '/Estoque/EntradaEstoque',
-            type: 'POST',
-            data: { codigoSistema: codigoSistema },
-            success: function(response) {
-                // Atualize os campos do modal com as informações retornadas
+        $('#CodigoSistema').on('keypress' function (e) {
+            if (e.which === 13) { // 13 é o código da tecla "Enter"
+                event.preventDefault(); // Previne o comportamento padrão de submissão do formulário
+                var codigoSistema = $(this).val();
+                $.ajax({
+                    url: '/Estoque/EntradaEstoque',
+                    type: 'GET',
+                    data: { codigoSistema: codigoSistema },
+                    success: function (data) {
+                        // Atualize os campos do modal com as informações retornadas
+                        if (data) 
+                        {
+                            $('#Locacao').val(data.locacao);
+                            $('#Marca').val(data.marca)
+                            $('#Modelo').val(data.modelo)
+                            $('#QuantidadeEntrada').val(data.quantidadeEntrada)
+                            $('#Observacao').val(data.observacao)
+                        }
+                        else 
+                        {
+                            $('#Locacao').val('');
+                            $('#Marca').val('');
+                            $('#Modelo').val('');
+                            $('#QuantidadeEntrada').val('');
+                            $('#Observacao').val('');
+                        }
+                    }
+
+                });
             }
-        });
-    }
-});
-    }
-</script> *@
-
-
-
-
-
-
-
-
-    @model IEnumerable<TOLEAGR.Model.Domain.Peca>
-@{
-    ViewData["Title"] = "Pecas";
-    var PecasOrdenados = Model.OrderByDescending(c => c.CodigoSistema).ToList();
-}
-
-<div style="padding:40px" id="container" class="justify-content-between">
-    <div>
-        <h1 class="text-center mb-3">Estoque</h1>
-        <div class="mb-4" style="display:flex;justify-content:space-between">
-            <div>
-                <a class="btn btn-outline-dark" id="btn-EntradaEstoque">Entrada</a>
-                <a class="btn btn-outline-dark" id="btn-SaidaEstoque">Saída</a>
-                <a type="button" asp-controller="Estoque" asp-action="Historico" class="btn btn-outline-dark">Histórico</a>
-            </div>
-            <div style="display:flex">
-                <input type="text" id="Pesquisa" class="form-control" placeholder="Buscar">
-            </div>
-        </div>
-    </div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Locação</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Quantidade</th>
-                <th>Observação</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in PecasOrdenados)
-            {
-                <tr class="peca-row">
-                    <td>@item.CodigoSistema</td>
-                    <td>@item.Locacao</td>
-                    <td>@item.Marca</td>
-                    <td>@item.Modelo</td>
-                    <td>@item.QuantidadeEntrada</td>
-                    <td>@item.Observacao</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
-
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-
-<script>
-
-    $(document).ready(function () {
-        $("#btn-EntradaEstoque").click(function (event) {
-            event.preventDefault();
-
-            $.get("/Estoque/ModalEntradaEstoque", function (data) {
-                $("#modalTOLEAGRI").html(data);
-                $("#modalEntradaEstoque").modal("show");
-            });
         });
     });
-
-    //         function ModalSaidaEstoque(idEstoque) {
-    //             event.preventDefault();
-
-    //             $.get("/Estoque/ModalSaidaEstoque", function (data) {
-    //                 $("#modalTOLEAGRI").html(data);
-    //                 $("#modalSaidaEstoque").modal("show");
-    //             });
-    //         });
-    // });
-
 </script>
