@@ -22,13 +22,13 @@ namespace TOLEAGRI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TOLEAGRI.Model.Domain.Estoque", b =>
+            modelBuilder.Entity("TOLEAGRI.Model.Domain.Peca", b =>
                 {
-                    b.Property<int>("EstoqueId")
+                    b.Property<int>("PecaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EstoqueId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PecaId"));
 
                     b.Property<string>("CodigoSistema")
                         .HasColumnType("nvarchar(max)");
@@ -60,9 +60,9 @@ namespace TOLEAGRI.Migrations
                     b.Property<int>("QuantidadeSaida")
                         .HasColumnType("int");
 
-                    b.HasKey("EstoqueId");
+                    b.HasKey("PecaId");
 
-                    b.ToTable("Estoques");
+                    b.ToTable("Pecas");
                 });
 #pragma warning restore 612, 618
         }

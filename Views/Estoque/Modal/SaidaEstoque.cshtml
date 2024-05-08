@@ -1,4 +1,4 @@
-﻿@model TOLEAGRI.Model.Domain.Estoque
+﻿@model TOLEAGRI.Model.Domain.Peca
 
 @{
     Layout = null;
@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <input asp-for="EstoqueId" type="hidden">
+                        <input asp-for="PecaId" type="hidden">
                         <input required asp-for="DataSaida" type="date" class="form-control mb-2" id="DataSaida">
                         <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">

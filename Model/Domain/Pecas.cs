@@ -4,10 +4,10 @@ using System.Data;
     
     namespace TOLEAGRI.Model.Domain
 {
-    public class Estoque
+    public class Peca
     {
         public int Quantidade { get; set; }
-        public int EstoqueId { get; set; }
+        public int PecaId { get; set; }
         public string? Observacao { get; set; }
         public string? CodigoSistema { get; set; }
         public string? Modelo { get; set; }

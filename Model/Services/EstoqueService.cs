@@ -14,24 +14,24 @@ namespace TOLEAGRI.Model.Services
             this.dbContext = dbContext;
         }
 
-        public Estoque Add(Estoque entity)
+        public Peca Add(Peca entity)
         {
             dbContext.Add(entity);
             dbContext.SaveChanges();
             return entity;
         }
 
-        public Estoque Get(int id)
+        public Peca Get(int id)
         {
-            return dbContext.Set<Estoque>().Find(id);
+            return dbContext.Set<Peca>().Find(id);
         }
 
-        public IReadOnlyList<Estoque> GetAll()
+        public IReadOnlyList<Peca> GetAll()
         {
-            return dbContext.Set<Estoque>().ToList();
+            return dbContext.Set<Peca>().ToList();
         }
 
-        public void Update(Estoque entity)
+        public void Update(Peca entity)
         {
             dbContext.Entry(entity).State = EntityState.Modified;
             dbContext.SaveChanges();
@@ -39,23 +39,23 @@ namespace TOLEAGRI.Model.Services
 
         public void Delete(int id)
         {
-            Estoque estoque = Get(id);
-            dbContext.Set<Estoque>().Remove(estoque);
+            Peca peca = Get(id);
+            dbContext.Set<Peca>().Remove(peca);
             dbContext.SaveChanges();
         }
 
-        public Estoque BuscarOuCriar(string codigoSistema)
+        public Peca BuscarOuCriar(string codigoSistema)
         {
-            Estoque estoque = dbContext.Estoques.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
+            Peca peca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
 
-            if (estoque == null)
+            if (peca == null)
             {
                 // Se o estoque não existir, crie um novo
-                estoque = new Estoque { CodigoSistema = codigoSistema };
-                dbContext.Estoques.Add(estoque);
+                peca = new Peca { CodigoSistema = codigoSistema };
+                dbContext.Pecas.Add(peca);
                 dbContext.SaveChanges();
             }
-            return estoque;
+            return peca;
         }
     }
 }

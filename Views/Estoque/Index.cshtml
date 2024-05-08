@@ -1,7 +1,7 @@
-﻿@model IEnumerable<TOLEAGRI.Model.Domain.Estoque>
+﻿@model IEnumerable<TOLEAGRI.Model.Domain.Peca>
 @{
-    ViewData["Title"] = "Estoques";
-    var estoquesOrdenados = Model.OrderByDescending(c => c.CodigoSistema).ToList();
+    ViewData["Title"] = "Pecas";
+    var PecasOrdenados = Model.OrderByDescending(c => c.CodigoSistema).ToList();
 }
 
 <div style="padding:40px" id="container" class="justify-content-between">
@@ -9,8 +9,8 @@
         <h1 class="text-center mb-3">Estoque</h1>
         <div class="mb-4" style="display:flex;justify-content:space-between">
             <div>
-            <a class="btn btn-outline-dark" id="btn-EntradaEstoque">Entrada</a>
-            <a class="btn btn-outline-dark" id="btn-SaidaEstoque">Saída</a>
+                <a class="btn btn-outline-dark" id="btn-EntradaEstoque">Entrada</a>
+                <a class="btn btn-outline-dark" id="btn-SaidaEstoque">Saída</a>
                 <a type="button" asp-controller="Estoque" asp-action="Historico" class="btn btn-outline-dark">Histórico</a>
             </div>
             <div style="display:flex">
@@ -30,9 +30,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in estoquesOrdenados)
+            @foreach (var item in PecasOrdenados)
             {
-                <tr class="estoque-row">
+                <tr class="peca-row">
                     <td>@item.CodigoSistema</td>
                     <td>@item.Locacao</td>
                     <td>@item.Marca</td>
@@ -48,7 +48,7 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
 <script>
-    
+
     $(document).ready(function () {
         $("#btn-EntradaEstoque").click(function (event) {
             event.preventDefault();

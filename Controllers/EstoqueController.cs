@@ -26,7 +26,7 @@ namespace TOLEAGRI.Controllers
         
         public IActionResult ModalEntradaEstoque()
         {
-            return PartialView("Modal/EntradaEstoque", new Estoque());
+            return View("Modal/EntradaEstoque", new Peca());
         }
 
         [HttpPost]
@@ -40,14 +40,14 @@ namespace TOLEAGRI.Controllers
         [HttpGet]
         public IActionResult ModalSaidaEstoque(string codigoSistema)
         {
-            Estoque estoque = estoqueService.BuscarOuCriar(codigoSistema);
-            return View("Modal/SaidaEstoque", estoque);
+            Peca peca = estoqueService.BuscarOuCriar(codigoSistema);
+            return View("Modal/SaidaEstoque", peca);
         }
 
         [HttpPost]
-        public IActionResult SaidaEstoque(Estoque estoque)
+        public IActionResult SaidaEstoque(Peca Peca)
         {
-            estoqueService.Update(estoque);
+            estoqueService.Update(Peca);
             return RedirectToAction("Index");
         }
     }

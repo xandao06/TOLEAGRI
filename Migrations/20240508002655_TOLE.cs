@@ -12,10 +12,10 @@ namespace TOLEAGRI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Estoques",
+                name: "Pecas",
                 columns: table => new
                 {
-                    EstoqueId = table.Column<int>(type: "int", nullable: false)
+                    PecaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     Observacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -30,7 +30,7 @@ namespace TOLEAGRI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Estoques", x => x.EstoqueId);
+                    table.PrimaryKey("PK_Pecas", x => x.PecaId);
                 });
         }
 
@@ -38,7 +38,7 @@ namespace TOLEAGRI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Estoques");
+                name: "Pecas");
         }
     }
 }
