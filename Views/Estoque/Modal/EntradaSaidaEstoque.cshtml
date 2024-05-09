@@ -4,17 +4,17 @@
     Layout = null;
 }
 
-<div id="modalEntradaEstoque" class="modal" tabindex="-1">
+<div id="modalEntradaSaidaEstoque" class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="formEntradaEstoque" method="post" asp-action="EntradaEstoque">
+            <form id="formEntradaEstoque" method="post" asp-action="EntradaSaidaEstoque">
                 <div class="modal-header">
                     <h5 class="modal-title">Entrada do Estoque</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <input asp-for="PecaId" type="hidden">
+                        <input asp-for="Id" type="hidden">
                         <input required asp-for="DataEntrada" type="date" class="form-control mb-2" id="DataEntrada">
                         <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
@@ -38,12 +38,13 @@
 
 <script>
     $(document).ready(function () {
-        $('#CodigoSistema').on('keypress' function (e) {
+        $('#CodigoSistema').on('keypress', function (e) {
             if (e.which === 13) { // 13 é o código da tecla "Enter"
-                event.preventDefault(); // Previne o comportamento padrão de submissão do formulário
+                event.preventDefault(); 
                 var codigoSistema = $(this).val();
+
                 $.ajax({
-                    url: '/Estoque/EntradaEstoque',
+                    url: '/Estoque/EntradaSaidaEstoque',
                     type: 'GET',
                     data: { codigoSistema: codigoSistema },
                     success: function (data) {
@@ -51,10 +52,10 @@
                         if (data) 
                         {
                             $('#Locacao').val(data.locacao);
-                            $('#Marca').val(data.marca)
-                            $('#Modelo').val(data.modelo)
-                            $('#QuantidadeEntrada').val(data.quantidadeEntrada)
-                            $('#Observacao').val(data.observacao)
+                            $('#Marca').val(data.marca);
+                            $('#Modelo').val(data.modelo);
+                            $('#QuantidadeEntrada').val(data.quantidadeEntrada);
+                            $('#Observacao').val(data.observacao);
                         }
                         else 
                         {
@@ -64,6 +65,7 @@
                             $('#QuantidadeEntrada').val('');
                             $('#Observacao').val('');
                         }
+
                     }
 
                 });

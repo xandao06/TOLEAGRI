@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TOLEAGRI.Model.Domain.Peca>
+@{
+    ViewData["Title"] = "Pecas";
+    var PecasOrdenados = Model.OrderByDescending(c => c.CodigoSistema).ToList();
+}
+
+<div style="padding:40px" id="container" class="justify-content-between">
+    <div>
+        <h1 class="text-center mb-3">Estoque</h1>
+        <div class="mb-4" style="display:flex;justify-content:space-between">
+            <div>
+                <a type="button" asp-controller="Estoque" asp-action="Index" class="btn btn-outline-dark">Estoque</a>
+            </div>
+            <div style="display:flex">
+                <input type="text" id="Pesquisa" class="form-control" placeholder="Buscar">
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Locação</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Quantidade</th>
+                <th>Observação</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var peca in Model)
+            {
+                <tr class="peca-row">
+                    <td>@peca.CodigoSistema</td>
+                    <td>@peca.Locacao</td>
+                    <td>@peca.Marca</td>
+                    <td>@peca.Modelo</td>
+                    <td>@peca.QuantidadeEntrada</td>
+                    <td>@peca.Observacao</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+
+</script>

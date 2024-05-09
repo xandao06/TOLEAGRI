@@ -3,7 +3,7 @@
     public class Peca
     {
         public int Quantidade { get; set; }
-        public int PecaId { get; set; }
+        public int Id { get; set; }
         public string? Observacao { get; set; }
         public string? CodigoSistema { get; set; }
         public string? Modelo { get; set; }

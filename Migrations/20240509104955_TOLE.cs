@@ -15,7 +15,7 @@ namespace TOLEAGRI.Migrations
                 name: "Pecas",
                 columns: table => new
                 {
-                    PecaId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     Observacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -30,7 +30,7 @@ namespace TOLEAGRI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pecas", x => x.PecaId);
+                    table.PrimaryKey("PK_Pecas", x => x.Id);
                 });
         }
 

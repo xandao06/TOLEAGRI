@@ -21,9 +21,9 @@ namespace TOLEAGRI.Model.Services
             return peca;
         }
 
-        public Peca Get(int pecaId)
+        public Peca Get(int id)
         {
-            return dbContext.Set<Peca>().Find(pecaId);
+            return dbContext.Set<Peca>().Find(id);
         }
 
         public IReadOnlyList<Peca> GetAll()
@@ -37,9 +37,9 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
-        public void Delete(int pecaId)
+        public void Delete(int id)
         {
-            Peca peca = Get(pecaId);
+            Peca peca = Get(id);
             dbContext.Set<Peca>().Remove(peca);
             dbContext.SaveChanges();
         }
