@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<TOLEAGRI.Model.Domain.Peca>
 @{
     ViewData["Title"] = "Pecas";
-    var PecasOrdenados = Model.OrderByDescending(c => c.CodigoSistema).ToList();
+    var historicoList = Model.OrderByDescending(c => c.DataSaida.Date).ToList();
 }
 
 <div style="padding:40px" id="container" class="justify-content-between">
@@ -23,20 +23,26 @@
                 <th>Locação</th>
                 <th>Marca</th>
                 <th>Modelo</th>
-                <th>Quantidade</th>
+                <th>Quantidade Ent.</th>
+                <th>Quantidade Saída</th>
+                <th>Data de entrada</th>
+                <th>Data de Saída</th>
                 <th>Observação</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var peca in Model)
+            @foreach (var item in historicoList)
             {
                 <tr class="peca-row">
-                    <td>@peca.CodigoSistema</td>
-                    <td>@peca.Locacao</td>
-                    <td>@peca.Marca</td>
-                    <td>@peca.Modelo</td>
-                    <td>@peca.QuantidadeEntrada</td>
-                    <td>@peca.Observacao</td>
+                <td>@item.CodigoSistema</td>
+                <td>@item.Locacao</td>
+                <td>@item.Marca</td>
+                <td>@item.Modelo</td>
+                <td>@item.QuantidadeEntrada</td>
+                <td>@item.QuantidadeSaida</td>
+                <td>@item.DataEntrada</td>
+                <td>@item.DataSaida</td>
+                <td>@item.Observacao</td>
                 </tr>
             }
         </tbody>

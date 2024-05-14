@@ -22,6 +22,12 @@ namespace TOLEAGRI.Controllers
             return View(model);
         }
 
+        public IActionResult Historico()
+        {
+            estoqueService.HistoricoList();
+            return RedirectToAction("Historico");
+        }
+
         [HttpGet]
         
         public IActionResult ModalEntradaSaidaEstoque()
