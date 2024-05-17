@@ -37,6 +37,60 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
+$(document).ready(function () {
+    $('#CodigoSistema').on('keypress', function (e) {
+        if (e.which === 13) { // Enter key pressed
+            e.preventDefault();
+            var codigoSistema = $(this).val();
+
+            // Enviar solicitação AJAX para verificar se o código do sistema já existe
+            $.ajax({
+                url: '/Estoque/GetByCodigoSistema',
+                type: 'GET',
+                data: { codigoSistema: codigoSistema },
+                success: function (data) {
+                    if (data) {
+                        // Preencher os campos do formulário com os detalhes da peça
+                        $('#Locacao').val(data.locacao);
+                        $('#Marca').val(data.marca);
+                        $('#Modelo').val(data.modelo);
+                            $('#QuantidadeSaida').val(data.modelo);
+                            $('#Observacao').val(data.modelo);
+                    } else {
+                        // Limpar os campos do formulário se o código não existir
+                        $('#Locacao').val('');
+                        $('#Marca').val('');
+                        $('#Modelo').val('');
+                            $('#QuantidadeSaida').val(data.modelo);
+                            $('#Observacao').val(data.modelo);
+                    }
+                }
+            });
+        }
+    });
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <script>
     $(document).ready(function () {
         $('#CodigoSistema').on('keypress', function (e) {
             if (e.which === 13) { // 13 é o código da tecla "Enter"
@@ -72,4 +126,4 @@
             }
         });
     });
-</script>
+</script> *@

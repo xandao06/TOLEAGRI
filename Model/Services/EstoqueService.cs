@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Identity.Client;
@@ -52,12 +53,14 @@ namespace TOLEAGRI.Model.Services
         {
             Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
 
+
             if (existingPeca == null)
             {
                 dbContext.Pecas.Add(peca);
             }
             else
             {
+                
                 existingPeca.Locacao = peca.Locacao;
                 existingPeca.Marca = peca.Marca;
                 existingPeca.Modelo = peca.Modelo;
@@ -71,60 +74,60 @@ namespace TOLEAGRI.Model.Services
 
         }
 
-
-        public IReadOnlyList<Peca> HistoricoList(Peca entity)
+        public Peca GetByCodigoSistema(string codigoSistema)
         {
-            var modifiedEntities = dbContext.ChangeTracker.Entries()
-             .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified)
-             .Select(e => e.Entity)
-             .ToList();
-
-            var historicoList = new List<Historico>();
-
-            foreach (var entityEntry in modifiedEntities)
-            {
-
-                        // Crie um objeto de histórico baseado na entidade
-                        var historico = new Historico
-                        {
-                            Id = entity.Id,
-                            CodigoSistema = entity.CodigoSistema,
-                            Locacao = entity.Locacao,
-                            Marca = entity.Marca,
-                            Modelo = entity.Modelo,
-                            QuantidadeEntrada = entity.QuantidadeEntrada,
-                            QuantidadeSaida = entity.QuantidadeSaida,
-                            Observacao = entity.Observacao,
-                            DataEntrada = DateTime.Now, // Data da operação atual
-                            DataSaida = DateTime.Now
-                        };
-
-                        // Adicione o histórico à lista
-                        historicoList.Add(historico);
-                    }
-
+            return dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
         }
 
+        //        public IActionResult HistoricoList(List<Peca> pecaList)
+        //        {
+        //            var modifiedEntities = dbContext.ChangeTracker.Entries()
+        //             .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified)
+        //             .Select(e => e.Entity)
+        //             .ToList();
+
+        //            foreach (Peca peca in pecaList)
+        //            {
+        //                // Crie um objeto de histórico baseado na entidade
+        //                var historico = new Peca
+        //                {
+        //                    Id = peca.Id,
+        //                    CodigoSistema = peca.CodigoSistema,
+        //                    Locacao = peca.Locacao,
+        //                    Marca = peca.Marca,
+        //                    Modelo = peca.Modelo,
+        //                    QuantidadeEntrada = peca.QuantidadeEntrada,
+        //                    QuantidadeSaida = peca.QuantidadeSaida,
+        //                    Observacao = peca.Observacao,
+        //                    DataEntrada = DateTime.Now, // Data da operação atual
+        //                    DataSaida = DateTime.Now
+        //                };
+
+        //                pecaList.Add(historico);
+        //            }
+
+        //        }
+        //    }
+        //}
 
 
 
 
 
-
-        //public IReadOnlyList<Historico> HistoricoList()
+        //public IReadOnlyList<Peca> HistoricoList()
         //{
         //    // Obtenha as entidades que foram adicionadas ou modificadas
-        //    var modifiedEntities model.Where(e => e.State == EntityState.Added || e.State == EntityState.Modified).ToList();
+        //    var modifiedEntities = ChangeTracker.Entries().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified).ToList();
 
         //    // Crie uma lista para armazenar os históricos
-        //    var historicoList = new List<Historico>();
+        //    var historicoList = new List<Peca>();
 
         //    foreach (var entityEntry in modifiedEntities)
         //    {
         //        var entity = entityEntry.Entity;
 
         //        // Crie um objeto de histórico baseado na entidade
-        //        var historico = new Historico
+        //        var historico = new Peca
         //        {
         //            Id = entity.Id,
         //            CodigoSistema = entity.CodigoSistema,
@@ -149,8 +152,8 @@ namespace TOLEAGRI.Model.Services
 
         //public void AddEntityHistory<T>(T entity) where T : class, IEntityHistory
         //{
-        //    // Lógica para adicionar o histórico da entidade
-        //    var historico = new Historico
+        //     Lógica para adicionar o histórico da entidade
+        //    var historico = new Peca
         //    {
         //        Id = entity.Id,
         //        CodigoSistema = entity.CodigoSistema,
@@ -175,21 +178,22 @@ namespace TOLEAGRI.Model.Services
         //    }
         //}
 
+
+
+
+        //public Peca BuscarOuCriar(string codigoSistema)
+        //{
+        //    Peca peca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
+
+        //    if (peca == null)
+        //    {
+        //         Se o estoque não existir, crie um novo
+        //        peca = new Peca { CodigoSistema = codigoSistema };
+        //        dbContext.Pecas.Add(peca);
+        //        dbContext.SaveChanges();
+        //    }
+        //    return peca;
+        //}
+
     }
 }
-
-
-
-//public Peca BuscarOuCriar(string codigoSistema)
-//{
-//    Peca peca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
-
-//    if (peca == null)
-//    {
-//        // Se o estoque não existir, crie um novo
-//        peca = new Peca { CodigoSistema = codigoSistema };
-//        dbContext.Pecas.Add(peca);
-//        dbContext.SaveChanges();
-//    }
-//    return peca;
-//}

@@ -22,11 +22,11 @@ namespace TOLEAGRI.Controllers
             return View(model);
         }
 
-        public IActionResult Historico()
-        {
-            estoqueService.HistoricoList();
-            return RedirectToAction("Historico");
-        }
+        //public IActionResult Historico(List<Peca> pecaList)
+        //{
+        //    estoqueService.HistoricoList(pecaList);
+        //    return View(pecaList);
+        //}
 
         [HttpGet]
         
@@ -41,6 +41,19 @@ namespace TOLEAGRI.Controllers
         {
             estoqueService.BuscarOuCriar(peca);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult GetByCodigoSistema(string codigoSistema)
+        {
+            Peca peca = estoqueService.GetByCodigoSistema(codigoSistema);
+
+            if (peca != null)
+            {
+                return Json(new { locacao = peca.Locacao, marca = peca.Marca, modelo = peca.Modelo, quantidade = peca.QuantidadeSaida, Observacao = peca.Observacao });
+            }
+
+            return Json(null);
         }
 
         [HttpGet]
