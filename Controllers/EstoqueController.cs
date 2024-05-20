@@ -32,7 +32,7 @@ namespace TOLEAGRI.Controllers
         
         public IActionResult ModalEntradaSaidaEstoque()
         {
-            return View("Modal/EntradaSaidaEstoque", new Peca());
+            return View("Modal/EntradaSaidaEstoque");
         }
 
         [HttpPost]
@@ -50,7 +50,7 @@ namespace TOLEAGRI.Controllers
 
             if (peca != null)
             {
-                return Json(new { locacao = peca.Locacao, marca = peca.Marca, modelo = peca.Modelo, quantidade = peca.QuantidadeSaida, Observacao = peca.Observacao });
+                return Json(new { locacao = peca.Locacao, marca = peca.Marca, modelo = peca.Modelo, quantidade = peca.Quantidade, Observacao = peca.Observacao });
             }
 
             return Json(null);

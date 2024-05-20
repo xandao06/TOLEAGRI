@@ -15,12 +15,12 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <input asp-for="Id" type="hidden">
-                        <input required asp-for="DataEntrada" type="date" class="form-control mb-2" id="DataEntrada">
+                        <input required asp-for="Data" type="date" class="form-control mb-2" id="Data">
                         <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
                         <input asp-for="Marca" type="text" class="form-control mb-2" id="Marca" placeholder="Marca">
                         <input asp-for="Modelo" type="text" class="form-control mb-2" id="Modelo" placeholder="Modelo">
-                        <input required asp-for="QuantidadeEntrada" type="int" class="form-control mb-2" id="QuantidadeEntrada" placeholder="Quantidade de Entrada">
+                        <input required asp-for="Quantidade" type="int" class="form-control mb-2" id="Quantidade" placeholder="Quantidade">
                         <input required asp-for="Observacao" type="text" class="form-control mb-2" id="Observacao" placeholder="Observação">
                     </div>
                 </div>
@@ -38,7 +38,8 @@
 
 <script>
 $(document).ready(function () {
-    $('#CodigoSistema').on('keypress', function (e) {
+        $.get("/Estoque/ModalEntradaSaidaEstoque")
+        $('#CodigoSistema').on('keypress', function (e) {
         if (e.which === 13) { // Enter key pressed
             e.preventDefault();
             var codigoSistema = $(this).val();
@@ -54,15 +55,15 @@ $(document).ready(function () {
                         $('#Locacao').val(data.locacao);
                         $('#Marca').val(data.marca);
                         $('#Modelo').val(data.modelo);
-                            $('#QuantidadeSaida').val(data.modelo);
-                            $('#Observacao').val(data.modelo);
+                            $('#Quantidade').val(data.quantidade);
+                            $('#Observacao').val(data.observacao);
                     } else {
                         // Limpar os campos do formulário se o código não existir
                         $('#Locacao').val('');
                         $('#Marca').val('');
                         $('#Modelo').val('');
-                            $('#QuantidadeSaida').val(data.modelo);
-                            $('#Observacao').val(data.modelo);
+                            $('#Quantidade').val(data.quantidade);
+                            $('#Observacao').val(data.observaca);
                     }
                 }
             });

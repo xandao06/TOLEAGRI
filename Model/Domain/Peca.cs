@@ -9,10 +9,7 @@
         public string? Modelo { get; set; }
         public string? Marca { get; set; }
         public string? Locacao { get; set; }
-        public int QuantidadeEntrada { get; set; }
-        public int QuantidadeSaida {get; set; }
-        public DateTime DataEntrada { get; set; } = DateTime.Now;
-        public DateTime DataSaida { get; set; } = DateTime.Now;
+        public DateTime Data { get; set; } = DateTime.Now;
 
     }
 }

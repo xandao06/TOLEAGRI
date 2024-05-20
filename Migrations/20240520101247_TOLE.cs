@@ -23,10 +23,7 @@ namespace TOLEAGRI.Migrations
                     Modelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Locacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    QuantidadeEntrada = table.Column<int>(type: "int", nullable: false),
-                    QuantidadeSaida = table.Column<int>(type: "int", nullable: false),
-                    DataEntrada = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataSaida = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Data = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

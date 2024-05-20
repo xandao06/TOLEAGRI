@@ -64,13 +64,14 @@ namespace TOLEAGRI.Model.Services
                 existingPeca.Locacao = peca.Locacao;
                 existingPeca.Marca = peca.Marca;
                 existingPeca.Modelo = peca.Modelo;
-                existingPeca.QuantidadeEntrada = peca.QuantidadeEntrada;
+                existingPeca.Quantidade = peca.Quantidade;
                 existingPeca.Observacao = peca.Observacao;
 
                 dbContext.Pecas.Update(existingPeca);
             }
 
             dbContext.SaveChanges();
+
 
         }
 

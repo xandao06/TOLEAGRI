@@ -33,10 +33,7 @@ namespace TOLEAGRI.Migrations
                     b.Property<string>("CodigoSistema")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DataEntrada")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataSaida")
+                    b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Locacao")
@@ -52,12 +49,6 @@ namespace TOLEAGRI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantidade")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuantidadeEntrada")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuantidadeSaida")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

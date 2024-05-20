@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<TOLEAGRI.Model.Domain.Peca>
 @{
     ViewData["Title"] = "Pecas";
-    var historicoList = Model.OrderByDescending(c => c.DataSaida.Date).ToList();
+    var historicoList = Model.OrderByDescending(c => c.Data.Date).ToList();
 }
 
 <div style="padding:40px" id="container" class="justify-content-between">
@@ -23,11 +23,9 @@
                 <th>Locação</th>
                 <th>Marca</th>
                 <th>Modelo</th>
-                <th>Quantidade Ent.</th>
-                <th>Quantidade Saída</th>
-                <th>Data de entrada</th>
-                <th>Data de Saída</th>
+                <th>Quantidade</th>
                 <th>Observação</th>
+                <th>Data</th>
             </tr>
         </thead>
         <tbody>
@@ -38,11 +36,9 @@
                     <td>@item.Locacao</td>
                     <td>@item.Marca</td>
                     <td>@item.Modelo</td>
-                    <td>@item.QuantidadeEntrada</td>
-                    <td>@item.QuantidadeSaida</td>
-                    <td>@item.DataEntrada</td>
-                    <td>@item.DataSaida</td>
+                    <td>@item.Quantidade</td>
                     <td>@item.Observacao</td>
+                    <td>@item.Data</td>
                 </tr>
             }
         </tbody>
