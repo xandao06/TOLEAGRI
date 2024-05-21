@@ -37,9 +37,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
-$(document).ready(function () {
-        $.get("/Estoque/ModalEntradaSaidaEstoque")
-        $('#CodigoSistema').on('keypress', function (e) {
+    // $(document).ready(function () {
+    //         $'#btn-EntradaSaidaEstoque').on('click', function() {
+    //     $.get("/Estoque/ModalEntradaSaidaEstoque"), function(data) {
+    //         $('#modalTOLEAGRI').html(data);
+    //         $('modalEntradaSaidaEstoque').modal('show');
+    //     });
+    //             });
+    $('#CodigoSistema').on('keypress', function (e) {
         if (e.which === 13) { // Enter key pressed
             e.preventDefault();
             var codigoSistema = $(this).val();
@@ -55,21 +60,20 @@ $(document).ready(function () {
                         $('#Locacao').val(data.locacao);
                         $('#Marca').val(data.marca);
                         $('#Modelo').val(data.modelo);
-                            $('#Quantidade').val(data.quantidade);
-                            $('#Observacao').val(data.observacao);
+                        $('#Quantidade').val(data.quantidade);
+                        $('#Observacao').val(data.observacao);
                     } else {
                         // Limpar os campos do formulário se o código não existir
                         $('#Locacao').val('');
                         $('#Marca').val('');
                         $('#Modelo').val('');
-                            $('#Quantidade').val(data.quantidade);
-                            $('#Observacao').val(data.observaca);
+                        $('#Quantidade').val(data.quantidade);
+                        $('#Observacao').val(data.observacao);
                     }
                 }
             });
         }
     });
-});
 
 </script>
 

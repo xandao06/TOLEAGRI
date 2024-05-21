@@ -22,12 +22,6 @@ namespace TOLEAGRI.Controllers
             return View(model);
         }
 
-        //public IActionResult Historico(List<Peca> pecaList)
-        //{
-        //    estoqueService.HistoricoList(pecaList);
-        //    return View(pecaList);
-        //}
-
         [HttpGet]
         
         public IActionResult ModalEntradaSaidaEstoque()
