@@ -19,11 +19,11 @@ namespace TOLEAGRI.Model.Services
             this.dbContext = dbContext;
         }
 
-        public Peca Add(Peca peca)
+        public Peca Add(Peca entity)
         {
-            dbContext.Add(peca);
+            dbContext.Add(entity);
             dbContext.SaveChanges();
-            return peca;
+            return entity;
         }
 
         public Peca Get(int id)
@@ -49,23 +49,23 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
-        public void BuscarOuCriar(Peca peca)
+        public void BuscarOuCriar(Peca entity)
         {
-            Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
+            Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == entity.CodigoSistema);
 
 
             if (existingPeca == null)
             {
-                dbContext.Pecas.Add(peca);
+                dbContext.Pecas.Add(entity);
             }
             else
             {
                 
-                existingPeca.Locacao = peca.Locacao;
-                existingPeca.Marca = peca.Marca;
-                existingPeca.Modelo = peca.Modelo;
-                existingPeca.Quantidade = peca.Quantidade;
-                existingPeca.Observacao = peca.Observacao;
+                existingPeca.Locacao = entity.Locacao;
+                existingPeca.Marca = entity.Marca;
+                existingPeca.Modelo = entity.Modelo;
+                existingPeca.Quantidade = entity.Quantidade;
+                existingPeca.Observacao = entity.Observacao;
 
                 dbContext.Pecas.Update(existingPeca);
             }

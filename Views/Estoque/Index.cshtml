@@ -59,12 +59,13 @@
 <script>
 
     $(document).ready(function ModalEntradaSaidaEstoque() {
-        $('#btn-EntradaSaidaEstoque').on('click', function (event) {
+        $('#btn-EntradaSaidaEstoque').click(function (event) {
             event.preventDefault();
 
             $.get("/Estoque/ModalEntradaSaidaEstoque", function (data) {
                 $('#modalTOLEAGRI').html(data);
                 $('#modalEntradaSaidaEstoque').modal('show');
+                
 
             });
         });
