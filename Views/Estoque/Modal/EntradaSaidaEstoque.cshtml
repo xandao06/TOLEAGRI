@@ -16,11 +16,18 @@
                     <div class="mb-3">
                         <input asp-for="Id" type="hidden">
                         <input required asp-for="Data" type="date" class="form-control mb-2" id="Data">
+                        <input 
+                            <select>
+                                <option value="Entrada">Entrada</option>
+                                <option value="Saida">Saida</option>
+                        </select>/>  
+                        </>
                         <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
                         <input asp-for="Marca" type="text" class="form-control mb-2" id="Marca" placeholder="Marca">
                         <input asp-for="Modelo" type="text" class="form-control mb-2" id="Modelo" placeholder="Modelo">
                         <input required asp-for="Quantidade" type="int" class="form-control mb-2" id="Quantidade" placeholder="Quantidade">
+                        <input required asp-for="NotaOuPedido" type="int" class="form-control mb-2" id="NotaOuPedido" placeholder="Nota Fiscal/Pedido">
                         <input required asp-for="Observacao" type="text" class="form-control mb-2" id="Observacao" placeholder="Observação">
                     </div>
                 </div>

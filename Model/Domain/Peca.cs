@@ -5,6 +5,9 @@
         public int Quantidade { get; set; }
         public int Id { get; set; }
         public string? Observacao { get; set; }
+        public string? NotaOuPedido { get; set; }
+        public string? Entrada { get; set; }
+        public string? Saida { get; set; }
         public string? CodigoSistema { get; set; }
         public string? Modelo { get; set; }
         public string? Marca { get; set; }
