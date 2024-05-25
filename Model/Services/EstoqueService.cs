@@ -49,31 +49,44 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
-        public void BuscarOuCriar(Peca entity)
+        public void BuscarModificar (Peca peca)
         {
-            Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == entity.CodigoSistema);
+            Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
 
+            existingPeca.Locacao = peca.Locacao;
+                    existingPeca.Marca = peca.Marca;
+                    existingPeca.Modelo = peca.Modelo;
+                    existingPeca.Quantidade = peca.Quantidade;
+                    existingPeca.NotaOuPedido = peca.NotaOuPedido;
+                    existingPeca.Observacao = peca.Observacao;
 
-            if (existingPeca == null)
-            {
-                dbContext.Pecas.Add(entity);
-            }
-            else
-            {
-                
-                existingPeca.Locacao = entity.Locacao;
-                existingPeca.Marca = entity.Marca;
-                existingPeca.Modelo = entity.Modelo;
-                existingPeca.Quantidade = entity.Quantidade;
-                existingPeca.Observacao = entity.Observacao;
-
-                dbContext.Pecas.Update(existingPeca);
-            }
-
-            dbContext.SaveChanges();
-
-
+                    dbContext.Pecas.Update(existingPeca);
         }
+        //public void BuscarOuCriar(Peca entity)
+        //{
+        //    Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == entity.CodigoSistema);
+
+
+        //    if (existingPeca == null)
+        //    {
+        //        dbContext.Pecas.Add(entity);
+        //    }
+        //    else
+        //    {
+
+        //        existingPeca.Locacao = entity.Locacao;
+        //        existingPeca.Marca = entity.Marca;
+        //        existingPeca.Modelo = entity.Modelo;
+        //        existingPeca.Quantidade = entity.Quantidade;
+        //        existingPeca.Observacao = entity.Observacao;
+
+        //        dbContext.Pecas.Update(existingPeca);
+        //    }
+
+        //    dbContext.SaveChanges();
+
+
+        //}
 
         public Peca GetByCodigoSistema(string codigoSistema)
         {
@@ -180,21 +193,6 @@ namespace TOLEAGRI.Model.Services
         //}
 
 
-
-
-        //public Peca BuscarOuCriar(string codigoSistema)
-        //{
-        //    Peca peca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
-
-        //    if (peca == null)
-        //    {
-        //         Se o estoque não existir, crie um novo
-        //        peca = new Peca { CodigoSistema = codigoSistema };
-        //        dbContext.Pecas.Add(peca);
-        //        dbContext.SaveChanges();
-        //    }
-        //    return peca;
-        //}
 
     }
 }

@@ -4,24 +4,19 @@
     Layout = null;
 }
 
-<div id="modalEntradaSaidaEstoque" class="modal" tabindex="-1">
+<div id="modalSaidaEstoque" class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="formEntradaEstoque" method="post" asp-action="EntradaSaidaEstoque">
+            <form id="formEntradaEstoque" method="post" asp-action="SaidaEstoque">
                 <div class="modal-header">
-                    <h5 class="modal-title">Entrada do Estoque</h5>
+                    <h5 class="modal-title">Saída do Estoque</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
                         <input asp-for="Id" type="hidden">
+                        <input asp-for="Saida" type="hidden">
                         <input required asp-for="Data" type="date" class="form-control mb-2" id="Data">
-                        <input 
-                            <select>
-                                <option value="Entrada">Entrada</option>
-                                <option value="Saida">Saida</option>
-                        </select>/>  
-                        </>
                         <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
                         <input asp-for="Marca" type="text" class="form-control mb-2" id="Marca" placeholder="Marca">
@@ -43,20 +38,13 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-@* <script>
-    // $(document).ready(function () {
-    //         $'#btn-EntradaSaidaEstoque').on('click', function() {
-    //     $.get("/Estoque/ModalEntradaSaidaEstoque"), function(data) {
-    //         $('#modalTOLEAGRI').html(data);
-    //         $('modalEntradaSaidaEstoque').modal('show');
-    //     });
-    //             });
+<script>
+
     $('#CodigoSistema').on('keypress', function (e) {
         if (e.which === 13) { // Enter key pressed
             e.preventDefault();
             var codigoSistema = $(this).val();
 
-            // Enviar solicitação AJAX para verificar se o código do sistema já existe
             $.ajax({
                 url: '/Estoque/GetByCodigoSistema',
                 type: 'GET',
@@ -68,13 +56,15 @@
                         $('#Marca').val(data.marca);
                         $('#Modelo').val(data.modelo);
                         $('#Quantidade').val(data.quantidade);
+                        $('#NotaOuPedido').val(data.notaoupedido);
                         $('#Observacao').val(data.observacao);
                     } else {
                         // Limpar os campos do formulário se o código não existir
-                        $('#Locacao').val('');
-                        $('#Marca').val('');
-                        $('#Modelo').val('');
+                        $('#Locacao').val(data.locacao);
+                        $('#Marca').val(data.marca);
+                        $('#Modelo').val(data.modelo);
                         $('#Quantidade').val(data.quantidade);
+                        $('#NotaOuPedido').val(data.notaoupedido);
                         $('#Observacao').val(data.observacao);
                     }
                 }
@@ -82,7 +72,7 @@
         }
     });
 
-</script> *@
+</script>
 
 
 

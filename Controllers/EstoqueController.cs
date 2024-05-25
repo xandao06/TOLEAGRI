@@ -24,18 +24,41 @@ namespace TOLEAGRI.Controllers
 
         [HttpGet]
         
-        public IActionResult ModalEntradaSaidaEstoque()
+        public IActionResult ModalEntradaEstoque()
         {
-            return View("Modal/EntradaSaidaEstoque");
+            return View("Modal/EntradaEstoque");
         }
 
         [HttpPost]
 
-        public IActionResult EntradaSaidaEstoque (Peca peca)
+        public IActionResult EntradaEstoque(Peca peca)
         {
-            estoqueService.BuscarOuCriar(peca);
+            estoqueService.Add(peca);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+
+        public IActionResult ModalSaidaEstoque()
+        {
+            return View("Modal/SaidaEstoque");
+        } 
+
+        [HttpPost]
+
+        public IActionResult SaidaEstoque(Peca peca)
+        {
+            estoqueService.BuscarModificar(peca);
+            return RedirectToAction("Index");
+        }
+
+        //[HttpPost]
+
+        //public IActionResult EntradaEstoque (Peca peca)
+        //{
+        //    estoqueService.BuscarOuCriar(peca);
+        //    return RedirectToAction("Index");
+        //}
 
         [HttpGet]
         public IActionResult GetByCodigoSistema(string codigoSistema)
@@ -44,7 +67,7 @@ namespace TOLEAGRI.Controllers
 
             if (peca != null)
             {
-                return Json(new { locacao = peca.Locacao, marca = peca.Marca, modelo = peca.Modelo, quantidade = peca.Quantidade, Observacao = peca.Observacao });
+                return Json(new { locacao = peca.Locacao, marca = peca.Marca, modelo = peca.Modelo, quantidade = peca.Quantidade, notaoupedido = peca.NotaOuPedido, observacao = peca.Observacao });
             }
 
             return Json(null);

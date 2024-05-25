@@ -1,0 +1,136 @@
+﻿@model TOLEAGRI.Model.Domain.Peca
+
+@{
+    Layout = null;
+}
+
+<div id="modalEntradaEstoque" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="formEntradaEstoque" method="post" asp-action="EntradaEstoque">
+                <div class="modal-header">
+                    <h5 class="modal-title">Entrada do Estoque</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input asp-for="Id" type="hidden">
+                        <input asp-for="Entrada" type="hidden">
+                        <input required asp-for="Data" type="date" class="form-control mb-2" id="Data">
+                        <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">
+                        <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
+                        <input asp-for="Marca" type="text" class="form-control mb-2" id="Marca" placeholder="Marca">
+                        <input asp-for="Modelo" type="text" class="form-control mb-2" id="Modelo" placeholder="Modelo">
+                        <input required asp-for="Quantidade" type="int" class="form-control mb-2" id="Quantidade" placeholder="Quantidade">
+                        <input required asp-for="NotaOuPedido" type="int" class="form-control mb-2" id="NotaOuPedido" placeholder="Nota Fiscal/Pedido">
+                        <input required asp-for="Observacao" type="text" class="form-control mb-2" id="Observacao" placeholder="Observação">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary">Salvar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+@* <script>
+    // $(document).ready(function () {
+    //         $'#btn-EntradaSaidaEstoque').on('click', function() {
+    //     $.get("/Estoque/ModalEntradaSaidaEstoque"), function(data) {
+    //         $('#modalTOLEAGRI').html(data);
+    //         $('modalEntradaSaidaEstoque').modal('show');
+    //     });
+    //             });
+    $('#CodigoSistema').on('keypress', function (e) {
+        if (e.which === 13) { // Enter key pressed
+            e.preventDefault();
+            var codigoSistema = $(this).val();
+
+            // Enviar solicitação AJAX para verificar se o código do sistema já existe
+            $.ajax({
+                url: '/Estoque/GetByCodigoSistema',
+                type: 'GET',
+                data: { codigoSistema: codigoSistema },
+                success: function (data) {
+                    if (data) {
+                        // Preencher os campos do formulário com os detalhes da peça
+                        $('#Locacao').val(data.locacao);
+                        $('#Marca').val(data.marca);
+                        $('#Modelo').val(data.modelo);
+                        $('#Quantidade').val(data.quantidade);
+                        $('#Observacao').val(data.observacao);
+                    } else {
+                        // Limpar os campos do formulário se o código não existir
+                        $('#Locacao').val('');
+                        $('#Marca').val('');
+                        $('#Modelo').val('');
+                        $('#Quantidade').val(data.quantidade);
+                        $('#Observacao').val(data.observacao);
+                    }
+                }
+            });
+        }
+    });
+
+</script> *@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <script>
+    $(document).ready(function () {
+        $('#CodigoSistema').on('keypress', function (e) {
+            if (e.which === 13) { // 13 é o código da tecla "Enter"
+                event.preventDefault(); 
+                var codigoSistema = $(this).val();
+
+                $.ajax({
+                    url: '/Estoque/EntradaSaidaEstoque',
+                    type: 'GET',
+                    data: { codigoSistema: codigoSistema },
+                    success: function (data) {
+                        // Atualize os campos do modal com as informações retornadas
+                        if (data) 
+                        {
+                            $('#Locacao').val(data.locacao);
+                            $('#Marca').val(data.marca);
+                            $('#Modelo').val(data.modelo);
+                            $('#QuantidadeEntrada').val(data.quantidadeEntrada);
+                            $('#Observacao').val(data.observacao);
+                        }
+                        else 
+                        {
+                            $('#Locacao').val('');
+                            $('#Marca').val('');
+                            $('#Modelo').val('');
+                            $('#QuantidadeEntrada').val('');
+                            $('#Observacao').val('');
+                        }
+
+                    }
+
+                });
+            }
+        });
+    });
+</script> *@
