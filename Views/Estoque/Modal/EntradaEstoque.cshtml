@@ -10,18 +10,17 @@
             <form id="formEntradaEstoque" method="post" asp-action="EntradaEstoque">
                 <div class="modal-header">
                     <h5 class="modal-title">Entrada do Estoque</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <input asp-for="Id" type="hidden">
+                        <input asp-for="Id" id="Id" name="Id" type="hidden">
                         <input asp-for="Entrada" type="hidden">
-                        <input required asp-for="Data" type="date" class="form-control mb-2" id="Data">
+                        <input required asp-for="Data" type="date" class="form-control mb-2" id="Data" placeholder="Data">
                         <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
                         <input asp-for="Marca" type="text" class="form-control mb-2" id="Marca" placeholder="Marca">
                         <input asp-for="Modelo" type="text" class="form-control mb-2" id="Modelo" placeholder="Modelo">
-                        <input required asp-for="Quantidade" type="int" class="form-control mb-2" id="Quantidade" placeholder="Quantidade">
+                        <input required asp-for="Quantidade" value="" type="int" class="form-control mb-2" id="Quantidade" placeholder="Quantidade">
                         <input required asp-for="NotaOuPedido" type="int" class="form-control mb-2" id="NotaOuPedido" placeholder="Nota Fiscal/Pedido">
                         <input required asp-for="Observacao" type="text" class="form-control mb-2" id="Observacao" placeholder="Observação">
                     </div>

@@ -19,11 +19,11 @@ namespace TOLEAGRI.Model.Services
             this.dbContext = dbContext;
         }
 
-        public Peca Add(Peca entity)
+        public Peca Add(Peca peca)
         {
-            dbContext.Add(entity);
+            dbContext.Add(peca);
             dbContext.SaveChanges();
-            return entity;
+            return peca;
         }
 
         public Peca Get(int id)
@@ -61,6 +61,7 @@ namespace TOLEAGRI.Model.Services
                     existingPeca.Observacao = peca.Observacao;
 
                     dbContext.Pecas.Update(existingPeca);
+            dbContext.SaveChanges();
         }
         //public void BuscarOuCriar(Peca entity)
         //{

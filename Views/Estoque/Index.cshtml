@@ -26,9 +26,10 @@
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Quantidade</th>
-                <th>Nota Fiscal ou Pedido</th>
+                <th>NF ou Pedido</th>
                 <th>Observação</th>
                 <th>Data</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -68,21 +69,21 @@
             $.get("/Estoque/ModalEntradaEstoque", function (data) {
                 $('#modalTOLEAGRI').html(data);
                 $('#modalEntradaEstoque').modal('show');
-                
-
+                $('#modalEntradaEstoque').on('hidden.bs.modal', function () {
+                    $('#Id').val('');
+                });
             });
         });
     });
 
     $(document).ready(function ModalSaidaEstoque() {
-        $('#btn-SaidaEstoque').click(function (event) {
+        $('#btn-SaidaEstoque').click(function (data) {
             event.preventDefault();
 
             $.get("/Estoque/ModalSaidaEstoque", function (data) {
                 $('#modalTOLEAGRI').html(data);
                 $('#modalSaidaEstoque').modal('show');
-
-
+                
             });
         });
     });

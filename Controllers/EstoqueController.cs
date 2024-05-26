@@ -26,7 +26,7 @@ namespace TOLEAGRI.Controllers
         
         public IActionResult ModalEntradaEstoque()
         {
-            return View("Modal/EntradaEstoque");
+            return View("Modal/EntradaEstoque", new Peca());
         }
 
         [HttpPost]
