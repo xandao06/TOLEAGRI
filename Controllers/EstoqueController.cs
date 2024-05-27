@@ -39,9 +39,9 @@ namespace TOLEAGRI.Controllers
 
         [HttpGet]
 
-        public IActionResult ModalSaidaEstoque()
+        public IActionResult ModalSaidaEstoque(Peca peca)
         {
-            return View("Modal/SaidaEstoque");
+            return View("Modal/SaidaEstoque", peca);
         } 
 
         [HttpPost]

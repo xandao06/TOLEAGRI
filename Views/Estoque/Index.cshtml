@@ -11,7 +11,7 @@
             <div>
                 <a class="btn btn-outline-dark" id="btn-EntradaEstoque">Entrada</a>
                 <a class="btn btn-outline-dark" id="btn-SaidaEstoque">Saída</a>
-                <a type="button" asp-controller="Estoque" asp-action="Historico" class="btn btn-outline-dark">Histórico</a>
+                <a type="button" asp-controller="Estoque" asp-action="Registros" class="btn btn-outline-dark">Registros</a>
             </div>
             <div style="display:flex">
                 <input type="text" id="Pesquisa" class="form-control" placeholder="Buscar">
@@ -55,23 +55,18 @@
     </table>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js"></script>
 
 
-<script>
+@* <script>
 
     $(document).ready(function ModalEntradaEstoque() {
-        $('#btn-EntradaEstoque').click(function (event) {
+        $("#btn-EntradaEstoque").click(function (event) {
             event.preventDefault();
 
             $.get("/Estoque/ModalEntradaEstoque", function (data) {
-                $('#modalTOLEAGRI').html(data);
-                $('#modalEntradaEstoque').modal('show');
-                $('#modalEntradaEstoque').on('hidden.bs.modal', function () {
-                    $('#Id').val('');
-                });
+                $("#modalTOLEAGRI").html(data);
+                $("#modalEntradaEstoque").modal("show");
             });
         });
     });
@@ -81,9 +76,8 @@
             event.preventDefault();
 
             $.get("/Estoque/ModalSaidaEstoque", function (data) {
-                $('#modalTOLEAGRI').html(data);
-                $('#modalSaidaEstoque').modal('show');
-                
+                $("#modalTOLEAGRI").html(data);
+                $("#modalSaidaEstoque").modal("show");
             });
         });
     });
@@ -91,11 +85,11 @@
     function ModalDeletarEstoque(idPeca) {
         event.preventDefault();
         $.get("/Estoque/ModalDeletarEstoque?id=" + idPeca, function (data) {
-            $('#modalTOLEAGRI').html(data);
-            $('#modalDeletarEstoque').modal('show');
+            $("#modalTOLEAGRI").html(data);
+            $("#modalDeletarEstoque").modal("show");
 
 
         });
     }
 
-</script>
+</script> *@

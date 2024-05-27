@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TOLEAGRI.Model.Domain.Peca>
 @{
-    ViewData["Title"] = "Pecas";
+    ViewData["Title"] = "Registros";
     var historicoList = Model.OrderByDescending(c => c.Data.Date).ToList();
 }
 
