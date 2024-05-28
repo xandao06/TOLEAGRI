@@ -9,8 +9,8 @@
         <h1 class="text-center mb-3">Estoque</h1>
         <div class="mb-4" style="display:flex;justify-content:space-between">
             <div>
-                <a class="btn btn-outline-dark" id="btn-EntradaEstoque">Entrada</a>
-                <a class="btn btn-outline-dark" id="btn-SaidaEstoque">Saída</a>
+                <a class="btn btn-outline-dark" onClick="ModalEntradaEstoque()" id="btn-EntradaEstoque">Entrada</a>
+                <a class="btn btn-outline-dark" onClick="ModalSaidaEstoque()" id="btn-SaidaEstoque">Saída</a>
                 <a type="button" asp-controller="Estoque" asp-action="Registros" class="btn btn-outline-dark">Registros</a>
             </div>
             <div style="display:flex">
@@ -56,40 +56,3 @@
 </div>
 
 <script src="~/js/site.js"></script>
-
-
-@* <script>
-
-    $(document).ready(function ModalEntradaEstoque() {
-        $("#btn-EntradaEstoque").click(function (event) {
-            event.preventDefault();
-
-            $.get("/Estoque/ModalEntradaEstoque", function (data) {
-                $("#modalTOLEAGRI").html(data);
-                $("#modalEntradaEstoque").modal("show");
-            });
-        });
-    });
-
-    $(document).ready(function ModalSaidaEstoque() {
-        $('#btn-SaidaEstoque').click(function (data) {
-            event.preventDefault();
-
-            $.get("/Estoque/ModalSaidaEstoque", function (data) {
-                $("#modalTOLEAGRI").html(data);
-                $("#modalSaidaEstoque").modal("show");
-            });
-        });
-    });
-
-    function ModalDeletarEstoque(idPeca) {
-        event.preventDefault();
-        $.get("/Estoque/ModalDeletarEstoque?id=" + idPeca, function (data) {
-            $("#modalTOLEAGRI").html(data);
-            $("#modalDeletarEstoque").modal("show");
-
-
-        });
-    }
-
-</script> *@

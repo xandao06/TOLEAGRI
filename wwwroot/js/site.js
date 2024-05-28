@@ -6,7 +6,7 @@
 
 
 
-//Configuração do Modal "SaidaEstoque" para que puxe os dados da peça quando é digitado o código e pressionado "Enter"
+//Configuração do Modal "SaidaEstoque" para que puxe os dados da peça quando é digitado o código e pressionado "Enter" e se necessário editar as informações dessa peça
  $('#CodigoSistema').on('keypress', function (e) {
     if (e.which === 13) { // Enter key pressed
         e.preventDefault();
@@ -39,29 +39,23 @@
     }
 });
 
-
-
-$(document).ready(function ModalEntradaEstoque() {
-    $("#btn-EntradaEstoque").click(function (event) {
-        event.preventDefault();
-
+//Modal para registrar uma entrada no estoque
+function ModalEntradaEstoque() {
         $.get("/Estoque/ModalEntradaEstoque", function (data) {
             $("#modalTOLEAGRI").html(data);
             $("#modalEntradaEstoque").modal("show");
         });
-    });
-});
+};
 
-$(document).ready(function ModalSaidaEstoque() {
-    $('#btn-SaidaEstoque').click(function (event) {
-        event.preventDefault();
+//Modal para registrar uma saída no estoque
+    function ModalSaidaEstoque() {
         $.get("/Estoque/ModalSaidaEstoque", function (data) {
             $("#modalTOLEAGRI").html(data);
             $("#modalSaidaEstoque").modal("show");
         });
-    });
-});
+};
 
+//Modal para deletar uma peça do estoque
 function ModalDeletarEstoque(idPeca) {
     $.get("/Estoque/ModalDeletarEstoque?id=" + idPeca, function (data) {
         $("#modalTOLEAGRI").html(data);
@@ -69,11 +63,12 @@ function ModalDeletarEstoque(idPeca) {
 
 
     });
-    };
-    $('#modalTOLEAGRI').on('hidden.bs.modal', function () {
-        $(this).removeData('bs.modal').find('.modal-content').html('');
-    });
+};
 
+
+    //$('#modalTOLEAGRI').on('hidden.bs.modal', function () {
+    //    $(this).removeData('bs.modal').find('.modal-content').html('');
+    //});
 
 
 

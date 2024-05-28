@@ -52,14 +52,6 @@ namespace TOLEAGRI.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpPost]
-
-        //public IActionResult EntradaEstoque (Peca peca)
-        //{
-        //    estoqueService.BuscarOuCriar(peca);
-        //    return RedirectToAction("Index");
-        //}
-
         [HttpGet]
         public IActionResult GetByCodigoSistema(string codigoSistema)
         {
