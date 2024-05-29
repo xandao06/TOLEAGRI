@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TOLEAGRI.Model.Domain.Peca>
+﻿@model IReadOnlyList<TOLEAGRI.Model.Domain.Peca>
 @{
     ViewData["Title"] = "Registros";
     var historicoList = Model.OrderByDescending(c => c.Data.Date).ToList();
@@ -24,6 +24,7 @@
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Quantidade</th>
+                <th>NF ou Pedido</th>
                 <th>Observação</th>
                 <th>Data</th>
             </tr>
@@ -37,8 +38,9 @@
                     <td>@item.Marca</td>
                     <td>@item.Modelo</td>
                     <td>@item.Quantidade</td>
+                    <td>@item.NotaOuPedido</td>
                     <td>@item.Observacao</td>
-                    <td>@item.Data</td>
+                    <td>@item.Data.ToShortDateString()</td>
                 </tr>
             }
         </tbody>
@@ -46,7 +48,3 @@
 </div>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-
-<script>
-
-</script>

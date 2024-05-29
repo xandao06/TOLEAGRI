@@ -23,7 +23,7 @@ namespace TOLEAGRI.Controllers
         }
 
         [HttpGet]
-        
+
         public IActionResult ModalEntradaEstoque()
         {
             return View("Modal/EntradaEstoque", new Peca());
@@ -42,7 +42,7 @@ namespace TOLEAGRI.Controllers
         public IActionResult ModalSaidaEstoque(Peca peca)
         {
             return View("Modal/SaidaEstoque", peca);
-        } 
+        }
 
         [HttpPost]
 
@@ -78,25 +78,11 @@ namespace TOLEAGRI.Controllers
             estoqueService.Delete(id);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Registros()
+        {
+            var model = estoqueService.RegistrosList();
+            return View(model);
+        }
     }
 }
-
-
-
-
-
-
-
-//[HttpGet]
-//public IActionResult ModalEntradaEstoque(string codigoSistema)
-//{
-//    Estoque estoque = estoqueService.GetByCodigoSistema(codigoSistema);
-//    return View("Modal/EntradaEstoque", estoque);
-//}
-
-//[HttpPost]
-//public IActionResult EntradaEstoque(Estoque estoque)
-//{
-//    estoqueService.Update(estoque);
-//    return RedirectToAction("Index");
-//}
