@@ -19,31 +19,36 @@ namespace TOLEAGRI.Model.Services
             this.dbContext = dbContext;
         }
 
+        // Adicionar Peca 
         public Peca Add(Peca peca)
         {
             dbContext.Add(peca);
             dbContext.SaveChanges();
-            SaveEntityHistory();
+            SaveEntityRegistro();
             return peca;
         }
 
+        // Buscar Peca pelo Id
         public Peca Get(int id)
         {
             return dbContext.Set<Peca>().Find(id);
         }
 
+        // Buscar uma lista de Pecas
         public IReadOnlyList<Peca> GetAll()
         {
             return dbContext.Set<Peca>().ToList();
         }
 
+        // Atualizar uma Peca
         public void Update(Peca entity)
         {
             dbContext.Entry(entity).State = EntityState.Modified;
             dbContext.SaveChanges();
-            SaveEntityHistory();
+            SaveEntityRegistro();
         }
 
+        // Deletar uma Peca
         public void Delete(int id)
         {
             Peca peca = Get(id);
@@ -51,7 +56,8 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
-        public void BuscarModificar(Peca peca)
+        // Buscar uma Peca pelo Codigo do Sistema, se existir no banco vai modificar a Peca, se não existir vai criar uma
+        public void BuscarModificarCriar(Peca peca)
         {
             Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
 
@@ -66,25 +72,33 @@ namespace TOLEAGRI.Model.Services
 
                 dbContext.Pecas.Update(existingPeca);
                 dbContext.SaveChanges();
-                SaveEntityHistory();
+                SaveEntityRegistro();
+            }
+            else
+            {
+                dbContext.Pecas.Add(peca);
+                dbContext.SaveChanges();
+                SaveEntityRegistro();
             }
         }
 
+        // Cria a string que retorna o Codigo do Sistema das Pecas gravado no banco
         public Peca GetByCodigoSistema(string codigoSistema)
         {
             return dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
         }
-
-        private void SaveEntityHistory()
+         
+        // Cria registros para cada criação e atualização das Pecas
+        private void SaveEntityRegistro()
         {
             var modifiedEntities = dbContext.ChangeTracker.Entries<Peca>().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified).Select(e => e.Entity).ToList();
 
-            var historicoList = new List<Peca>();
+            var registroList = new List<Peca>();
 
             foreach (var entity in modifiedEntities)
             {
 
-                var historico = new Peca
+                var registro = new Peca
                 {
                     Id = entity.Id,
                     CodigoSistema = entity.CodigoSistema,
@@ -96,13 +110,15 @@ namespace TOLEAGRI.Model.Services
                     Data = DateTime.Now // Data da operação atual
                 };
 
-                historicoList.Add(historico);
+                registroList.Add(registro);
             }
 
-            dbContext.Set<Peca>().AddRange(historicoList);
+            dbContext.Set<Peca>().AddRange(registroList);
             dbContext.SaveChanges();
         }
-        public IReadOnlyList<Peca> RegistrosList()
+
+        // Lista os registros criados
+        public IReadOnlyList<Peca> RegistroList()
         {
             return dbContext.Set<Peca>()
                             .Where(p => p.Data != null)

@@ -16,42 +16,31 @@ namespace TOLEAGRI.Controllers
             this.estoqueService = estoqueService;
         }
 
+        // Faz a abertura da view e puxa uma lista das Pecas
         public IActionResult Index()
         {
             var model = estoqueService.GetAll();
             return View(model);
         }
 
+        // Faz a abertura do Modal com Form para criação e atualização das Pecas 
         [HttpGet]
 
-        public IActionResult ModalEntradaEstoque()
+        public IActionResult ModalEntradaSaidaEstoque()
         {
-            return View("Modal/EntradaEstoque", new Peca());
+            return View("Modal/EntradaSaidaEstoque", new Peca());
         }
 
+        // Busca o serviço que faz a busca da Peca pelo codigo decide se vai criar ou modificar e redireciona para a View Index
         [HttpPost]
 
-        public IActionResult EntradaEstoque(Peca peca)
+        public IActionResult EntradaSaidaEstoque(Peca peca)
         {
-            estoqueService.Add(peca);
+            estoqueService.BuscarModificarCriar(peca);
             return RedirectToAction("Index");
         }
-
-        [HttpGet]
-
-        public IActionResult ModalSaidaEstoque(Peca peca)
-        {
-            return View("Modal/SaidaEstoque", peca);
-        }
-
-        [HttpPost]
-
-        public IActionResult SaidaEstoque(Peca peca)
-        {
-            estoqueService.BuscarModificar(peca);
-            return RedirectToAction("Index");
-        }
-
+        
+        // Busca as informações da Peca pelo codigo do sistema
         [HttpGet]
         public IActionResult GetByCodigoSistema(string codigoSistema)
         {
@@ -65,13 +54,15 @@ namespace TOLEAGRI.Controllers
             return Json(null);
         }
 
+        // Faz a abertura do Modal que deleta a Peca
         [HttpGet]
         public IActionResult ModalDeletarEstoque(int id)
         {
             Peca peca = estoqueService.Get(id);
             return View("Modal/DeletarEstoque");
         }
-
+        
+        // Busca o serviço que faz o processo de buscar a Peca pelo Id e deletar ela do banco e depois retorna para a View Index
         [HttpPost]
         public IActionResult DeletarEstoque(int id)
         {
@@ -79,9 +70,10 @@ namespace TOLEAGRI.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Registros()
+        // Faz a abertura da View Registro buscando o serviço que cria um registro de cada Peca adicionada ou modificada
+        public IActionResult Registro()
         {
-            var model = estoqueService.RegistrosList();
+            var model = estoqueService.RegistroList();
             return View(model);
         }
     }

@@ -40,20 +40,20 @@
 });
 
 //Modal para registrar uma entrada no estoque
-function ModalEntradaEstoque() {
-        $.get("/Estoque/ModalEntradaEstoque", function (data) {
+function ModalEntradaSaidaEstoque() {
+        $.get("/Estoque/ModalEntradaSaidaEstoque", function (data) {
             $("#modalTOLEAGRI").html(data);
-            $("#modalEntradaEstoque").modal("show");
+            $("#modalEntradaSaidaEstoque").modal("show");
         });
 };
 
-//Modal para registrar uma saída no estoque
-    function ModalSaidaEstoque() {
-        $.get("/Estoque/ModalSaidaEstoque", function (data) {
-            $("#modalTOLEAGRI").html(data);
-            $("#modalSaidaEstoque").modal("show");
-        });
-};
+////Modal para registrar uma saída no estoque
+//    function ModalSaidaEstoque() {
+//        $.get("/Estoque/ModalSaidaEstoque", function (data) {
+//            $("#modalTOLEAGRI").html(data);
+//            $("#modalSaidaEstoque").modal("show");
+//        });
+//};
 
 //Modal para deletar uma peça do estoque
 function ModalDeletarEstoque(idPeca) {

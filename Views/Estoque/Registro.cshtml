@@ -1,7 +1,7 @@
 ﻿@model IReadOnlyList<TOLEAGRI.Model.Domain.Peca>
 @{
-    ViewData["Title"] = "Registros";
-    var historicoList = Model.OrderByDescending(c => c.Data.Date).ToList();
+    ViewData["Title"] = "Registro";
+    var registrosList = Model.OrderByDescending(c => c.Data.Date).ToList();
 }
 
 <div style="padding:40px" id="container" class="justify-content-between">
@@ -30,7 +30,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in historicoList)
+            @foreach (var item in registrosList)
             {
                 <tr class="peca-row">
                     <td>@item.CodigoSistema</td>
@@ -47,4 +47,4 @@
     </table>
 </div>
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
