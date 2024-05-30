@@ -45,7 +45,6 @@ namespace TOLEAGRI.Model.Services
         {
             dbContext.Entry(entity).State = EntityState.Modified;
             dbContext.SaveChanges();
-            SaveEntityRegistro();
         }
 
         // Deletar uma Peca
@@ -78,7 +77,6 @@ namespace TOLEAGRI.Model.Services
             {
                 dbContext.Pecas.Add(peca);
                 dbContext.SaveChanges();
-                SaveEntityRegistro();
             }
         }
 
@@ -106,6 +104,7 @@ namespace TOLEAGRI.Model.Services
                     Marca = entity.Marca,
                     Modelo = entity.Modelo,
                     Quantidade = entity.Quantidade,
+                    NotaOuPedido = entity.NotaOuPedido,
                     Observacao = entity.Observacao,
                     Data = DateTime.Now // Data da operação atual
                 };
