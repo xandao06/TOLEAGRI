@@ -1,4 +1,4 @@
-﻿@model IReadOnlyList<TOLEAGRI.Model.Domain.Peca>
+﻿@model IReadOnlyList<TOLEAGRI.Model.Domain.Registro>
 @{
     ViewData["Title"] = "Registro";
     var registroList = Model.OrderByDescending(c => c.Data.Date).ToList();

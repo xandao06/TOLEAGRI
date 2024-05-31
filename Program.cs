@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<EstoqueService>();
+builder.Services.AddScoped<RegistroService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

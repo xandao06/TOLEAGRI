@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\RegistroController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Controllers\RegistroController.cs" />
     <Content Include="Controllers\EstoqueController.cs" />
   </ItemGroup>
 

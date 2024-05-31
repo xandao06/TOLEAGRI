@@ -69,12 +69,5 @@ namespace TOLEAGRI.Controllers
             estoqueService.Delete(id);
             return RedirectToAction("Index");
         }
-
-        // Faz a abertura da View Registro buscando o serviço que cria um registro de cada Peca adicionada ou modificada
-        public IActionResult Registro()
-        {
-            var model = estoqueService.RegistroList();
-            return View(model);
-        }
     }
 }
