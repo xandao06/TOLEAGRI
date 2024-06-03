@@ -12,7 +12,7 @@ using TOLEAGRI.Model.Persistence;
 namespace TOLEAGRI.Migrations
 {
     [DbContext(typeof(TOLEDbContext))]
-    [Migration("20240531111459_TOLE")]
+    [Migration("20240603094206_TOLE")]
     partial class TOLE
     {
         /// <inheritdoc />
@@ -68,13 +68,16 @@ namespace TOLEAGRI.Migrations
                     b.ToTable("Pecas");
                 });
 
-            modelBuilder.Entity("TOLEAGRI.Model.Domain.Registro", b =>
+            modelBuilder.Entity("TOLEAGRI.Model.Domain.RegistroPeca", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Acao")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CodigoSistema")
                         .HasColumnType("nvarchar(max)");

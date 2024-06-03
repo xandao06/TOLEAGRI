@@ -3,7 +3,7 @@ using System.Data;
 
 namespace TOLEAGRI.Model.Domain
 {
-    public class Registro
+    public class RegistroPeca
     {
         public int Quantidade { get; set; }
         public int Id { get; set; }
@@ -16,6 +16,7 @@ namespace TOLEAGRI.Model.Domain
         public string? Marca { get; set; }
         public string? Locacao { get; set; }
         public DateTime Data { get; set; } = DateTime.Now;
+        public string? Acao { get; set; }
 
     }
 }

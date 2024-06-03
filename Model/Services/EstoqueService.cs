@@ -59,7 +59,7 @@ namespace TOLEAGRI.Model.Services
         public void BuscarModificarCriar(Peca peca)
         {
             Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
-
+            string acao;
 
             if (existingPeca != null)
             {
@@ -72,13 +72,31 @@ namespace TOLEAGRI.Model.Services
                 existingPeca.Observacao = peca.Observacao;
 
                 dbContext.Pecas.Update(existingPeca);
+                acao = "Modificado";
             }
             else
             {
                 // Adiciona a nova peça
                 dbContext.Pecas.Add(peca);
+                acao = "Adicionado";
             }
 
+            dbContext.SaveChanges();
+
+            var registro = new RegistroPeca
+            {
+                CodigoSistema = peca.CodigoSistema,
+                Locacao = peca.Locacao,
+                Marca = peca.Marca,
+                Modelo = peca.Modelo,
+                Quantidade = peca.Quantidade,
+                NotaOuPedido = peca.NotaOuPedido,
+                Observacao = peca.Observacao,
+                Data = DateTime.Now, // Data da operação atual
+                Acao = acao // Ação realizada
+            };
+
+            dbContext.Set<RegistroPeca>().Add(registro);
             dbContext.SaveChanges();
 
         }

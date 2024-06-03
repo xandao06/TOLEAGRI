@@ -65,13 +65,16 @@ namespace TOLEAGRI.Migrations
                     b.ToTable("Pecas");
                 });
 
-            modelBuilder.Entity("TOLEAGRI.Model.Domain.Registro", b =>
+            modelBuilder.Entity("TOLEAGRI.Model.Domain.RegistroPeca", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Acao")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CodigoSistema")
                         .HasColumnType("nvarchar(max)");

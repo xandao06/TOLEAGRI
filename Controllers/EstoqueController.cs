@@ -69,5 +69,7 @@ namespace TOLEAGRI.Controllers
             estoqueService.Delete(id);
             return RedirectToAction("Index");
         }
+
+
     }
 }

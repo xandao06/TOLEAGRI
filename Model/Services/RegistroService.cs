@@ -7,6 +7,7 @@ using Microsoft.Win32;
 using System.Collections.Generic;
 using TOLEAGRI.Model.Domain;
 using TOLEAGRI.Model.Persistence;
+using TOLEAGRI.Model.Services;
 
 
 namespace TOLEAGRI.Model.Services
@@ -21,7 +22,7 @@ namespace TOLEAGRI.Model.Services
         }
 
         // Adicionar Peca 
-        public Registro Add(Registro registro)
+        public RegistroPeca Add(RegistroPeca registro)
         {
             dbContext.Add(registro);
             dbContext.SaveChanges();
@@ -29,19 +30,19 @@ namespace TOLEAGRI.Model.Services
         }
 
         // Buscar Peca pelo Id
-        public Registro Get(int id)
+        public RegistroPeca Get(int id)
         {
-            return dbContext.Set<Registro>().Find(id);
+            return dbContext.Set<RegistroPeca>().Find(id);
         }
 
         // Buscar uma lista de Pecas
-        public IReadOnlyList<Registro> GetAll()
+        public IReadOnlyList<RegistroPeca> GetAll()
         {
-            return dbContext.Set<Registro>().ToList();
+            return dbContext.Set<RegistroPeca>().ToList();
         }
 
         // Atualizar uma Peca
-        public void Update(Registro entity)
+        public void Update(RegistroPeca entity)
         {
             dbContext.Entry(entity).State = EntityState.Modified;
             dbContext.SaveChanges();
@@ -50,45 +51,15 @@ namespace TOLEAGRI.Model.Services
         // Deletar uma Peca
         public void Delete(int id)
         {
-            Registro registro = Get(id);
-            dbContext.Set<Registro>().Remove(registro);
-            dbContext.SaveChanges();
-        }
-
-        // Cria registros para cada criação e atualização das Pecas
-        private void SaveEntityRegistro()
-        {
-            var modifiedEntities = dbContext.ChangeTracker.Entries<Peca>().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified).Select(e => e.Entity).ToList();
-
-            var registroList = new List<Registro>();
-
-            foreach (var entity in modifiedEntities)
-            {
-
-                var registro = new Registro
-                {
-                    Id = entity.Id,
-                    CodigoSistema = entity.CodigoSistema,
-                    Locacao = entity.Locacao,
-                    Marca = entity.Marca,
-                    Modelo = entity.Modelo,
-                    Quantidade = entity.Quantidade,
-                    NotaOuPedido = entity.NotaOuPedido,
-                    Observacao = entity.Observacao,
-                    Data = DateTime.Now // Data da operação atual
-                };
-
-                registroList.Add(registro);
-            }
-
-            dbContext.Set<Registro>().AddRange(registroList);
+            RegistroPeca registro = Get(id);
+            dbContext.Set<RegistroPeca>().Remove(registro);
             dbContext.SaveChanges();
         }
 
         // Lista os registros criados
-        public IReadOnlyList<Registro> RegistroList()
+        public IReadOnlyList<RegistroPeca> RegistroList()
         {
-            return dbContext.Set<Registro>()
+            return dbContext.Set<RegistroPeca>()
                             .Where(p => p.Data != null)
                             .OrderByDescending(p => p.Data)
                             .ToList()

@@ -17,6 +17,6 @@ namespace TOLEAGRI.Model.Persistence
         }
 
         public DbSet<Peca> Pecas { get; set; }
-        public DbSet<Registro> Registros { get; set; }
+        public DbSet<RegistroPeca> Registros { get; set; }
     }
 }
