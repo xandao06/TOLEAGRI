@@ -47,6 +47,18 @@ function ModalEntradaSaidaEstoque() {
         });
 };
 
+
+$(".search").keypress(function (event) {
+    var searchString = $(this).val();
+    console.log(searchString);
+    console.log("blah");
+    if (event.which == 13) {
+        var searchUrl = '/Estoque/GetByCodigoSistema'
+        searchUrl += "/" + searchString;
+        window.location.href = searchUrl;
+    } // end if
+});
+
 ////Modal para registrar uma saída no estoque
 //    function ModalSaidaEstoque() {
 //        $.get("/Estoque/ModalSaidaEstoque", function (data) {

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Identity.Client;
 using Microsoft.Win32;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TOLEAGRI.Model.Domain;
 using TOLEAGRI.Model.Persistence;
 
@@ -107,5 +108,29 @@ namespace TOLEAGRI.Model.Services
             return dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
         }
 
+        //public async Task<IActionResult> Index(string searchString)
+        //{
+        //    if (dbContext.Pecas == null)
+        //    {
+        //       throw new ArgumentOutOfRangeException("Entity set 'MvcMovieContext.Movie'  is null.");
+        //    }
+
+        //    var pecas = from p in dbContext.Pecas
+        //                select p;
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        pecas = pecas.Where(s => s.CodigoSistema!.Contains(searchString));
+        //    }
+
+        //    return 
+        //}
     }
 }
+
+//    if (!string.IsNullOrEmpty(searchString))
+//    {
+//        pecas = pecas.Where(c => c.CodigoSistema.Contains(searchString));
+//        return View(pecas);
+//    }
+//    return View(await dbContext.Include(c => c.CodigoSistema).ToList());

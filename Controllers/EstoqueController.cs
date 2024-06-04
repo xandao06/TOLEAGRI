@@ -4,11 +4,16 @@ using TOLEAGRI.Model.Domain;
 using TOLEAGRI.Model.Persistence;
 using TOLEAGRI.Model;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using Azure.Messaging;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace TOLEAGRI.Controllers
 {
     public class EstoqueController : Controller
     {
+        //private readonly TOLEDbContext _dbContext;
         private readonly EstoqueService estoqueService;
 
         public EstoqueController(EstoqueService estoqueService)
@@ -70,6 +75,15 @@ namespace TOLEAGRI.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Search(string search)
+        {
 
+            // get the model
+            List<Peca> m = new List<Peca>();
+
+            
+
+            return View(m);
+        }
     }
 }
