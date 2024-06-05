@@ -37,7 +37,81 @@
             }
         });
     }
-});
+ });
+
+ // Busca o método de filtragem de pecas e retorna para a View Index
+function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+        searchPecas();
+    }
+}
+
+async function searchPecas() {
+    const query = document.getElementById('search-input').value;
+    const response = await fetch(`/search?query=${query}`);
+    const pecas = await response.json();
+    displayResults(pecas);
+}
+
+function displayResults(pecas) {
+    const resultsList = document.getElementById('pecas-list');
+    resultsList.innerHTML = '';
+    pecas.forEach(peca => {
+        const tr = document.createElement('tr');
+        tr.className = 'peca-row';
+        tr.innerHTML = `
+                <td>${peca.codigoSistema}</td>
+                <td>${peca.locacao}</td>
+                <td>${peca.marca}</td>
+                <td>${peca.modelo}</td>
+                <td>${peca.quantidade}</td>
+                <td>${peca.notaOuPedido}</td>
+                <td>${peca.observacao}</td>
+                <td>${new Date(peca.data).toLocaleDateString()}</td>
+                <td style="width:1px">
+                    <a onClick="ModalDeletarEstoque(${peca.id})">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                </td>
+            `;
+        resultsList.appendChild(tr);
+    });
+}
+
+// Busca o método de filtragem de registros e retorna para a View Registro
+function handleKeyDownRegistro(event) {
+    if (event.key === 'Enter') {
+        searchRegistros();
+    }
+}
+
+async function searchRegistros() {
+    const query = document.getElementById('search-input-registro').value;
+    const response = await fetch(`/search?query=${query}`);
+    const registros = await response.json();
+    displayRegistroResults(registros);
+}
+
+function displayRegistroResults(registros) {
+    const resultsList = document.getElementById('registros-list');
+    resultsList.innerHTML = '';
+    registros.forEach(registro => {
+        const tr = document.createElement('tr');
+        tr.className = 'registro-row';
+        tr.innerHTML = `
+                <td>${registro.codigoSistema}</td>
+                <td>${registro.locacao}</td>
+                <td>${registro.marca}</td>
+                <td>${registro.modelo}</td>
+                <td>${registro.quantidade}</td>
+                <td>${registro.notaOuPedido}</td>
+                <td>${registro.observacao}</td>
+                <td>${new Date(registro.data).toLocaleDateString()}</td>
+                <td>${registro.acao}</td>
+            `;
+        resultsList.appendChild(tr);
+    });
+}
 
 //Modal para registrar uma entrada no estoque
 function ModalEntradaSaidaEstoque() {
@@ -46,26 +120,6 @@ function ModalEntradaSaidaEstoque() {
             $("#modalEntradaSaidaEstoque").modal("show");
         });
 };
-
-
-$(".search").keypress(function (event) {
-    var searchString = $(this).val();
-    console.log(searchString);
-    console.log("blah");
-    if (event.which == 13) {
-        var searchUrl = '/Estoque/GetByCodigoSistema'
-        searchUrl += "/" + searchString;
-        window.location.href = searchUrl;
-    } // end if
-});
-
-////Modal para registrar uma saída no estoque
-//    function ModalSaidaEstoque() {
-//        $.get("/Estoque/ModalSaidaEstoque", function (data) {
-//            $("#modalTOLEAGRI").html(data);
-//            $("#modalSaidaEstoque").modal("show");
-//        });
-//};
 
 //Modal para deletar uma peça do estoque
 function ModalDeletarEstoque(idPeca) {
@@ -76,11 +130,3 @@ function ModalDeletarEstoque(idPeca) {
 
     });
 };
-
-
-    //$('#modalTOLEAGRI').on('hidden.bs.modal', function () {
-    //    $(this).removeData('bs.modal').find('.modal-content').html('');
-    //});
-
-
-

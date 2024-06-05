@@ -13,7 +13,8 @@
                 <a type="button" asp-controller="Registro" asp-action="Registro" class="btn btn-outline-dark">Registro</a>
             </div>
             <div style="display:flex">
-                <input type="text" id="Pesquisa" class="form-control, search" onblur="this.placeholder = 'search'" placeholder="Buscar">
+                <input type="text" id="search-input" class="form-control search" placeholder="Buscar" onkeydown="handleKeyDown(event)">
+                @* <input type="text" id="Pesquisa" class="form-control, search" onblur="this.placeholder = 'search'" placeholder="Buscar"> *@
             </div>
         </div>
     </div>
@@ -31,7 +32,7 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="pecas-list">
             @foreach (var item in PecasOrdenados)
             {
                 <tr class="peca-row">

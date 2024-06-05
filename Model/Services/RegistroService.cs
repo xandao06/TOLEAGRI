@@ -21,7 +21,7 @@ namespace TOLEAGRI.Model.Services
             this.dbContext = dbContext;
         }
 
-        // Adicionar Peca 
+        // Adicionar Registro 
         public RegistroPeca Add(RegistroPeca registro)
         {
             dbContext.Add(registro);
@@ -29,26 +29,26 @@ namespace TOLEAGRI.Model.Services
             return registro;
         }
 
-        // Buscar Peca pelo Id
+        // Buscar Registro pelo Id
         public RegistroPeca Get(int id)
         {
             return dbContext.Set<RegistroPeca>().Find(id);
         }
 
-        // Buscar uma lista de Pecas
+        // Buscar uma lista de Registros
         public IReadOnlyList<RegistroPeca> GetAll()
         {
             return dbContext.Set<RegistroPeca>().ToList();
         }
 
-        // Atualizar uma Peca
+        // Atualizar um Registro
         public void Update(RegistroPeca entity)
         {
             dbContext.Entry(entity).State = EntityState.Modified;
             dbContext.SaveChanges();
         }
 
-        // Deletar uma Peca
+        // Deletar um Registro
         public void Delete(int id)
         {
             RegistroPeca registro = Get(id);
@@ -64,6 +64,31 @@ namespace TOLEAGRI.Model.Services
                             .OrderByDescending(p => p.Data)
                             .ToList()
                             .AsReadOnly();
+        }
+        
+        // Faz a filtragem de registros na barra de pesquisa
+        public IReadOnlyList<RegistroPeca> SearchRegistros(string query)
+        {
+            if (string.IsNullOrEmpty(query))
+            {
+                return dbContext.Set<RegistroPeca>().ToList();
+            }
+
+            query = query.ToLower();
+
+            return dbContext.Set<RegistroPeca>()
+                .Where(r => r.CodigoSistema.ToLower().Contains(query)
+                         || r.Locacao.ToLower().Contains(query)
+                         || r.Marca.ToLower().Contains(query)
+                         || r.Modelo.ToLower().Contains(query)
+                         || r.Observacao.ToLower().Contains(query)
+                         || r.Acao.ToLower().Contains(query))
+                .ToList();
+        }
+
+        public IReadOnlyList<RegistroPeca> GetRegistros()
+        {
+            return dbContext.Set<RegistroPeca>().ToList();
         }
     }
 }

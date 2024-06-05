@@ -16,11 +16,11 @@ namespace TOLEAGRI.Controllers
             this.registroService = registroService;
         }
 
-        // Faz a abertura da View Registro buscando o serviço que cria um registro de cada Peca adicionada ou modificada
+        // Faz a filtragem de registros na barra de pesquisa
         public IActionResult Registro()
         {
-            var model = registroService.RegistroList();
-            return View(model);
+            var registros = registroService.GetRegistros();
+            return View(registros);
         }
     }
 }

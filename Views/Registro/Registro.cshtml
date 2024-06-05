@@ -1,18 +1,19 @@
-﻿@model IReadOnlyList<TOLEAGRI.Model.Domain.RegistroPeca>
+﻿@model IEnumerable<TOLEAGRI.Model.Domain.RegistroPeca>
 @{
     ViewData["Title"] = "Registro";
-    var registroList = Model.OrderByDescending(c => c.Data.Date).ToList();
+    var RegistrosOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
 }
 
 <div style="padding:40px" id="container" class="justify-content-between">
     <div>
-        <h1 class="text-center mb-3">Estoque</h1>
+        <h1 class="text-center mb-3">Registro</h1>
         <div class="mb-4" style="display:flex;justify-content:space-between">
             <div>
+                <a class="btn btn-outline-dark" onClick="ModalEntradaSaidaEstoque()" id="btn-EntradaSaidaEstoque">Entrada/Saída</a>
                 <a type="button" asp-controller="Estoque" asp-action="Index" class="btn btn-outline-dark">Estoque</a>
             </div>
             <div style="display:flex">
-                <input type="text" id="Pesquisa" class="form-control" placeholder="Buscar">
+                <input type="text" id="search-input-registro" class="form-control search" placeholder="Buscar" onkeydown="handleKeyDownRegistro(event)">
             </div>
         </div>
     </div>
@@ -27,12 +28,13 @@
                 <th>NF ou Pedido</th>
                 <th>Observação</th>
                 <th>Data</th>
+                <th>Ação</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (var item in registroList)
+        <tbody id="registros-list">
+            @foreach (var item in RegistrosOrdenados)
             {
-                <tr class="peca-row">
+                <tr class="registro-row">
                     <td>@item.CodigoSistema</td>
                     <td>@item.Locacao</td>
                     <td>@item.Marca</td>
@@ -41,10 +43,11 @@
                     <td>@item.NotaOuPedido</td>
                     <td>@item.Observacao</td>
                     <td>@item.Data.ToShortDateString()</td>
+                    <td>@item.Acao</td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/site.js"></script>

@@ -56,7 +56,7 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
-        // Buscar uma Peca pelo Codigo do Sistema, se existir no banco vai modificar a Peca, se não existir vai criar uma
+        // Busca uma Peca pelo Codigo do Sistema, se existir no banco vai modificar a Peca, se não existir vai criar uma
         public void BuscarModificarCriar(Peca peca)
         {
             Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
@@ -108,29 +108,24 @@ namespace TOLEAGRI.Model.Services
             return dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
         }
 
-        //public async Task<IActionResult> Index(string searchString)
-        //{
-        //    if (dbContext.Pecas == null)
-        //    {
-        //       throw new ArgumentOutOfRangeException("Entity set 'MvcMovieContext.Movie'  is null.");
-        //    }
+        // Faz a filtragem de pecas na barra de pesquisa    
+        public IReadOnlyList<Peca> Search(string query)
+        {
+            if (string.IsNullOrEmpty(query))
+            {
+                return dbContext.Set<Peca>().ToList();
+            }
 
-        //    var pecas = from p in dbContext.Pecas
-        //                select p;
+            query = query.ToLower();
 
-        //    if (!String.IsNullOrEmpty(searchString))
-        //    {
-        //        pecas = pecas.Where(s => s.CodigoSistema!.Contains(searchString));
-        //    }
+            return dbContext.Set<Peca>()
+                .Where(p => p.CodigoSistema.ToLower().Contains(query)
+                         || p.Locacao.ToLower().Contains(query)
+                         || p.Marca.ToLower().Contains(query)
+                         || p.Modelo.ToLower().Contains(query)
+                         || p.Observacao.ToLower().Contains(query))
+                .ToList();
+        }
 
-        //    return 
-        //}
     }
 }
-
-//    if (!string.IsNullOrEmpty(searchString))
-//    {
-//        pecas = pecas.Where(c => c.CodigoSistema.Contains(searchString));
-//        return View(pecas);
-//    }
-//    return View(await dbContext.Include(c => c.CodigoSistema).ToList());
