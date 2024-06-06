@@ -28,6 +28,12 @@ namespace TOLEAGRI.Controllers
             return View(model);
         }
 
+        public IActionResult Teste()
+        {
+            var model = estoqueService.GetAll();
+            return View(model);
+        }
+
         // Faz a filtragem das pecas na barra de pesquisa da Index
         [HttpGet("search")]
         public IActionResult Search([FromQuery] string query)
