@@ -13,24 +13,16 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Estoque" asp-action="Index">TOLEAGRI</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+        <nav class="=px-3 navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3 text-center" style="padding:40px">
+            <a class="navbar-brand text-white" asp-area="" asp-controller="Estoque" asp-action="Index">TOLEAGRI</a>
+            <div class="container-fluid  mb-10 justify-content:space-between px-3" style=" justify-content:space-between">
+                <div>
+                    <a type="button" class="text-white" asp-controller ="Registro" asp-action="Registro" class="btn btn-outline-dark">Registro</a>
+                    <a type="button" class="text-white" asp-controller="Registro" asp-action="Registro" class="btn btn-outline-dark">Registro</a>
+                @* <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between"> *@
                 </div>
-            </div>
+                </div>
         </nav>
     </header>
     <div class="container">
