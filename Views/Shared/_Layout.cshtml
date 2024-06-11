@@ -13,20 +13,34 @@
 </head>
 <body>
     <header>
-
-        <nav class=" navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3 text-center" style="padding:40px">
+        <nav class="  bg-dark border-bottom box-shadow mb-3" style="justify-content:space-between">
             <a class="navbar-brand text-white d-flex align-items-center" asp-area="" asp-controller="Estoque" asp-action="Index">
-                <img src="~/NewFolder/logo.png" alt="Logo"  /> TOLEAGRI
+                <img src="~/Images/logo1.png" alt="Logo" style="width:350px; margin-right:10px"  />
             </a>
-            @* <a class="navbar-brand text-white" asp-area="" asp-controller="Estoque" asp-action="Index">TOLEAGRI</a> *@
+            <div >
+                <div style="margin-left:10px;margin-top:10px">
+                    <a type="button" class="btn text-white px-1 mb-4" asp-controller="Estoque" asp-action="Index">
+                        <img src="/Images/icone4.png" alt="Logo" class="custom-logo" />
+                    </a>
+                    <a type="button" class="btn text-white mb-4" asp-controller="Registro" asp-action="Registro">
+                        <img src="/Images/relogio3.png" alt="Logo" class="custom-logo" />
+                    </a>
+                </div>
+            </div>
+        </nav>
+        @* <nav class=" navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3 text-center" style="padding:20px">
+            <a class="navbar-brand text-white d-flex align-items-center" asp-area="" asp-controller="Estoque" asp-action="Index">
+                <img src="~/Images/logo1.png" alt="Logo"  />
+            </a>
+            @* <a class="navbar-brand text-white" asp-area="" asp-controller="Estoque" asp-action="Index">TOLEAGRI</a>
             <div class="container-fluid justify-content:space-between" style=" justify-content:space-between">
                 <div>
                     <a type="button" class="btn text-white px-1" asp-controller ="Estoque" asp-action="Index" >Estoque</a>
                     <a type="button" class="btn text-white px-1" asp-controller="Registro" asp-action="Registro">Registros</a>
-                @* <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between"> *@
+                @* <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 </div>
                 </div>
-        </nav>
+        </nav> *@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
