@@ -14,12 +14,15 @@
 <body>
     <header>
 
-        <nav class="=px-3 navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3 text-center" style="padding:40px">
-            <a class="navbar-brand text-white" asp-area="" asp-controller="Estoque" asp-action="Index">TOLEAGRI</a>
-            <div class="container-fluid  mb-10 justify-content:space-between px-3" style=" justify-content:space-between">
+        <nav class=" navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3 text-center" style="padding:40px">
+            <a class="navbar-brand text-white d-flex align-items-center" asp-area="" asp-controller="Estoque" asp-action="Index">
+                <img src="~/NewFolder/logo.png" alt="Logo"  /> TOLEAGRI
+            </a>
+            @* <a class="navbar-brand text-white" asp-area="" asp-controller="Estoque" asp-action="Index">TOLEAGRI</a> *@
+            <div class="container-fluid justify-content:space-between" style=" justify-content:space-between">
                 <div>
-                    <a type="button" class="text-white" asp-controller ="Registro" asp-action="Registro" class="btn btn-outline-dark">Registro</a>
-                    <a type="button" class="text-white" asp-controller="Registro" asp-action="Registro" class="btn btn-outline-dark">Registro</a>
+                    <a type="button" class="btn text-white px-1" asp-controller ="Estoque" asp-action="Index" >Estoque</a>
+                    <a type="button" class="btn text-white px-1" asp-controller="Registro" asp-action="Registro">Registros</a>
                 @* <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between"> *@
                 </div>
                 </div>

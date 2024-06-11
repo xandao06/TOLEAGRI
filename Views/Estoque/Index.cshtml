@@ -6,17 +6,15 @@
 
 <div style="padding:40px" id="container" class="justify-content-between">
     <div>
-        <h1 class="text-center mb-3">Estoque</h1>
         <div class="mb-4" style="display:flex;justify-content:space-between">
             <div>
                 <a class="btn btn-outline-dark" onClick="ModalEntradaSaidaEstoque()" id="btn-EntradaSaidaEstoque">Entrada/Saída</a>
-                <a type="button" asp-controller="Registro" asp-action="Registro" class="btn btn-outline-dark">Registro</a>
-                <a type="button" asp-controller="Estoque" asp-action="Teste" class="btn btn-outline-dark">Teste</a>
             </div>
             <div style="display:flex">
                 <input type="text" id="search-input" class="form-control search" placeholder="Buscar" onkeydown="handleKeyDown(event)">
                 @* <input type="text" id="Pesquisa" class="form-control, search" onblur="this.placeholder = 'search'" placeholder="Buscar"> *@
             </div>
+            <div img="~/NewFolder/logo.pn"></div>
         </div>
     </div>
     <table class="table table-striped">

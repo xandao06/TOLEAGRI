@@ -12,7 +12,7 @@ using TOLEAGRI.Model.Persistence;
 namespace TOLEAGRI.Migrations
 {
     [DbContext(typeof(TOLEDbContext))]
-    [Migration("20240603094206_TOLE")]
+    [Migration("20240611002435_TOLE")]
     partial class TOLE
     {
         /// <inheritdoc />
