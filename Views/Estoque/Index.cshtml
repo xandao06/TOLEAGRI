@@ -4,19 +4,23 @@
     var PecasOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
 }
 
-<div style="padding:40px" id="container" class="justify-content-between">
+<div style="padding:40px" id="container">
     <div>
         <div class="mb-4" style="display:flex;justify-content:space-between">
             <div>
-                <a class="btn btn-outline-dark" onClick="ModalEntradaSaidaEstoque()" id="btn-EntradaSaidaEstoque">Entrada/Saída</a>
+                <a onClick="ModalEntradaSaidaEstoque()" id="btn-EntradaSaidaEstoque">
+                    <img src="~/Images/abrirModalEntradaSaida.png" alt="Icon" style="width:50px" />
+                </a>
             </div>
-            <div >
-                <input type="text" id="search-input" class="form-control search" placeholder="Buscar" onkeydown="handleKeyDown(event)">
-                @* <input type="text" id="Pesquisa" class="form-control, search" onblur="this.placeholder = 'search'" placeholder="Buscar"> *@
+            <div style="display:flex">
+                <input type="text" id="search-input" class="form-control" placeholder="Buscar" onkeydown="handleKeyDown(event)">
+                <a id="search-input-icon">
+                    <img src="~/Images/Pesquisa.png" alt="Icon" style="width:25px;margin-top:10px;margin-left:5px" />
+                </a>
             </div>
         </div>
     </div>
-    <table class="table table-striped">
+    <table class="table">
         <thead>
             <tr>
                 <th>Código</th>

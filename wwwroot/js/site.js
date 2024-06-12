@@ -47,7 +47,7 @@ function handleKeyDown(event) {
 }
 
 async function searchPecas() {
-    const query = document.getElementById('search-input').value;
+    const query = document.getElementById('search-input','search-input-icon').value;
     const response = await fetch(`/search?query=${query}`);
     const pecas = await response.json();
     displayResults(pecas);
@@ -77,6 +77,11 @@ function displayResults(pecas) {
         resultsList.appendChild(tr);
     });
 }
+
+// Adiciona a função de busca para o clique em cima do icone de "lupa"
+document.getElementById('search-input-icon').addEventListener('click', function () {
+    searchPecas();
+});
 
 // Busca o método de filtragem de registros e retorna para a View Registro
 function handleKeyDownRegistro(event) {
