@@ -4,13 +4,14 @@
     var RegistrosOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
 }
 
-<div style="padding:40px" id="container" class="justify-content-between">
+<div id="container">
     <div>
         <div class="mb-4" style="display:flex;justify-content:space-between">
+            <div></div>
             <div style="display:flex">
-                <input type="text" id="search-input-registro" class="form-control search" placeholder="Buscar" onkeydown="handleKeyDownRegistro(event)">
-                <a id="search-input-icon">
-                    <img src="~/Images/Pesquisa.png" alt="Icon" style="width:25px;margin-top:10px;margin-left:5px" />
+                <input type="text" id="search-input-registro" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="handleKeyDownRegistro(event)">
+                <a id="search-input-icon-registros" style="cursor: pointer;">
+                    <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
                 </a>
             </div>
         </div>

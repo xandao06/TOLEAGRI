@@ -17,18 +17,18 @@ html {
   min-height: 100%;
 }
 
-header {
+/*header {
     background: #393939;
-}
+}*/
 
 body {
     margin-bottom: 60px;
-    background: #F7F5F4;
+    /*background: #F7F5F4;*/
     font-weight: bold;
     
 }
 
-input{
+.input{
     opacity:75;
 }
 

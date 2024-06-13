@@ -4,24 +4,25 @@
     var PecasOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
 }
 
-<div style="padding:40px" id="container">
+<div id="container" >
     <div>
         <div class="mb-4" style="display:flex;justify-content:space-between">
-            <div>
-                <a onClick="ModalEntradaSaidaEstoque()" id="btn-EntradaSaidaEstoque">
-                    <img src="~/Images/abrirModalEntradaSaida.png" alt="Icon" style="width:50px" />
+            <div >
+                <a class="btn btn-outline-secondary" onClick="ModalEntradaSaidaEstoque()" id="btn-EntradaSaidaEstoque">
+                    <img  src="~/Images/abrirModalEntradaSaida.png" style="width:45px" />
                 </a>
             </div>
             <div style="display:flex">
-                <input type="text" id="search-input" class="form-control" placeholder="Buscar" onkeydown="handleKeyDown(event)">
-                <a id="search-input-icon">
-                    <img src="~/Images/Pesquisa.png" alt="Icon" style="width:25px;margin-top:10px;margin-left:5px" />
+                <input type="text" id="search-input-pecas" style="height:40px;width:265px" class="form-control" placeholder="Buscar" onkeydown="handleKeyDown(event)">
+                <a id="search-input-icon-pecas">
+                    <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
                 </a>
             </div>
         </div>
     </div>
     <table class="table">
         <thead>
+            
             <tr>
                 <th>Código</th>
                 <th>Locação</th>
@@ -31,6 +32,7 @@
                 <th>NF ou Pedido</th>
                 <th>Observação</th>
                 <th>Data</th>
+                <th>Funcionário</th>
                 <th></th>
             </tr>
         </thead>
@@ -46,6 +48,7 @@
                     <td>@item.NotaOuPedido</td>
                     <td>@item.Observacao</td>
                     <td>@item.Data.ToShortDateString()</td>
+                    <td>Funcionario</td>
                     <td style="width:1px">
                         <a onClick="ModalDeletarEstoque(@item.Id)">
                             <i class="bi bi-trash3-fill"></i>

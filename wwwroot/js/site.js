@@ -47,7 +47,7 @@ function handleKeyDown(event) {
 }
 
 async function searchPecas() {
-    const query = document.getElementById('search-input','search-input-icon').value;
+    const query = document.getElementById('search-input-pecas').value;
     const response = await fetch(`/search?query=${query}`);
     const pecas = await response.json();
     displayResults(pecas);
@@ -78,8 +78,8 @@ function displayResults(pecas) {
     });
 }
 
-// Adiciona a função de busca para o clique em cima do icone de "lupa"
-document.getElementById('search-input-icon').addEventListener('click', function () {
+// Adiciona a função de busca de peças ao clicar em cima do icone de "lupa"
+document.getElementById('search-input-icon-pecas').addEventListener('click', function () {
     searchPecas();
 });
 
@@ -117,6 +117,11 @@ function displayRegistroResults(registros) {
         resultsList.appendChild(tr);
     });
 }
+
+// Adiciona a função de busca de registros ao clicar em cima do icone de "lupa"
+document.getElementById('search-input-icon-registros').addEventListener('click', function () {
+    searchRegistros();
+});
 
 //Modal para registrar uma entrada no estoque
 function ModalEntradaSaidaEstoque() {
