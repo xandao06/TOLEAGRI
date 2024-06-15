@@ -32,7 +32,7 @@
                 <th>NF ou Pedido</th>
                 <th>Observação</th>
                 <th>Data</th>
-                <th>Funcionário</th>
+                <th>Usuário</th>
                 <th></th>
             </tr>
         </thead>
@@ -48,7 +48,7 @@
                     <td>@item.NotaOuPedido</td>
                     <td>@item.Observacao</td>
                     <td>@item.Data.ToShortDateString()</td>
-                    <td>Funcionario</td>
+                    <td>@item.Usuario</td>
                     <td style="width:1px">
                         <a onClick="ModalDeletarEstoque(@item.Id)">
                             <i class="bi bi-trash3-fill"></i>

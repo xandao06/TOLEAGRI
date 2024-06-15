@@ -27,7 +27,8 @@
                 <th>NF ou Pedido</th>
                 <th>Observação</th>
                 <th>Data</th>
-                <th>Ação</th>
+                <th>Usuário</th>
+                <th>Entrada/Saída</th>
             </tr>
         </thead>
         <tbody id="registros-list">
@@ -42,7 +43,10 @@
                     <td>@item.NotaOuPedido</td>
                     <td>@item.Observacao</td>
                     <td>@item.Data.ToShortDateString()</td>
-                    <td>@item.Acao</td>
+                    <td hidden>@item.Acao</td>
+                    <td>@item.Usuario</td>
+                    <td>@item.Entrada</td>
+                    <td>@item.Saida</td>
                 </tr>
             }
         </tbody>

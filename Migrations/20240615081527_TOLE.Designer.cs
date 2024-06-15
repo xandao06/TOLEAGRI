@@ -12,7 +12,7 @@ using TOLEAGRI.Model.Persistence;
 namespace TOLEAGRI.Migrations
 {
     [DbContext(typeof(TOLEDbContext))]
-    [Migration("20240611002435_TOLE")]
+    [Migration("20240615081527_TOLE")]
     partial class TOLE
     {
         /// <inheritdoc />
@@ -40,18 +40,22 @@ namespace TOLEAGRI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Entrada")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Locacao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Marca")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Modelo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NotaOuPedido")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observacao")
@@ -61,6 +65,11 @@ namespace TOLEAGRI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Saida")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usuario")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -77,18 +86,22 @@ namespace TOLEAGRI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Acao")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CodigoSistema")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Entrada")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Locacao")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Marca")
@@ -98,6 +111,7 @@ namespace TOLEAGRI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NotaOuPedido")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observacao")
@@ -107,6 +121,11 @@ namespace TOLEAGRI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Saida")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usuario")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

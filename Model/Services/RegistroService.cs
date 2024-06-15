@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using TOLEAGRI.Model.Domain;
 using TOLEAGRI.Model.Persistence;
 using TOLEAGRI.Model.Services;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 
 namespace TOLEAGRI.Model.Services
@@ -60,7 +61,7 @@ namespace TOLEAGRI.Model.Services
         public IReadOnlyList<RegistroPeca> RegistroList()
         {
             return dbContext.Set<RegistroPeca>()
-                            .Where(p => p.Data != null)
+                            .Where(p => p.CodigoSistema != null)
                             .OrderByDescending(p => p.Data)
                             .ToList()
                             .AsReadOnly();
@@ -78,11 +79,15 @@ namespace TOLEAGRI.Model.Services
 
             return dbContext.Set<RegistroPeca>()
                 .Where(r => r.CodigoSistema.ToLower().Contains(query)
+
                          || r.Locacao.ToLower().Contains(query)
                          || r.Marca.ToLower().Contains(query)
                          || r.Modelo.ToLower().Contains(query)
                          || r.Observacao.ToLower().Contains(query)
-                         || r.Acao.ToLower().Contains(query))
+                         || r.Acao.ToLower().Contains(query)
+                         || r.Usuario.ToLower().Contains(query)
+                         || r.Entrada.ToLower().Contains(query)
+                         || r.Saida.ToLower().Contains(query))
                 .ToList();
         }
 

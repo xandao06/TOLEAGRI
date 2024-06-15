@@ -70,7 +70,7 @@ namespace TOLEAGRI.Model.Services
                 existingPeca.Modelo = peca.Modelo;
                 existingPeca.Quantidade = peca.Quantidade;
                 existingPeca.NotaOuPedido = peca.NotaOuPedido;
-                existingPeca.Observacao = peca.Observacao;
+                
 
                 dbContext.Pecas.Update(existingPeca);
                 acao = "Modificado";
@@ -94,6 +94,9 @@ namespace TOLEAGRI.Model.Services
                 NotaOuPedido = peca.NotaOuPedido,
                 Observacao = peca.Observacao,
                 Data = DateTime.Now, // Data da operação atual
+                Usuario = peca.Usuario,
+                Saida = peca.Saida,
+                Entrada = peca.Entrada,
                 Acao = acao // Ação realizada
             };
 
@@ -123,7 +126,10 @@ namespace TOLEAGRI.Model.Services
                          || p.Locacao.ToLower().Contains(query)
                          || p.Marca.ToLower().Contains(query)
                          || p.Modelo.ToLower().Contains(query)
-                         || p.Observacao.ToLower().Contains(query))
+                         || p.Observacao.ToLower().Contains(query)
+                         || p.Usuario.ToLower().Contains(query)
+                         || p.Entrada.ToLower().Contains(query)
+                         || p.Saida.ToLower().Contains(query))
                 .ToList();
         }
 

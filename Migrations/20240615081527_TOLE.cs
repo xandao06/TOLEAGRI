@@ -19,14 +19,15 @@ namespace TOLEAGRI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     Observacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NotaOuPedido = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Entrada = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Saida = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NotaOuPedido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Entrada = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Saida = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CodigoSistema = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Modelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Modelo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Locacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Data = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Data = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Usuario = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,15 +42,16 @@ namespace TOLEAGRI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     Observacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NotaOuPedido = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Entrada = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Saida = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CodigoSistema = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NotaOuPedido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Entrada = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Saida = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CodigoSistema = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Modelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Locacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Locacao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Data = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Acao = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Acao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Usuario = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
