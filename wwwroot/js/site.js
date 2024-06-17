@@ -144,3 +144,74 @@ function ModalDeletarEstoque(idPeca) {
 
     });
 };
+
+document.getElementById('option1').addEventListener('change', function () {
+    if (this.checked) {
+        console.log(this.value + " is checked");
+    } else {
+        console.log(this.value + " is unchecked");
+    }
+});
+
+document.getElementById('option2').addEventListener('change', function () {
+    if (this.checked) {
+        console.log(this.value + " is checked");
+    } else {
+        console.log(this.value + " is unchecked");
+    }
+});
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent the default form submit
+        const entradaChecked = document.getElementById('option1').checked;
+        const saidaChecked = document.getElementById('option2').checked;
+        console.log("Entrada is " + (entradaChecked ? "checked" : "unchecked"));
+        console.log("Saida is " + (saidaChecked ? "checked" : "unchecked"));
+
+        // You can send these values via AJAX or handle them as needed
+    }
+});
+
+//function handleFormSubmit(event) {
+//    event.preventDefault();
+
+//    // Get form data
+//    const data = {
+//        codigoSistema: document.getElementById('CodigoSistema').value,
+//        locacao: document.getElementById('Locacao').value,
+//        marca: document.getElementById('Marca').value,
+//        modelo: document.getElementById('Modelo').value,
+//        quantidade: document.getElementById('Quantidade').value,
+//        notaOuPedido: document.getElementById('NotaOuPedido').value,
+//        observacao: document.getElementById('Observacao').value,
+//        usuario: document.getElementById('Usuario').value,
+//        data: document.getElementById('Data').value,
+//        entrada: document.querySelector('input[name="options-base"]:checked').value === 'Entrada' ? 'Entrada' : 'Saída'
+//    };
+
+//    // Add new row to the table
+//    const registrosList = document.getElementById('registros-list');
+//    const newRow = document.createElement('tr');
+//    newRow.className = 'registro-row';
+//    newRow.innerHTML = `
+//        <td>${data.codigoSistema}</td>
+//        <td>${data.locacao}</td>
+//        <td>${data.marca}</td>
+//        <td>${data.modelo}</td>
+//        <td>${data.quantidade}</td>
+//        <td>${data.notaOuPedido}</td>
+//        <td>${data.observacao}</td>
+//        <td>${new Date(data.data).toLocaleDateString()}</td>
+//        <td>${data.usuario}</td>
+//        <td>${data.entrada}</td>
+//    `;
+//    registrosList.appendChild(newRow);
+
+//    // Close the modal
+//    const modal = bootstrap.Modal.getInstance(document.getElementById('modalEntradaSaidaEstoque'));
+//    modal.hide();
+
+//    // Reset the form
+//    document.getElementById('formEntradaEstoque').reset();
+//}

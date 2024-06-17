@@ -86,11 +86,11 @@ namespace TOLEAGRI.Model.Services
 
             var registro = new RegistroPeca
             {
+                Quantidade = peca.Quantidade,
                 CodigoSistema = peca.CodigoSistema,
                 Locacao = peca.Locacao,
                 Marca = peca.Marca,
                 Modelo = peca.Modelo,
-                Quantidade = peca.Quantidade,
                 NotaOuPedido = peca.NotaOuPedido,
                 Observacao = peca.Observacao,
                 Data = DateTime.Now, // Data da operação atual
