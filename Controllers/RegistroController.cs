@@ -22,5 +22,19 @@ namespace TOLEAGRI.Controllers
             var registros = registroService.GetRegistros();
             return View(registros);
         }
+
+        [HttpGet]
+        public IActionResult ModalDeletarRegistro(int id)
+        {
+            RegistroPeca registroPeca = registroService.Get(id);
+            return View("Modal/DeletarRegistro");
+        }
+
+        [HttpPost]
+        public IActionResult DeletarRegistro(int id)
+        {
+            registroService.Delete(id);
+            return RedirectToAction("Registro");
+        }
     }
 }

@@ -145,73 +145,55 @@ function ModalDeletarEstoque(idPeca) {
     });
 };
 
-document.getElementById('option1').addEventListener('change', function () {
-    if (this.checked) {
-        console.log(this.value + " is checked");
-    } else {
-        console.log(this.value + " is unchecked");
-    }
-});
+function ModalDeletarRegistro(idPeca) {
+    $.get("/Registro/ModalDeletarRegistro?id=" + idPeca, function (data) {
+        $("#modalTOLEAGRI").html(data);
+        $("#modalDeletarRegistro").modal("show");
 
-document.getElementById('option2').addEventListener('change', function () {
-    if (this.checked) {
-        console.log(this.value + " is checked");
-    } else {
-        console.log(this.value + " is unchecked");
-    }
-});
 
-document.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent the default form submit
-        const entradaChecked = document.getElementById('option1').checked;
-        const saidaChecked = document.getElementById('option2').checked;
-        console.log("Entrada is " + (entradaChecked ? "checked" : "unchecked"));
-        console.log("Saida is " + (saidaChecked ? "checked" : "unchecked"));
+    });
+};
 
-        // You can send these values via AJAX or handle them as needed
-    }
-});
+//function ModalRegistro() {
+//    $('#formEntradaEstoque').on('submit', function (event) {
+//        event.preventDefault();
 
-//function handleFormSubmit(event) {
-//    event.preventDefault();
+//        var codigoSistema = $('#CodigoSistema').val();
+//        var locacao = $('#Locacao').val();
+//        var marca = $('#Marca').val();
+//        var modelo = $('#Modelo').val();
+//        var quantidade = $('#Quantidade').val();
+//        var notaOuPedido = $('#NotaOuPedido').val();
+//        var observacao = $('#Observacao').val();
+//        var usuario = $('#Usuario').val();
+//        var data = $('#Data').val();
+//        var acao = $('input[name="acao"]:checked').val();
 
-//    // Get form data
-//    const data = {
-//        codigoSistema: document.getElementById('CodigoSistema').value,
-//        locacao: document.getElementById('Locacao').value,
-//        marca: document.getElementById('Marca').value,
-//        modelo: document.getElementById('Modelo').value,
-//        quantidade: document.getElementById('Quantidade').value,
-//        notaOuPedido: document.getElementById('NotaOuPedido').value,
-//        observacao: document.getElementById('Observacao').value,
-//        usuario: document.getElementById('Usuario').value,
-//        data: document.getElementById('Data').value,
-//        entrada: document.querySelector('input[name="options-base"]:checked').value === 'Entrada' ? 'Entrada' : 'Saída'
-//    };
+//        var newRow = `
+//            <tr class="registro-row">
+//                <td>${codigoSistema}</td>
+//                <td>${locacao}</td>
+//                <td>${marca}</td>
+//                <td>${modelo}</td>
+//                <td>${quantidade}</td>
+//                <td>${notaOuPedido}</td>
+//                <td>${observacao}</td>
+//                <td hidden>${acao}</td>
+//                <td>${usuario}</td>
+//                <td>${new Date(data).toLocaleDateString()}</td>
+//                <td>${acao}</td>
+//                <td style="width:1px">
+//                    <a href="#" onclick="ModalDeletarRegistro()">
+//                        <i class="bi bi-trash3-fill"></i>
+//                    </a>
+//                </td>
+//            </tr>
+//        `;
 
-//    // Add new row to the table
-//    const registrosList = document.getElementById('registros-list');
-//    const newRow = document.createElement('tr');
-//    newRow.className = 'registro-row';
-//    newRow.innerHTML = `
-//        <td>${data.codigoSistema}</td>
-//        <td>${data.locacao}</td>
-//        <td>${data.marca}</td>
-//        <td>${data.modelo}</td>
-//        <td>${data.quantidade}</td>
-//        <td>${data.notaOuPedido}</td>
-//        <td>${data.observacao}</td>
-//        <td>${new Date(data.data).toLocaleDateString()}</td>
-//        <td>${data.usuario}</td>
-//        <td>${data.entrada}</td>
-//    `;
-//    registrosList.appendChild(newRow);
+//        $('#registros-list').append(newRow);
 
-//    // Close the modal
-//    const modal = bootstrap.Modal.getInstance(document.getElementById('modalEntradaSaidaEstoque'));
-//    modal.hide();
-
-//    // Reset the form
-//    document.getElementById('formEntradaEstoque').reset();
+//        $('#modalEntradaSaidaEstoque').modal('hide');
+//        $('#formEntradaEstoque')[0].reset();
+//    });
 //}
+

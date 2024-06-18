@@ -95,8 +95,6 @@ namespace TOLEAGRI.Model.Services
                 Observacao = peca.Observacao,
                 Data = DateTime.Now, // Data da operação atual
                 Usuario = peca.Usuario,
-                Saida = peca.Saida,
-                Entrada = peca.Entrada,
                 Acao = acao // Ação realizada
             };
 
@@ -127,9 +125,7 @@ namespace TOLEAGRI.Model.Services
                          || p.Marca.ToLower().Contains(query)
                          || p.Modelo.ToLower().Contains(query)
                          || p.Observacao.ToLower().Contains(query)
-                         || p.Usuario.ToLower().Contains(query)
-                         || p.Entrada.ToLower().Contains(query)
-                         || p.Saida.ToLower().Contains(query))
+                         || p.Usuario.ToLower().Contains(query))
                 .ToList();
         }
 

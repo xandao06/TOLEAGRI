@@ -10,8 +10,7 @@ namespace TOLEAGRI.Model.Domain
         public DateTime Data { get; set; } = DateTime.Now;
         public string Observacao { get; set; }
         public string NotaOuPedido { get; set; }
-        public string Entrada { get; set; }
-        public string Saida { get; set; }
+        public bool EntradaOuSaida { get; set; }
         public string CodigoSistema { get; set; }
         public string Modelo { get; set; }
         public string Marca { get; set; }

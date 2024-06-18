@@ -52,8 +52,8 @@ namespace TOLEAGRI.Model.Services
         // Deletar um Registro
         public void Delete(int id)
         {
-            RegistroPeca registro = Get(id);
-            dbContext.Set<RegistroPeca>().Remove(registro);
+            RegistroPeca registroPeca = Get(id);
+            dbContext.Set<RegistroPeca>().Remove(registroPeca);
             dbContext.SaveChanges();
         }
 
@@ -85,9 +85,7 @@ namespace TOLEAGRI.Model.Services
                          || r.Modelo.ToLower().Contains(query)
                          || r.Observacao.ToLower().Contains(query)
                          || r.Acao.ToLower().Contains(query)
-                         || r.Usuario.ToLower().Contains(query)
-                         || r.Entrada.ToLower().Contains(query)
-                         || r.Saida.ToLower().Contains(query))
+                         || r.Usuario.ToLower().Contains(query))
                 .ToList();
         }
 
