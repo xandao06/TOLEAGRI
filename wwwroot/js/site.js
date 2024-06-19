@@ -144,6 +144,14 @@ function ModalDeletarEstoque(idPeca) {
 
     });
 };
+    function ModalDeletarAllEstoque(idPeca) {
+        $.get("/Estoque/ModalDeletarAllEstoque?id=" + idPeca, function (data) {
+            $("#modalTOLEAGRI").html(data);
+            $("#modalDeletarAllEstoque").modal("show");
+
+
+        });
+    };
 
 function ModalDeletarRegistro(idPeca) {
     $.get("/Registro/ModalDeletarRegistro?id=" + idPeca, function (data) {
@@ -154,46 +162,46 @@ function ModalDeletarRegistro(idPeca) {
     });
 };
 
-//function ModalRegistro() {
-//    $('#formEntradaEstoque').on('submit', function (event) {
-//        event.preventDefault();
+//document.getElementById('formEntradaEstoque').on = function (event) {
+//    event.preventDefault();
 
-//        var codigoSistema = $('#CodigoSistema').val();
-//        var locacao = $('#Locacao').val();
-//        var marca = $('#Marca').val();
-//        var modelo = $('#Modelo').val();
-//        var quantidade = $('#Quantidade').val();
-//        var notaOuPedido = $('#NotaOuPedido').val();
-//        var observacao = $('#Observacao').val();
-//        var usuario = $('#Usuario').val();
-//        var data = $('#Data').val();
-//        var acao = $('input[name="acao"]:checked').val();
+//    var form = this;
 
-//        var newRow = `
-//            <tr class="registro-row">
-//                <td>${codigoSistema}</td>
-//                <td>${locacao}</td>
-//                <td>${marca}</td>
-//                <td>${modelo}</td>
-//                <td>${quantidade}</td>
-//                <td>${notaOuPedido}</td>
-//                <td>${observacao}</td>
-//                <td hidden>${acao}</td>
-//                <td>${usuario}</td>
-//                <td>${new Date(data).toLocaleDateString()}</td>
-//                <td>${acao}</td>
-//                <td style="width:1px">
-//                    <a href="#" onclick="ModalDeletarRegistro()">
-//                        <i class="bi bi-trash3-fill"></i>
-//                    </a>
-//                </td>
-//            </tr>
-//        `;
+//    var data = {
+//        Id: form.Id.value,
+//        Data: form.Data.value,
+//        CodigoSistema: form.CodigoSistema.value,
+//        Locacao: form.Locacao.value,
+//        Marca: form.Marca.value,
+//        Modelo: form.Modelo.value,
+//        Quantidade: form.Quantidade.value,
+//        NotaOuPedido: form.NotaOuPedido.value,
+//        Observacao: form.Observacao.value,
+//        Usuario: form.Usuario.value,
+//        EntradaOuSaida: form.EntradaOuSaida.value === "true"
+//    };
 
-//        $('#registros-list').append(newRow);
-
-//        $('#modalEntradaSaidaEstoque').modal('hide');
-//        $('#formEntradaEstoque')[0].reset();
+//    fetch(form.action, {
+//        method: 'POST',
+//        headers: {
+//            'Content-Type': 'application/json',
+//            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+//        },
+//        body: JSON.stringify(data)
+//    }).then(function (response) {
+//        if (response.ok) {
+//            return response.json();
+//        }
+//        throw new Error('Network response was not ok.');
+//    }).then(function (data) {
+//        // Process the response
+//        if (data.success) {
+//            $('#modalEntradaSaidaEstoque').modal('hide');
+//            location.reload(); // Or update the table dynamically
+//        } else {
+//            // Show error message
+//        }
+//    }).catch(function (error) {
+//        console.error('There has been a problem with your fetch operation:', error);
 //    });
 //}
-

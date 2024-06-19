@@ -15,10 +15,10 @@
                     <div class="mb-1">
                         <input asp-for="Id" id="Id" name="Id" type="hidden">
                         <input required asp-for="Data" type="date" class="form-control mb-2" id="Data" placeholder="Data">
-                        <div id="radio" class="form-check mb-1">
-                            <input asp-for="EntradaOuSaida" value="true" type="radio" name="acao" class="form-check-input" id="option1" autocomplete="off">
+                        <div class="form-check mb-1">
+                            <input asp-for="EntradaOuSaida" value="true" type="checkbox" name="acao1" class="form-check-input" id="option1" autocomplete="off">
                             <label class="form-check-label" for="option1">Entrada</label>
-                            <input asp-for="EntradaOuSaida" value="false" type="radio" name="acao" class="form-check-input ml-1" id="option2" autocomplete="off">
+                            <input asp-for="EntradaOuSaida" value="false" type="checkbox" name="acao2" class="form-check-input ml-1" id="option2" autocomplete="off">
                             <label class="form-check-label ml-4" for="option2">Saída</label>
                         </div>
                         <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">

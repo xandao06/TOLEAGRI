@@ -33,7 +33,11 @@
                 <th>Observação</th>
                 <th>Usuário</th>
                 <th>Data</th>
-                <th></th>
+                <th style="width:1px">
+                    <a onClick="ModalDeletarAllEstoque">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                </th>
             </tr>
         </thead>
         <tbody id="pecas-list">
@@ -50,7 +54,7 @@
                     <td>@item.Usuario</td>
                     <td>@item.Data.ToShortDateString()</td>
                     <td style="width:1px">
-                        <a onClick="ModalDeletarEstoque(@item.Id)">
+                        <a onClick="ModalDeletarAllEstoque(@item.Id)">
                             <i class="bi bi-trash3-fill"></i>
                         </a>
                     </td>

@@ -17,9 +17,10 @@ namespace TOLEAGRI.Model.Domain
         public string Locacao { get; set; }
         public string Usuario { get; set; }
 
-        //public Peca()
-        //{
-        //    EntradaOuSaida = 
-        //}
+        public Peca()
+        {
+            EntradaOuSaida = true.ToString() == "Entrada"; 
+            EntradaOuSaida = false.ToString() == "Saida";
+        }
     }
 }

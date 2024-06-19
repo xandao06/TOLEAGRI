@@ -56,6 +56,13 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
+        public void DeleteAll(int id)
+        {
+            var pecaList = dbContext.Set<Peca>().ToList();
+            dbContext.Remove(pecaList);
+            dbContext.SaveChanges();
+        }
+
         // Busca uma Peca pelo Codigo do Sistema, se existir no banco vai modificar a Peca, se não existir vai criar uma
         public void BuscarModificarCriar(Peca peca)
         {
@@ -70,7 +77,8 @@ namespace TOLEAGRI.Model.Services
                 existingPeca.Modelo = peca.Modelo;
                 existingPeca.Quantidade = peca.Quantidade;
                 existingPeca.NotaOuPedido = peca.NotaOuPedido;
-                
+                existingPeca.EntradaOuSaida = peca.EntradaOuSaida;
+
 
                 dbContext.Pecas.Update(existingPeca);
                 acao = "Modificado";
@@ -95,6 +103,7 @@ namespace TOLEAGRI.Model.Services
                 Observacao = peca.Observacao,
                 Data = DateTime.Now, // Data da operação atual
                 Usuario = peca.Usuario,
+                EntradaOuSaida = peca.EntradaOuSaida,
                 Acao = acao // Ação realizada
             };
 
