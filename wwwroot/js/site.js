@@ -143,8 +143,8 @@ function ModalDeletarEstoque(idPeca) {
 
     });
 };
-    function ModalDeletarAllEstoque(idPeca) {
-        $.get("/Estoque/ModalDeletarAllEstoque?id=" + idPeca, function (data) {
+    function ModalDeletarAllEstoque() {
+        $.get("/Estoque/ModalDeletarAllEstoque", function (data) {
             $("#modalTOLEAGRI").html(data);
             $("#modalDeletarAllEstoque").modal("show");
 
@@ -160,6 +160,39 @@ function ModalDeletarRegistro(idPeca) {
 
     });
 };
+
+function ModalDeletarAllRegistro() {
+    $.get("/Registro/ModalDeletarAllRegistro", function (data) {
+        $("#modalTOLEAGRI").html(data);
+        $("#modalDeletarAllRegistro").modal("show");
+
+
+    });
+};
+
+//$('#formEntradaEstoque').on('submit', function (e) {
+//        e.preventDefault(); // Prevenir o envio padrão do formulário
+//
+//        var form = this;
+//
+//        var data = {
+//            Id: form.Id.value,
+//            Data: form.Data.value,
+//            CodigoSistema: form.CodigoSistema.value,
+//            Locacao: form.Locacao.value,
+//            Marca: form.Marca.value,
+//            Modelo: form.Modelo.value,
+//            Quantidade: form.Quantidade.value,
+//            NotaOuPedido: form.NotaOuPedido.value,
+//            Observacao: form.Observacao.value,
+//            Usuario: form.Usuario.value,
+//            Entrada: form.querySelector('input[id="option1"]:checked').value, 
+//            Saida: form.querySelector('input[id="option2"]:checked').value
+//            };
+//        });
+
+
+
 
 //document.getElementById('formEntradaEstoque').on = function (event) {
 //    event.preventDefault();

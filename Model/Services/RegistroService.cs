@@ -57,6 +57,13 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
+        public void DeleteAll()
+        {
+            var registroList = dbContext.Set<RegistroPeca>().ToList();
+            dbContext.Set<RegistroPeca>().RemoveRange(registroList);
+            dbContext.SaveChanges();
+        }
+
         // Lista os registros criados
         public IReadOnlyList<RegistroPeca> RegistroList()
         {

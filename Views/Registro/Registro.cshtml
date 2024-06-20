@@ -29,6 +29,11 @@
                 <th>Usuário</th>
                 <th>Data</th>
                 <th>Entrada/Saída</th>
+                <th style="width:1px">
+                    <a onClick="ModalDeletarAllRegistro()">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                    </th>
             </tr>
         </thead>
         <tbody id="registros-list">
@@ -45,7 +50,7 @@
                     <td hidden>@item.Acao</td>
                     <td>@item.Usuario</td>
                     <td>@item.Data.ToShortDateString()</td>
-                    <td>@(item.EntradaOuSaida ? "Entrada" : "Saída")</td>
+                    <td>@item.Entrada @item.Saida</td>
                     <td style="width:1px">
                     <a onClick="ModalDeletarRegistro(@item.Id)">
                         <i class="bi bi-trash3-fill"></i>
