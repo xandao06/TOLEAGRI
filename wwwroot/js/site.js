@@ -9,7 +9,6 @@
 //Configuração do Modal "SaidaEstoque" para que puxe os dados da peça quando é digitado o código e pressionado "Enter" e se necessário editar as informações dessa peça
  $('#CodigoSistema').on('keypress', function (e) {
     if (e.which === 13) { // Enter key pressed
-        e.preventDefault();
         var codigoSistema = $(this).val();
 
         $.ajax({

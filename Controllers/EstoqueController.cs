@@ -83,19 +83,18 @@ namespace TOLEAGRI.Controllers
             return RedirectToAction("Index");
         }
 
-
+        // Abertura do Modal que deleta tudo
         [HttpGet]
-        public IActionResult ModalDeletarAllEstoque(int id)
+        public IActionResult ModalDeletarAllEstoque()
         {
-            estoqueService.DeleteAll(id);
             return View("Modal/DeletarAllEstoque");
         }
 
-        // Busca o serviço que faz o processo de buscar a Peca pelo Id e deletar ela do banco e depois retorna para a View Index
+        // Busca o serviço que deleta tudo
         [HttpPost]
-        public IActionResult DeletarAllEstoque(int id)
+        public IActionResult DeletarAllEstoque()
         {
-            estoqueService.DeleteAll(id);
+            estoqueService.DeleteAll();
             return RedirectToAction("Index");
         }
 

@@ -56,10 +56,10 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
-        public void DeleteAll(int id)
+        public void DeleteAll()
         {
             var pecaList = dbContext.Set<Peca>().ToList();
-            dbContext.Remove(pecaList);
+            dbContext.Set<Peca>().RemoveRange(pecaList);
             dbContext.SaveChanges();
         }
 
