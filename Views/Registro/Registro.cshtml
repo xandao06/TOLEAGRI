@@ -10,7 +10,7 @@
             <div></div>
             <div style="display:flex">
                 <input type="text" id="search-input-registro" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="handleKeyDownRegistro(event)">
-                <a id="search-input-icon-registros" style="cursor: pointer;">
+                <a id="search-input-icon-registros" onclick="searchIconRegistros()" style="cursor: pointer;">
                     <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
                 </a>
             </div>
@@ -50,7 +50,7 @@
                     <td hidden>@item.Acao</td>
                     <td>@item.Usuario</td>
                     <td>@item.Data.ToShortDateString()</td>
-                    <td>@item.Entrada @item.Saida</td>
+                    <td>@item.EntradaOuSaida</td>
                     <td style="width:1px">
                     <a onClick="ModalDeletarRegistro(@item.Id)">
                         <i class="bi bi-trash3-fill"></i>

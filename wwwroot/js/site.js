@@ -1,11 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
-
-
-
+﻿
 //Configuração do Modal "SaidaEstoque" para que puxe os dados da peça quando é digitado o código e pressionado "Enter" e se necessário editar as informações dessa peça
  $('#CodigoSistema').on('keypress', function (e) {
     if (e.which === 13) { // Enter key pressed
@@ -32,99 +25,109 @@
                     $('#NotaOuPedido').val(data.notaoupedido);
                 }
             }
-        });
+        })
     }
  });
 
- // Busca o método de filtragem de pecas e retorna para a View Index
-//function handleKeyDown(event) {
-//    if (event.key === 'Enter') {
-//        searchPecas();
-//    }
-//}
+ //Pesquisa de pecas pela tecla "enter" e pelo icone da lupa
+ async function searchPecas() {
+    const query = document.getElementById('search-input-pecas').value;
+    const response = await fetch(`/search?query=${query}`);
+    const pecas = await response.json();
+    displayResults(pecas);
+    }
 
-//async function searchPecas() {
-//    const query = document.getElementById('search-input-pecas').value;
-//    const response = await fetch(`/search?query=${query}`);
-//    const pecas = await response.json();
-//    displayResults(pecas);
-//}
+ //"Enter"
+function handleKeyDownPeca(event) {
+    if (event.key === 'Enter') {
+        searchPecas();
+    }
+};
 
-//function displayResults(pecas) {
-//    const resultsList = document.getElementById('pecas-list');
-//    resultsList.innerHTML = '';
-//    pecas.forEach(peca => {
-//        const tr = document.createElement('tr');
-//        tr.className = 'peca-row';
-//        tr.innerHTML = `
-//                <td>${peca.codigoSistema}</td>
-//                <td>${peca.locacao}</td>
-//                <td>${peca.marca}</td>
-//                <td>${peca.modelo}</td>
-//                <td>${peca.quantidade}</td>
-//                <td>${peca.notaOuPedido}</td>
-//                <td>${peca.observacao}</td>
-//                <td>${peca.usuario}</td>
-//                <td>${peca.entrada}</td>
-//                <td>${peca.saida}</td>
-//                <td>${new Date(peca.data).toLocaleDateString()}</td>
-//                <td style="width:1px">
-//                    <a onClick="ModalDeletarEstoque(${peca.id})">
-//                        <i class="bi bi-trash3-fill"></i>
-//                    </a>
-//                </td>
-//            `;
-//        resultsList.appendChild(tr);
-//    });
-//}
+//"lupa"
+function searchIconPecas () {
+    document.getElementById('search-input-icon-pecas').addEventListener('click', function () {
+    searchPecas();
+})
+};
 
-//// Adiciona a função de busca de peças ao clicar em cima do icone de "lupa"
-//document.getElementById('search-input-icon-pecas').addEventListener('click', function () {
-//    searchPecas();
-//});
+//Função pesquisa
+function displayResults(pecas) {
+    const resultslist = document.getElementById('pecas-list');
+    resultslist.innerhtml = '';
+    pecas.forEach(peca => {
+        const tr = document.createElement('tr');
+        tr.classname = 'peca-row';
+        tr.innerhtml = `
+                <td>${peca.codigosistema}</td>
+                <td>${peca.locacao}</td>
+                <td>${peca.marca}</td>
+                <td>${peca.modelo}</td>
+                <td>${peca.quantidade}</td>
+                <td>${peca.notaoupedido}</td>
+                <td>${peca.observacao}</td>
+                <td>${peca.usuario}</td>
+                <td>${new Date(peca.data).toLocaleDateString()}</td>
+                <td>${peca.entradaOuSaida}</td>
+                <td style="width:1px">
+                    <a onclick="modaldeletarestoque(${peca.id})">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                </td>
+            `;
+        resultslist.appendChild(tr);
+        })
+    };
 
-//// Busca o método de filtragem de registros e retorna para a View Registro
-//function handleKeyDownRegistro(event) {
-//    if (event.key === 'Enter') {
-//        searchRegistros();
-//    }
-//}
+//Pesquisa de registros pelo "enter" e pelo icone da lupa
+async function searchRegistros() {
+    const query = document.getElementById('search-input-registro').value;
+    const response = await fetch(`/search?query=${query}`);
+    const registros = await response.json();
+    displayRegistroResults(registros);
+};
 
-//async function searchRegistros() {
-//    const query = document.getElementById('search-input-registro').value;
-//    const response = await fetch(`/search?query=${query}`);
-//    const registros = await response.json();
-//    displayRegistroResults(registros);
-//}
+//"enter"
+function handleKeyDownRegistro(event) {
+    if (event.key === 'Enter') {
+        searchRegistros();
+    }
+};
 
-//function displayRegistroResults(registros) {
-//    const resultsList = document.getElementById('registros-list');
-//    resultsList.innerHTML = '';
-//    registros.forEach(registro => {
-//        const tr = document.createElement('tr');
-//        tr.className = 'registro-row';
-//        tr.innerHTML = `
-//                <td>${registro.codigoSistema}</td>
-//                <td>${registro.locacao}</td>
-//                <td>${registro.marca}</td>
-//                <td>${registro.modelo}</td>
-//                <td>${registro.quantidade}</td>
-//                <td>${registro.notaOuPedido}</td>
-//                <td>${registro.observacao}</td>
-//                <td>${new Date(registro.data).toLocaleDateString()}</td>
-//                <td>${registro.usuario}</td>
-//                <td>${registro.entrada}</td>
-//                <td>${registro.saida}</td>
-//                <td>${registro.acao}</td>
-//            `;
-//        resultsList.appendChild(tr);
-//    });
-//}
+//"lupa"
+function searchIconRegistros () {
+    document.getElementById('search-input-icon-registros').addEventListener( 'click', function () {
+    searchRegistros();
+})
+};
 
-//// Adiciona a função de busca de registros ao clicar em cima do icone de "lupa"
-//document.getElementById('search-input-icon-registros').addEventListener('click', function () {
-//    searchRegistros();
-//});
+//Função Pesquisa
+function displayRegistroResults(registros) {
+    const resultsList = document.getElementById('registros-list');
+    resultsList.innerHTML = '';
+    registros.forEach(registro => {
+        const tr = document.createElement('tr');
+        tr.className = 'registro-row';
+        tr.innerHTML = `
+                <td>${registro.codigoSistema}</td>
+                <td>${registro.locacao}</td>
+                <td>${registro.marca}</td>
+                <td>${registro.modelo}</td>
+                <td>${registro.quantidade}</td>
+                <td>${registro.notaOuPedido}</td>
+                <td>${registro.observacao}</td>
+                <td>${registro.usuario}</td>
+                <td>${new Date(registro.data).toLocaleDateString()}</td>
+                <td>${registro.entradaOuSaida}</td>
+                <td style="width:1px">
+                    <a onClick="ModalDeletarRegistro(@item.Id)">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                    </td>
+            `;
+        resultsList.appendChild(tr);
+        })
+    };
 
 //Modal para criar uma entrada/saida no estoque
 function ModalEntradaSaidaEstoque() {
@@ -139,101 +142,29 @@ function ModalDeletarEstoque(idPeca) {
     $.get("/Estoque/ModalDeletarEstoque?id=" + idPeca, function (data) {
         $("#modalTOLEAGRI").html(data);
         $("#modalDeletarEstoque").modal("show");
-
-
-    });
+    })
 };
+
+//Modal para deletar todo o estoque
     function ModalDeletarAllEstoque() {
         $.get("/Estoque/ModalDeletarAllEstoque", function (data) {
             $("#modalTOLEAGRI").html(data);
             $("#modalDeletarAllEstoque").modal("show");
-
-
-        });
+        })
     };
 
+//Modal para deletar um registro    
 function ModalDeletarRegistro(idPeca) {
     $.get("/Registro/ModalDeletarRegistro?id=" + idPeca, function (data) {
         $("#modalTOLEAGRI").html(data);
         $("#modalDeletarRegistro").modal("show");
-
-
-    });
+    })
 };
 
+//Modal para deletar todos os registros
 function ModalDeletarAllRegistro() {
     $.get("/Registro/ModalDeletarAllRegistro", function (data) {
         $("#modalTOLEAGRI").html(data);
         $("#modalDeletarAllRegistro").modal("show");
-
-
-    });
+    })
 };
-
-//$('#formEntradaEstoque').on('submit', function (e) {
-//        e.preventDefault(); // Prevenir o envio padrão do formulário
-//
-//        var form = this;
-//
-//        var data = {
-//            Id: form.Id.value,
-//            Data: form.Data.value,
-//            CodigoSistema: form.CodigoSistema.value,
-//            Locacao: form.Locacao.value,
-//            Marca: form.Marca.value,
-//            Modelo: form.Modelo.value,
-//            Quantidade: form.Quantidade.value,
-//            NotaOuPedido: form.NotaOuPedido.value,
-//            Observacao: form.Observacao.value,
-//            Usuario: form.Usuario.value,
-//            Entrada: form.querySelector('input[id="option1"]:checked').value, 
-//            Saida: form.querySelector('input[id="option2"]:checked').value
-//            };
-//        });
-
-
-
-
-//document.getElementById('formEntradaEstoque').on = function (event) {
-//    event.preventDefault();
-
-//    var form = this;
-
-//    var data = {
-//        Id: form.Id.value,
-//        Data: form.Data.value,
-//        CodigoSistema: form.CodigoSistema.value,
-//        Locacao: form.Locacao.value,
-//        Marca: form.Marca.value,
-//        Modelo: form.Modelo.value,
-//        Quantidade: form.Quantidade.value,
-//        NotaOuPedido: form.NotaOuPedido.value,
-//        Observacao: form.Observacao.value,
-//        Usuario: form.Usuario.value,
-//        EntradaOuSaida: form.EntradaOuSaida.value === "true"
-//    };
-
-//    fetch(form.action, {
-//        method: 'POST',
-//        headers: {
-//            'Content-Type': 'application/json',
-//            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-//        },
-//        body: JSON.stringify(data)
-//    }).then(function (response) {
-//        if (response.ok) {
-//            return response.json();
-//        }
-//        throw new Error('Network response was not ok.');
-//    }).then(function (data) {
-//        // Process the response
-//        if (data.success) {
-//            $('#modalEntradaSaidaEstoque').modal('hide');
-//            location.reload(); // Or update the table dynamically
-//        } else {
-//            // Show error message
-//        }
-//    }).catch(function (error) {
-//        console.error('There has been a problem with your fetch operation:', error);
-//    });
-//}

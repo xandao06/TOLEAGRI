@@ -12,7 +12,7 @@ using TOLEAGRI.Model.Persistence;
 namespace TOLEAGRI.Migrations
 {
     [DbContext(typeof(TOLEDbContext))]
-    [Migration("20240620093125_TOLE")]
+    [Migration("20240621064947_TOLE")]
     partial class TOLE
     {
         /// <inheritdoc />
@@ -39,7 +39,7 @@ namespace TOLEAGRI.Migrations
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Entrada")
+                    b.Property<string>("EntradaOuSaida")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Locacao")
@@ -59,9 +59,6 @@ namespace TOLEAGRI.Migrations
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
-
-                    b.Property<string>("Saida")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Usuario")
                         .HasColumnType("nvarchar(max)");
@@ -88,7 +85,7 @@ namespace TOLEAGRI.Migrations
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Entrada")
+                    b.Property<string>("EntradaOuSaida")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Locacao")
@@ -108,9 +105,6 @@ namespace TOLEAGRI.Migrations
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
-
-                    b.Property<string>("Saida")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Usuario")
                         .HasColumnType("nvarchar(max)");

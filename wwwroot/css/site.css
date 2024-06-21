@@ -8,11 +8,7 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
+.html {
   position: relative;
   min-height: 100%;
 }
@@ -21,7 +17,7 @@ html {
     background: #393939;
 }*/
 
-body {
+.body {
     margin-bottom: 60px;
     /*background: #F7F5F4;*/
     font-weight: bold;
@@ -32,7 +28,7 @@ body {
     opacity:75;
 }
 
-a {
+.a {
     cursor: pointer;
 }
 

@@ -9,19 +9,19 @@
         <div class="modal-content">
             <form id="formEntradaEstoque" method="post" asp-action="EntradaSaidaEstoque">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalEntradaSaidaEstoqueLabel">Entrada do Estoque</h5>
+                    <h5 class="modal-title">Entrada do Estoque</h5>
                 </div>
                 <div class="modal-body">
                     <div class="mb-1">
                         <input asp-for="Id" id="Id" name="Id" type="hidden">
                         <input required asp-for="Data" type="date" class="form-control mb-2" id="Data" placeholder="Data">
                         <div class="ml-3">
-                            <input asp-for="Entrada" value="Entrada" type="radio" class="form-check-input"  id="option1"  >
+                            <input asp-for="EntradaOuSaida" value="Entrada" type="radio" class="form-check-input" name="EntradaOuSaida" id="option1">
                             <label class="form-check-label" for="option1">Entrada</label>
-                            <input asp-for="Saida" value="Saida" type="radio" class="form-check-input ml-1"  id="option2">
+                            <input asp-for="EntradaOuSaida" value="Saida" type="radio" class="form-check-input ml-1" name="EntradaOuSaida" id="option2">
                             <label class="form-check-label ml-4" for="option2">Saída</label>
                         </div>
-                        <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código" autofocus="autofocus">
+                        <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código" autofocus>
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
                         <input required asp-for="Quantidade" value="" type="number" class="form-control mb-2" id="Quantidade" placeholder="Quantidade">
                         <input required asp-for="NotaOuPedido" type="int" class="form-control mb-2" id="NotaOuPedido" placeholder="Nota Fiscal/Pedido">
@@ -29,7 +29,6 @@
                         <input required asp-for="Usuario" type="text" class="form-control mb-2" id="Usuario" placeholder="Usuário">
                         <input asp-for="Marca" type="text" class="form-control mb-2" id="Marca" placeholder="Marca">
                         <input asp-for="Modelo" type="text" class="form-control mb-2" id="Modelo" placeholder="Modelo">
-                        @* <input asp-for="EntradaOuSaida" type="text" class="form-control mb-2" id="EntradaOuSaida" placeholder="EntradaOuSaida"> *@
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -41,3 +40,4 @@
     </div>
 </div>
 
+<script src="~/js/site.js"></script>

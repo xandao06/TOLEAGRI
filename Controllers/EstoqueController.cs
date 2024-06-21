@@ -61,7 +61,7 @@ namespace TOLEAGRI.Controllers
 
             if (peca != null)
             {
-                return Json(new { locacao = peca.Locacao, marca = peca.Marca, modelo = peca.Modelo, quantidade = peca.Quantidade, notaoupedido = peca.NotaOuPedido, observacao = peca.Observacao });
+                return Json(new { locacao = peca.Locacao, marca = peca.Marca, modelo = peca.Modelo, quantidade = peca.Quantidade, notaoupedido = peca.NotaOuPedido});
             }
 
             return Json(null);
