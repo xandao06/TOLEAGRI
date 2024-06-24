@@ -67,7 +67,6 @@ namespace TOLEAGRI.Model.Services
         public void BuscarModificarCriar(Peca peca)
         {
             Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
-            string acao;
 
             if (existingPeca != null)
             {
@@ -77,33 +76,32 @@ namespace TOLEAGRI.Model.Services
                 existingPeca.Modelo = peca.Modelo;
                 existingPeca.Quantidade = peca.Quantidade;
                 existingPeca.NotaOuPedido = peca.NotaOuPedido;
+                existingPeca.Observacao = peca.Observacao;
+                existingPeca.Usuario = peca.Usuario;
 
 
                 dbContext.Pecas.Update(existingPeca);
-                acao = "Modificado";
             }
             else
             {
                 // Adiciona a nova peça
                 dbContext.Pecas.Add(peca);
-                acao = "Adicionado";
             }
 
             dbContext.SaveChanges();
 
             var registro = new RegistroPeca
             {
-                Quantidade = peca.Quantidade,
                 CodigoSistema = peca.CodigoSistema,
                 Locacao = peca.Locacao,
                 Marca = peca.Marca,
                 Modelo = peca.Modelo,
+                Quantidade = peca.Quantidade,
                 NotaOuPedido = peca.NotaOuPedido,
                 Observacao = peca.Observacao,
-                Data = DateTime.Now, // Data da operação atual
                 Usuario = peca.Usuario,
+                Data = DateTime.Now, // Data da operação atual
                 EntradaOuSaida = peca.EntradaOuSaida,
-                Acao = acao // Ação realizada
             };
 
             dbContext.Set<RegistroPeca>().Add(registro);
@@ -118,7 +116,7 @@ namespace TOLEAGRI.Model.Services
         }
 
         // Faz a filtragem de pecas na barra de pesquisa    
-        public IReadOnlyList<Peca> Search(string query)
+        public IReadOnlyList<Peca> SearchPecas(string query)
         {
             if (string.IsNullOrEmpty(query))
             {

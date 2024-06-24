@@ -19,7 +19,7 @@ namespace TOLEAGRI.Controllers
         // Faz a filtragem de registros na barra de pesquisa
         public IActionResult Registro()
         {
-            var registros = registroService.GetRegistros();
+            var registros = registroService.GetAll();
             return View(registros);
         }
 

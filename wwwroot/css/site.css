@@ -24,9 +24,36 @@ html {
     
 }
 
-.input{
-    opacity:75;
+.custom-radio input[type="radio"] {
+    position: absolute;
+    opacity: 0;
 }
+
+    .custom-radio input[type="radio"] + .form-check-label {
+        position: relative;
+        padding-left: 35px;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+        .custom-radio input[type="radio"] + .form-check-label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            border: 1px solid #007bff;
+            border-radius: 50%;
+            background: #fff;
+        }
+
+    .custom-radio input[type="radio"]:checked + .form-check-label::before {
+        background-color: #007bff;
+        box-shadow: inset 0 0 0 4px #fff;
+    }
+
+
 
 .a {
     cursor: pointer;

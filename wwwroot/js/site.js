@@ -120,7 +120,7 @@ function displayRegistroResults(registros) {
                 <td>${new Date(registro.data).toLocaleDateString()}</td>
                 <td>${registro.entradaOuSaida}</td>
                 <td style="width:1px">
-                    <a onClick="ModalDeletarRegistro(@item.Id)">
+                    <a onClick="ModalDeletarRegistro(${registro.id})">
                         <i class="bi bi-trash3-fill"></i>
                     </a>
                     </td>

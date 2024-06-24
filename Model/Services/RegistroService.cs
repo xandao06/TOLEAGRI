@@ -65,14 +65,14 @@ namespace TOLEAGRI.Model.Services
         }
 
         // Lista os registros criados
-        public IReadOnlyList<RegistroPeca> RegistroList()
-        {
-            return dbContext.Set<RegistroPeca>()
-                            .Where(p => p.CodigoSistema != null)
-                            .OrderByDescending(p => p.Data)
-                            .ToList()
-                            .AsReadOnly();
-        }
+        //public IReadOnlyList<RegistroPeca> RegistroList()
+        //{
+        //    return dbContext.Set<RegistroPeca>()
+        //                    .Where(p => p.CodigoSistema != null)
+        //                    .OrderByDescending(p => p.Data)
+        //                    .ToList()
+        //                    .AsReadOnly();
+        //}
         
         // Faz a filtragem de registros na barra de pesquisa
         public IReadOnlyList<RegistroPeca> SearchRegistros(string query)
@@ -85,20 +85,16 @@ namespace TOLEAGRI.Model.Services
             query = query.ToLower();
 
             return dbContext.Set<RegistroPeca>()
-                .Where(r => r.CodigoSistema.ToLower().Contains(query)
-
-                         || r.Locacao.ToLower().Contains(query)
-                         || r.Marca.ToLower().Contains(query)
-                         || r.Modelo.ToLower().Contains(query)
-                         || r.Observacao.ToLower().Contains(query)
-                         || r.Acao.ToLower().Contains(query)
-                         || r.Usuario.ToLower().Contains(query))
-                .ToList();
+        .Where(r => (r.CodigoSistema ?? "").ToLower().Contains(query)
+                    || (r.Locacao ?? "").ToLower().Contains(query)
+                    || (r.Marca ?? "").ToLower().Contains(query)
+                    || (r.Modelo ?? "").ToLower().Contains(query)
+                    || (r.NotaOuPedido ?? "").ToLower().Contains(query)
+                    || (r.Observacao ?? "").ToLower().Contains(query)
+                    || (r.Usuario ?? "").ToLower().Contains(query)
+                    || (r.EntradaOuSaida ?? "").ToLower().Contains(query))
+        .ToList();
         }
 
-        public IReadOnlyList<RegistroPeca> GetRegistros()
-        {
-            return dbContext.Set<RegistroPeca>().ToList();
-        }
     }
 }

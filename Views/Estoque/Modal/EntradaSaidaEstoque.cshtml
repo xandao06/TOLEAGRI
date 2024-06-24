@@ -12,13 +12,13 @@
                     <h5 class="modal-title">Entrada do Estoque</h5>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-1">
+                    <div class="mb-1 ">
                         <input asp-for="Id" id="Id" name="Id" type="hidden">
                         <input required asp-for="Data" type="date" class="form-control mb-2" id="Data" placeholder="Data">
-                        <div class="ml-3">
-                            <input asp-for="EntradaOuSaida" value="Entrada" type="radio" class="form-check-input" name="EntradaOuSaida" id="option1">
+                        <div class="ml-3 mb-2 custom-radio">
+                            <input asp-for="EntradaOuSaida" value="Entrada" type="radio" class="form-check-input"  name="EntradaOuSaida" id="option1">
                             <label class="form-check-label" for="option1">Entrada</label>
-                            <input asp-for="EntradaOuSaida" value="Saida" type="radio" class="form-check-input ml-1" name="EntradaOuSaida" id="option2">
+                            <input asp-for="EntradaOuSaida" value="Saida" type="radio" class="form-check-input ml-1"  name="EntradaOuSaida" id="option2">
                             <label class="form-check-label ml-4" for="option2">Saída</label>
                         </div>
                         <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código" autofocus>
