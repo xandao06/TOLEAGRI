@@ -116,26 +116,35 @@ namespace TOLEAGRI.Model.Services
         }
 
         // Faz a filtragem de pecas na barra de pesquisa    
-        public IReadOnlyList<Peca> SearchPecas(string query)
+        public IReadOnlyList<Peca> SearchPecas(string query, DateTime? startDate, DateTime? endDate)
         {
-            if (string.IsNullOrEmpty(query))
+            var pecas = dbContext.Set<Peca>().AsQueryable();
+
+            if (!string.IsNullOrEmpty(query))
             {
-                return dbContext.Set<Peca>().ToList();
+                query = query.ToLower();
+                pecas = pecas.Where(p => (p.CodigoSistema ?? "").ToLower().Contains(query)
+                                                || (p.Locacao ?? "").ToLower().Contains(query)
+                                                || (p.Marca ?? "").ToLower().Contains(query)
+                                                || (p.Modelo ?? "").ToLower().Contains(query)
+                                                || (p.NotaOuPedido ?? "").ToLower().Contains(query)
+                                                || (p.Observacao ?? "").ToLower().Contains(query)
+                                                || (p.Usuario ?? "").ToLower().Contains(query));
             }
 
-            query = query.ToLower();
+            if (startDate.HasValue)
+            {
+                pecas = pecas.Where(p => p.Data >= startDate.Value);
+            }
 
-            return dbContext.Set<Peca>()
-                .Where(p => p.CodigoSistema.ToLower().Contains(query)
-                         || p.Locacao.ToLower().Contains(query)
-                         || p.Marca.ToLower().Contains(query)
-                         || p.Modelo.ToLower().Contains(query)
-                         || p.NotaOuPedido.ToLower().Contains(query)
-                         || p.Observacao.ToLower().Contains(query)
-                         || p.Usuario.ToLower().Contains(query)
-                         || p.EntradaOuSaida.ToLower().Contains(query))
-                .ToList();
+            if (endDate.HasValue)
+            {
+                pecas = pecas.Where(p => p.Data <= endDate.Value);
+            }
+
+            return pecas.ToList();
+
+
         }
-
     }
 }

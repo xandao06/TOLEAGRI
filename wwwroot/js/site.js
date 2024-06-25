@@ -31,11 +31,17 @@
 
  //Pesquisa de pecas pela tecla "enter" e pelo icone da lupa
  async function searchPecas() {
-    const query = document.getElementById('search-input-pecas').value;
-    const response = await fetch(`/search?query=${query}`);
+    const query = document.getElementById('search-input-peca').value;
+    const startDate = document.getElementById('start-date').value;
+    const endDate = document.getElementById('end-date').value;
+    const url = new URL(`/Estoque/Search`, window.location.origin);
+    if (query) url.searchParams.append('query', query);
+    if (startDate) url.searchParams.append('startDate', startDate);
+    if (endDate) url.searchParams.append('endDate', endDate);
+    const response = await fetch(url);
     const pecas = await response.json();
-    displayResults(pecas);
-    }
+    displayPecaResults(pecas);
+};
 
  //"Enter"
 function handleKeyDownPeca(event) {
@@ -52,25 +58,24 @@ function searchIconPecas () {
 };
 
 //Função pesquisa
-function displayResults(pecas) {
+function displayPecaResults(pecas) {
     const resultslist = document.getElementById('pecas-list');
     resultslist.innerhtml = '';
     pecas.forEach(peca => {
         const tr = document.createElement('tr');
         tr.classname = 'peca-row';
         tr.innerhtml = `
-                <td>${peca.codigosistema}</td>
+                <td>${peca.codigoSistema}</td>
                 <td>${peca.locacao}</td>
                 <td>${peca.marca}</td>
                 <td>${peca.modelo}</td>
                 <td>${peca.quantidade}</td>
-                <td>${peca.notaoupedido}</td>
+                <td>${peca.notaOuPedido}</td>
                 <td>${peca.observacao}</td>
                 <td>${peca.usuario}</td>
-                <td>${new Date(peca.data).toLocaleDateString()}</td>
-                <td>${peca.entradaOuSaida}</td>
+                <td>${new Date(peca.data).toLocaleDateString()}</td>  \\ajeitar isso aqui
                 <td style="width:1px">
-                    <a onclick="modaldeletarestoque(${peca.id})">
+                    <a onClick="modalDeletarEstoque(${peca.id})">
                         <i class="bi bi-trash3-fill"></i>
                     </a>
                 </td>
@@ -82,7 +87,13 @@ function displayResults(pecas) {
 //Pesquisa de registros pelo "enter" e pelo icone da lupa
 async function searchRegistros() {
     const query = document.getElementById('search-input-registro').value;
-    const response = await fetch(`/search?query=${query}`);
+    const startDate = document.getElementById('start-date').value;
+    const endDate = document.getElementById('end-date').value;
+    const url = new URL(`/Registro/Search`, window.location.origin);
+    if (query) url.searchParams.append('query', query);
+    if (startDate) url.searchParams.append('startDate', startDate);
+    if (endDate) url.searchParams.append('endDate', endDate);
+    const response = await fetch(url);
     const registros = await response.json();
     displayRegistroResults(registros);
 };
@@ -117,7 +128,7 @@ function displayRegistroResults(registros) {
                 <td>${registro.notaOuPedido}</td>
                 <td>${registro.observacao}</td>
                 <td>${registro.usuario}</td>
-                <td>${new Date(registro.data).toLocaleDateString()}</td>
+                <td>${new Date(registro.data).toLocaleDateString()}</td>  \\ajeitar isso aqui
                 <td>${registro.entradaOuSaida}</td>
                 <td style="width:1px">
                     <a onClick="ModalDeletarRegistro(${registro.id})">

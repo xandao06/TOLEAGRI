@@ -28,14 +28,6 @@ namespace TOLEAGRI.Controllers
             return View(model);
         }
 
-        // Faz a filtragem das pecas na barra de pesquisa da Index
-        //[HttpGet("search")]
-        //public IActionResult Search([FromQuery] string query)
-        //{
-        //    var result = estoqueService.SearchPecas(query);
-        //    return Ok(result);
-        //}
-
         // Faz a abertura do Modal com Form para criação e atualização das Pecas 
         [HttpGet]
 
@@ -98,5 +90,12 @@ namespace TOLEAGRI.Controllers
             return RedirectToAction("Index");
         }
 
+        // Faz a filtragem das pecas na barra de pesquisa da Index
+        [HttpGet]
+        public IActionResult Search(string query, DateTime? startDate, DateTime? endDate)
+        {
+            var pecas = estoqueService.SearchPecas(query, startDate, endDate);
+            return Json(pecas);
+        }
     }
 }

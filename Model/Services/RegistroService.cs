@@ -64,36 +64,34 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
-        // Lista os registros criados
-        //public IReadOnlyList<RegistroPeca> RegistroList()
-        //{
-        //    return dbContext.Set<RegistroPeca>()
-        //                    .Where(p => p.CodigoSistema != null)
-        //                    .OrderByDescending(p => p.Data)
-        //                    .ToList()
-        //                    .AsReadOnly();
-        //}
-        
-        // Faz a filtragem de registros na barra de pesquisa
-        public IReadOnlyList<RegistroPeca> SearchRegistros(string query)
+        public IReadOnlyList<RegistroPeca> SearchRegistros(string query, DateTime? startDate, DateTime? endDate)
         {
-            if (string.IsNullOrEmpty(query))
+            var registros = dbContext.Set<RegistroPeca>().AsQueryable();
+
+            if (!string.IsNullOrEmpty(query))
             {
-                return dbContext.Set<RegistroPeca>().ToList();
+                query = query.ToLower();
+                registros = registros.Where(r => (r.CodigoSistema ?? "").ToLower().Contains(query)
+                                                || (r.Locacao ?? "").ToLower().Contains(query)
+                                                || (r.Marca ?? "").ToLower().Contains(query)
+                                                || (r.Modelo ?? "").ToLower().Contains(query)
+                                                || (r.NotaOuPedido ?? "").ToLower().Contains(query)
+                                                || (r.Observacao ?? "").ToLower().Contains(query)
+                                                || (r.Usuario ?? "").ToLower().Contains(query)
+                                                || (r.EntradaOuSaida ?? "").ToLower().Contains(query));
             }
 
-            query = query.ToLower();
+            if (startDate.HasValue)
+            {
+                registros = registros.Where(r => r.Data >= startDate.Value);
+            }
 
-            return dbContext.Set<RegistroPeca>()
-        .Where(r => (r.CodigoSistema ?? "").ToLower().Contains(query)
-                    || (r.Locacao ?? "").ToLower().Contains(query)
-                    || (r.Marca ?? "").ToLower().Contains(query)
-                    || (r.Modelo ?? "").ToLower().Contains(query)
-                    || (r.NotaOuPedido ?? "").ToLower().Contains(query)
-                    || (r.Observacao ?? "").ToLower().Contains(query)
-                    || (r.Usuario ?? "").ToLower().Contains(query)
-                    || (r.EntradaOuSaida ?? "").ToLower().Contains(query))
-        .ToList();
+            if (endDate.HasValue)
+            {
+                registros = registros.Where(r => r.Data <= endDate.Value);
+            }
+
+            return registros.ToList();
         }
 
     }

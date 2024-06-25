@@ -49,5 +49,12 @@ namespace TOLEAGRI.Controllers
             registroService.DeleteAll();
             return RedirectToAction("Registro");
         }
+
+        [HttpGet]
+        public IActionResult Search(string query, DateTime? startDate, DateTime? endDate)
+        {
+            var registros = registroService.SearchRegistros(query, startDate, endDate);
+            return Json(registros);
+        }
     }
 }

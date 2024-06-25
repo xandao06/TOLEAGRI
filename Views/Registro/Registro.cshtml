@@ -10,6 +10,8 @@
             <div></div>
             <div style="display:flex">
                 <input type="text" id="search-input-registro" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="handleKeyDownRegistro(event)">
+                <input type="date" id="start-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Inicial">
+                <input type="date" id="end-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Final">
                 <a id="search-input-icon-registros" onclick="searchIconRegistros()" style="cursor: pointer;">
                     <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
                 </a>
@@ -47,7 +49,6 @@
                     <td>@item.Quantidade</td>
                     <td>@item.NotaOuPedido</td>
                     <td>@item.Observacao</td>
-                    <td hidden>@item.Acao</td>
                     <td>@item.Usuario</td>
                     <td>@item.Data.ToShortDateString()</td>
                     <td>@item.EntradaOuSaida</td>

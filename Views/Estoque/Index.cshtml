@@ -13,7 +13,9 @@
                 </a>
             </div>
             <div style="display:flex">
-                <input type="text" id="search-input-pecas" style="height:40px;width:265px" class="form-control" placeholder="Buscar" onkeydown="handleKeyDownPeca(event)">
+                <input type="text" id="search-input-peca" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="handleKeyDownPeca(event)">
+                <input type="date" id="start-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Inicial">
+                <input type="date" id="end-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Final">
                 <a id="search-input-icon-pecas" onclick="searchIconPecas()">
                     <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
                 </a>
@@ -22,7 +24,6 @@
     </div>
     <table class="table">
         <thead>
-            
             <tr>
                 <th>Código</th>
                 <th>Locação</th>
