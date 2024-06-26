@@ -15,7 +15,7 @@
     
     <header>
         <div class="text-center">
-            <a asp-area="" asp-controller="Estoque" asp-action="Index">
+            <a asp-area="" asp-controller="Estoque" asp-action="EstoqueIndex">
                 <img src="~/Images/Logo.png" alt="Logo" style="width:400px" />
             </a>
         </div>
@@ -23,12 +23,12 @@
 
         <nav class=" mb-4 navbar-brand text-white justify-content-md-center d-flex" style="margin-top:15px;">
                 <div>
-                <a class="btn btn-outline-secondary " type="button"  asp-controller="Estoque" asp-action="Index">
+                <a class="btn btn-outline-secondary " type="button"  asp-controller="Estoque" asp-action="EstoqueIndex">
                         <img src="/Images/abrirEstoque.png" alt="Logo" class="custom-logo" style="width:40px" />
                     </a>
             </div>
             <div>
-                <a class="btn btn-outline-secondary ms-1 me-4" type="button" asp-controller="Registro" asp-action="Registro">
+                <a class="btn btn-outline-secondary ms-1 me-4" type="button" asp-controller="Registro" asp-action="RegistroIndex">
                         <img src="/Images/abrirRegistro.png" alt="Relogio" class="custom-logo" style="width:43px;" />
                     </a>
                 </div>
@@ -51,7 +51,8 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/RegistroScript.js" asp-append-version="true"></script>
+    <script src="~/js/EstoqueScript.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

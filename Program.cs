@@ -32,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Estoque}/{action=Index}/{id?}");
+    pattern: "{controller=Estoque}/{action=EstoqueIndex}/{id?}");
 
 app.Run();

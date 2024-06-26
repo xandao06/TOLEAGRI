@@ -1,8 +1,0 @@
-﻿@model IEnumerable<TOLEAGRI.Model.Domain.Peca>
-@{
-    ViewData["Title"] = "Pecas";
-    var PecasOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
-}
-
-
-<script src="~/js/site.js"></script>

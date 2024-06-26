@@ -41,7 +41,7 @@ namespace TOLEAGRI.Model.Services
             return dbContext.Set<Peca>().ToList();
         }
 
-        // Atualizar uma Peca
+        // Modificar uma Peca
         public void Update(Peca entity)
         {
             dbContext.Entry(entity).State = EntityState.Modified;
@@ -56,6 +56,7 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
+        // Deletar todas as peças
         public void DeleteAll()
         {
             var pecaList = dbContext.Set<Peca>().ToList();
@@ -63,7 +64,7 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
-        // Busca uma Peca pelo Codigo do Sistema, se existir no banco vai modificar a Peca, se não existir vai criar uma
+        // Busca uma Peca pelo Codigo do Sistema, se existir no banco vai modificar a Peca, se não existir vai criar uma nova
         public void BuscarModificarCriar(Peca peca)
         {
             Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
@@ -84,7 +85,6 @@ namespace TOLEAGRI.Model.Services
             }
             else
             {
-                // Adiciona a nova peça
                 dbContext.Pecas.Add(peca);
             }
 
@@ -115,7 +115,7 @@ namespace TOLEAGRI.Model.Services
             return dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
         }
 
-        // Faz a filtragem de pecas na barra de pesquisa    
+        // Faz a filtragem de pecas na barra de pesquisa e por data
         public IReadOnlyList<Peca> SearchPecas(string query, DateTime? startDate, DateTime? endDate)
         {
             var pecas = dbContext.Set<Peca>().AsQueryable();

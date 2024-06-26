@@ -42,7 +42,7 @@ namespace TOLEAGRI.Model.Services
             return dbContext.Set<RegistroPeca>().ToList();
         }
 
-        // Atualizar um Registro
+        // Modificar um Registro
         public void Update(RegistroPeca entity)
         {
             dbContext.Entry(entity).State = EntityState.Modified;
@@ -57,6 +57,7 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
+        // Deletar todos os registros
         public void DeleteAll()
         {
             var registroList = dbContext.Set<RegistroPeca>().ToList();
@@ -64,6 +65,7 @@ namespace TOLEAGRI.Model.Services
             dbContext.SaveChanges();
         }
 
+        // Filtragem de registros pela barra de pesquisa e por data
         public IReadOnlyList<RegistroPeca> SearchRegistros(string query, DateTime? startDate, DateTime? endDate)
         {
             var registros = dbContext.Set<RegistroPeca>().AsQueryable();

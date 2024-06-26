@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TOLEAGRI.Model.Domain.RegistroPeca>
+@{
+    ViewData["Title"] = "RegistroIndex";
+    var RegistrosOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
+}
+
+<div id="container">
+    <div>
+        <div class="mb-4" style="display:flex;justify-content:space-between">
+            <div></div>
+            <div style="display:flex">
+                <input type="text" id="searchBarRegistro" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="EnterRegistro(event)">
+                <input type="date" id="start-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Inicial">
+                <input type="date" id="end-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Final">
+                <a id="searchIconRegistros" onclick="searchIconRegistros()" style="cursor: pointer;">
+                    <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Locação</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Quantidade</th>
+                <th>NF ou Pedido</th>
+                <th>Observação</th>
+                <th>Usuário</th>
+                <th>Data</th>
+                <th>Entrada/Saída</th>
+            </tr>
+        </thead>
+        <tbody id="registros-list">
+            @foreach (var item in RegistrosOrdenados)
+            {
+                <tr class="registro-row">
+                    <td>@item.CodigoSistema</td>
+                    <td>@item.Locacao</td>
+                    <td>@item.Marca</td>
+                    <td>@item.Modelo</td>
+                    <td>@item.Quantidade</td>
+                    <td>@item.NotaOuPedido</td>
+                    <td>@item.Observacao</td>
+                    <td>@item.Usuario</td>
+                    <td>@item.Data.ToShortDateString()</td>
+                    <td>@item.EntradaOuSaida</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="~/js/RegistroScript.js"></script>

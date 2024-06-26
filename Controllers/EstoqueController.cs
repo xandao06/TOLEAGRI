@@ -21,14 +21,21 @@ namespace TOLEAGRI.Controllers
             this.estoqueService = estoqueService;
         }
 
-        // Faz a abertura da view e puxa uma lista das Pecas
-        public IActionResult Index()
+        /// Faz a abertura da view estoque para cliente
+        public IActionResult EstoqueIndex()
         {
             var model = estoqueService.GetAll();
             return View(model);
         }
 
-        // Faz a abertura do Modal com Form para criação e atualização das Pecas 
+        // Faz a abertura da view estoque para manager
+        public IActionResult EstoqueManage()
+        {
+            var model = estoqueService.GetAll();
+            return View(model);
+        }
+
+        // Faz a abertura do Modal que cria uma peça
         [HttpGet]
 
         public IActionResult ModalEntradaSaidaEstoque()
@@ -36,16 +43,16 @@ namespace TOLEAGRI.Controllers
             return View("Modal/EntradaSaidaEstoque", new Peca());
         }
 
-        // Busca o serviço que faz a busca da Peca pelo codigo decide se vai criar ou modificar e redireciona para a View Index
+        // Método que busca o serviço que mostra as informações da peça, se não houver informações cria uma peça nova
         [HttpPost]
 
         public IActionResult EntradaSaidaEstoque(Peca peca)
         {
             estoqueService.BuscarModificarCriar(peca);
-            return RedirectToAction("Index");
+            return RedirectToAction("EstoqueIndex");
         }
         
-        // Busca as informações da Peca pelo codigo do sistema
+        // Método que busca as informações da peça pelo atributo "CodigoSistema"
         [HttpGet]
         public IActionResult GetByCodigoSistema(string codigoSistema)
         {
@@ -59,7 +66,7 @@ namespace TOLEAGRI.Controllers
             return Json(null);
         }
 
-        // Faz a abertura do Modal que deleta a Peca
+        // Faz a abertura do Modal que deleta uma peça
         [HttpGet]
         public IActionResult ModalDeletarEstoque(int id)
         {
@@ -67,32 +74,32 @@ namespace TOLEAGRI.Controllers
             return View("Modal/DeletarEstoque");
         }
         
-        // Busca o serviço que faz o processo de buscar a Peca pelo Id e deletar ela do banco e depois retorna para a View Index
+        // Método que deleta uma peça
         [HttpPost]
-        public IActionResult DeletarEstoque(int id)
+        public IActionResult DeletarPeca(int id)
         {
             estoqueService.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("EstoqueManage");
         }
 
-        // Abertura do Modal que deleta tudo
+        // Abertura do Modal que deleta todas as peças
         [HttpGet]
-        public IActionResult ModalDeletarAllEstoque()
+        public IActionResult ModalDeletarAllPeca()
         {
-            return View("Modal/DeletarAllEstoque");
+            return View("Modal/DeletarAllPeca");
         }
 
-        // Busca o serviço que deleta tudo
+        // Método que deleta todas as peças
         [HttpPost]
-        public IActionResult DeletarAllEstoque()
+        public IActionResult DeletarAllPeca()
         {
             estoqueService.DeleteAll();
-            return RedirectToAction("Index");
+            return RedirectToAction("EstoqueManage");
         }
 
-        // Faz a filtragem das pecas na barra de pesquisa da Index
+        // Método que busca o serviço de filtragem de peças
         [HttpGet]
-        public IActionResult Search(string query, DateTime? startDate, DateTime? endDate)
+        public IActionResult SearchPec(string query, DateTime? startDate, DateTime? endDate)
         {
             var pecas = estoqueService.SearchPecas(query, startDate, endDate);
             return Json(pecas);

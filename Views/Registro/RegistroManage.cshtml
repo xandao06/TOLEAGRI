@@ -1,22 +1,18 @@
-﻿@model IEnumerable<TOLEAGRI.Model.Domain.Peca>
+﻿@model IEnumerable<TOLEAGRI.Model.Domain.RegistroPeca>
 @{
-    ViewData["Title"] = "Pecas";
-    var PecasOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
+    ViewData["Title"] = "RegistroManage";
+    var RegistrosOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
 }
 
-<div id="container" >
+<div id="container">
     <div>
         <div class="mb-4" style="display:flex;justify-content:space-between">
-            <div >
-                <a class="btn btn-outline-secondary" onClick="ModalEntradaSaidaEstoque()">
-                    <img  src="~/Images/abrirModalEntradaSaida.png" style="width:45px" />
-                </a>
-            </div>
+            <div></div>
             <div style="display:flex">
-                <input type="text" id="search-input-peca" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="handleKeyDownPeca(event)">
+                <input type="text" id="searchBarRegistro" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="EnterRegistro(event)">
                 <input type="date" id="start-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Inicial">
                 <input type="date" id="end-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Final">
-                <a id="search-input-icon-pecas" onclick="searchIconPecas()">
+                <a id="searchIconRegistros" onclick="searchIconRegistros()" style="cursor: pointer;">
                     <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
                 </a>
             </div>
@@ -34,17 +30,18 @@
                 <th>Observação</th>
                 <th>Usuário</th>
                 <th>Data</th>
+                <th>Entrada/Saída</th>
                 <th style="width:1px">
-                    <a onClick="ModalDeletarAllEstoque()">
+                    <a onClick="ModalDeletarAllRegistro()">
                         <i class="bi bi-trash3-fill"></i>
                     </a>
-                </th>
+                    </th>
             </tr>
         </thead>
-        <tbody id="pecas-list">
-            @foreach (var item in PecasOrdenados)
+        <tbody id="registros-list">
+            @foreach (var item in RegistrosOrdenados)
             {
-                <tr class="peca-row">
+                <tr class="registro-row">
                     <td>@item.CodigoSistema</td>
                     <td>@item.Locacao</td>
                     <td>@item.Marca</td>
@@ -54,10 +51,11 @@
                     <td>@item.Observacao</td>
                     <td>@item.Usuario</td>
                     <td>@item.Data.ToShortDateString()</td>
+                    <td>@item.EntradaOuSaida</td>
                     <td style="width:1px">
-                        <a onClick="ModalDeletarEstoque(@item.Id)">
-                            <i class="bi bi-trash3-fill"></i>
-                        </a>
+                    <a onClick="ModalDeletarRegistro(@item.Id)">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
                     </td>
                 </tr>
             }
@@ -65,4 +63,4 @@
     </table>
 </div>
 
-<script src="~/js/site.js"></script>
+<script src="~/js/ManageScript.js"></script>

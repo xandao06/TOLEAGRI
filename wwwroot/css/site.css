@@ -31,9 +31,9 @@ html {
 
     .custom-radio input[type="radio"] + .form-check-label {
         position: relative;
-        padding-left: 35px;
+        padding-left: 25px;
         cursor: pointer;
-        display: inline-block;
+        display: unset;
     }
 
         .custom-radio input[type="radio"] + .form-check-label::before {
@@ -41,16 +41,16 @@ html {
             position: absolute;
             left: 0;
             top: 0;
-            width: 25px;
-            height: 25px;
-            border: 1px solid #007bff;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #007bff;
             border-radius: 50%;
             background: #fff;
         }
 
     .custom-radio input[type="radio"]:checked + .form-check-label::before {
         background-color: #007bff;
-        box-shadow: inset 0 0 0 4px #fff;
+        box-shadow: inset 0 0 0 2px #fff;
     }
 
 
