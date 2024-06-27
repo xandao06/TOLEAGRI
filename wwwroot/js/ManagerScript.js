@@ -191,21 +191,32 @@ function ModalEntradaSaidaEstoque() {
 
 
 //Modal para deletar uma peça do estoque
-function ModalDeletarEstoque(idPeca) {
-    $.get("/Estoque/ModalDeletarEstoque?id=" + idPeca, function (data) {
+function ModalDeletarPeca(idPeca) {
+    $.get("/Estoque/ModalDeletarPeca?id=" + idPeca, function (data) {
         $("#modalTOLEAGRI").html(data);
-        $("#modalDeletarEstoque").modal("show");
-    })
+        $("#modalDeletarPeca").modal("show");
+});
 };
-
 
 ////
 
 
 //Modal para deletar todo o estoque
-    function ModalDeletarAllEstoque() {
-        $.get("/Estoque/ModalDeletarAllEstoque", function (data) {
+    function ModalDeletarAllPeca() {
+        $.get("/Estoque/ModalDeletarAllPeca", function (data) {
             $("#modalTOLEAGRI").html(data);
-            $("#modalDeletarAllEstoque").modal("show");
+            $("#modalDeletarAllPeca").modal("show");
+        })
+    };
+
+
+ ////
+
+
+//Modal para login Manager
+    function ModalLoginManager() {
+        $.get("/Manager/ModalLoginManager", function (data) {
+            $("#modalTOLEAGRI").html(data);
+            $("#modalLoginManager").modal("show");
         })
     };

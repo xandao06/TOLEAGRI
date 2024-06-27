@@ -96,25 +96,3 @@ function ModalEntradaSaidaEstoque() {
 
 
 //////////////////////////////
-
-
-
-//Modal para deletar uma peça do estoque
-function ModalDeletarEstoque(idPeca) {
-    $.get("/Estoque/ModalDeletarEstoque?id=" + idPeca, function (data) {
-        $("#modalTOLEAGRI").html(data);
-        $("#modalDeletarEstoque").modal("show");
-    })
-};
-
-
-/////////////////////////
-
-
-//Modal para deletar todo o estoque
-    function ModalDeletarAllEstoque() {
-        $.get("/Estoque/ModalDeletarAllEstoque", function (data) {
-            $("#modalTOLEAGRI").html(data);
-            $("#modalDeletarAllEstoque").modal("show");
-        })
-    };

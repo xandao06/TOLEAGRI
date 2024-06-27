@@ -28,12 +28,7 @@ namespace TOLEAGRI.Controllers
             return View(model);
         }
 
-        // Faz a abertura da view estoque para manager
-        public IActionResult EstoqueManage()
-        {
-            var model = estoqueService.GetAll();
-            return View(model);
-        }
+
 
         // Faz a abertura do Modal que cria uma peça
         [HttpGet]
@@ -42,6 +37,8 @@ namespace TOLEAGRI.Controllers
         {
             return View("Modal/EntradaSaidaEstoque", new Peca());
         }
+
+
 
         // Método que busca o serviço que mostra as informações da peça, se não houver informações cria uma peça nova
         [HttpPost]
@@ -52,6 +49,8 @@ namespace TOLEAGRI.Controllers
             return RedirectToAction("EstoqueIndex");
         }
         
+
+
         // Método que busca as informações da peça pelo atributo "CodigoSistema"
         [HttpGet]
         public IActionResult GetByCodigoSistema(string codigoSistema)
@@ -66,14 +65,18 @@ namespace TOLEAGRI.Controllers
             return Json(null);
         }
 
+
+
         // Faz a abertura do Modal que deleta uma peça
         [HttpGet]
-        public IActionResult ModalDeletarEstoque(int id)
+        public IActionResult ModalDeletarPeca(int id)
         {
             Peca peca = estoqueService.Get(id);
-            return View("Modal/DeletarEstoque");
+            return View("Modal/DeletarPeca");
         }
         
+
+
         // Método que deleta uma peça
         [HttpPost]
         public IActionResult DeletarPeca(int id)
@@ -82,12 +85,16 @@ namespace TOLEAGRI.Controllers
             return RedirectToAction("EstoqueManage");
         }
 
+
+
         // Abertura do Modal que deleta todas as peças
         [HttpGet]
         public IActionResult ModalDeletarAllPeca()
         {
             return View("Modal/DeletarAllPeca");
         }
+
+
 
         // Método que deleta todas as peças
         [HttpPost]
@@ -96,6 +103,8 @@ namespace TOLEAGRI.Controllers
             estoqueService.DeleteAll();
             return RedirectToAction("EstoqueManage");
         }
+
+
 
         // Método que busca o serviço de filtragem de peças
         [HttpGet]
@@ -106,3 +115,5 @@ namespace TOLEAGRI.Controllers
         }
     }
 }
+
+

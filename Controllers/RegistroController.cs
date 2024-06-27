@@ -23,12 +23,6 @@ namespace TOLEAGRI.Controllers
             return View(registros);
         }
 
-        // Faz a abertura da view estoque para manager
-        public IActionResult RegistroManage()
-        {
-            var model = registroService.GetAll();
-            return View(model);
-        }
 
         // Abertura do Modal para deletar um registro
         [HttpGet]
