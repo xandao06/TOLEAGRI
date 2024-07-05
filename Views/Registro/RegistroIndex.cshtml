@@ -4,7 +4,7 @@
     var RegistrosOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
 }
 
-<div id="container">
+<div id="container" class="container">
     <div>
         <div class="mb-4" style="display:flex;justify-content:space-between">
             <div></div>
@@ -21,16 +21,16 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Código</th>
-                <th>Locação</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Quantidade</th>
-                <th>NF ou Pedido</th>
-                <th>Observação</th>
-                <th>Usuário</th>
-                <th>Data</th>
-                <th>Entrada/Saída</th>
+                <th onclick="sortTableRegistros(0)">Código</th>
+                <th onclick="sortTableRegistros(1)">Locação</th>
+                <th onclick="sortTableRegistros(2)">Marca</th>
+                <th onclick="sortTableRegistros(3)">Modelo</th>
+                <th onclick="sortTableRegistros(4)">Quantidade</th>
+                <th onclick="sortTableRegistros(5)">NF ou Pedido</th>
+                <th onclick="sortTableRegistros(6)">Observação</th>
+                <th onclick="sortTableRegistros(7)">Usuário</th>
+                <th onclick="sortTableRegistros(8)">Data</th>
+                <th onclick="sortTableRegistros(9)">Entrada/Saída</th>
             </tr>
         </thead>
         <tbody id="registros-list">

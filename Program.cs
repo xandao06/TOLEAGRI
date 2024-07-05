@@ -2,6 +2,7 @@ using TOLEAGRI.Model.Persistence;
 using TOLEAGRI.Model.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,17 @@ builder.Services.AddScoped<RegistroService>();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<TOLEDbContext>(options => options.UseSqlServer("name=ConnectionStrings:TOLEconnectionString"));
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Manager/ModalLoginManager";
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+});
 
 var app = builder.Build();
 

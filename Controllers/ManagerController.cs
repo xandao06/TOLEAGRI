@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Azure.Messaging;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 
 namespace TOLEAGRI.Controllers
@@ -37,7 +40,37 @@ namespace TOLEAGRI.Controllers
 
         public IActionResult ModalLoginManager()
         {
-            return View("LoginManager");
+            return View("Modal/LoginManager");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(Login login)
+        {
+            if (login.Usuario == "admin" && login.Senha == "admin")
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, login.Usuario),
+                    new Claim(ClaimTypes.Role, "Admin")
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+                return RedirectToAction("EstoqueIndex");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Usuário ou senha inválidos.";
+                return View("Modal/LoginManager");
+            }
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("ModalLoginManager");
         }
 
 

@@ -13,15 +13,17 @@
 </head>
 <body>
     
-    <header>
-        <div class="text-center">
+    <header class="card-header">
+        <div class="login">
+            <a class="btn btn-outline-secondary" asp-action="ModalLoginManager" asp-controller="Manager">Login</a>
+        </div>
+        <div class="logo">
             <a asp-area="" asp-controller="Estoque" asp-action="EstoqueIndex">
                 <img src="~/Images/Logo.png" alt="Logo" style="width:400px" />
             </a>
         </div>
 
-
-        <nav class=" mb-4 navbar-brand text-white justify-content-md-center d-flex" style="margin-top:15px;">
+        <nav class=" mb-4 navbar-brand text-white justify-content-md-center d-flex">
                 <div>
                 <a class="btn btn-outline-secondary " type="button"  asp-controller="Estoque" asp-action="EstoqueIndex">
                         <img src="/Images/abrirEstoque.png" alt="Logo" class="custom-logo" style="width:40px" />
@@ -43,9 +45,9 @@
         <div id="modalTOLEAGRI"></div>
     </div>
 
-    <footer class="footer text-muted">
-        <div class="container">
-            teste
+    <footer class="footer text-muted text-center">
+        <div class="card-footer">
+                Toleagri
         </div>
     </footer>
 

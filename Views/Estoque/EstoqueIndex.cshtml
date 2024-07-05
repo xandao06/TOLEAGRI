@@ -4,7 +4,7 @@
     var PecasOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
 }
 
-<div id="container" >
+<div id="container" class="container" >
     <div>
         <div class="mb-4" style="display:flex;justify-content:space-between">
             <div >
@@ -12,9 +12,7 @@
                     <img  src="~/Images/abrirModalEntradaSaida.png" style="width:45px" />
                 </a>
             </div>
-            <div>
-                <a class="btn btn-outline-secondary" asp-action="ModalLoginManager" asp-controller="Manager">Login</a>
-            </div>
+            
             <div style="display:flex">
                 <input type="text" id="searchBarPeca" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="EnterPeca(event)">
                 <input type="date" id="start-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Inicial">
@@ -28,15 +26,15 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Código</th>
-                <th>Locação</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Quantidade</th>
-                <th>NF ou Pedido</th>
-                <th>Observação</th>
-                <th>Usuário</th>
-                <th>Data</th>
+                <th onclick="sortTablePecas(0)">Código</th>
+                <th onclick="sortTablePecas(1)">Locação</th>
+                <th onclick="sortTablePecas(2)">Marca</th>
+                <th onclick="sortTablePecas(3)">Modelo</th>
+                <th onclick="sortTablePecas(4)">Quantidade</th>
+                <th onclick="sortTablePecas(5)">NF ou Pedido</th>
+                <th onclick="sortTablePecas(6)">Observação</th>
+                <th onclick="sortTablePecas(7)">Usuário</th>
+                <th onclick="sortTablePecas(8)">Data</th>
             </tr>
         </thead>
         <tbody id="pecas-list">

@@ -96,3 +96,62 @@ function ModalEntradaSaidaEstoque() {
 
 
 //////////////////////////////
+
+
+// garante filtragem por titulo da tabela e também que a pagina sempre inicie organizada por data de forma decrescente
+function sortTablePecas(columnIndex) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.querySelector(".table");
+    switching = true;
+    dir = "asc";
+    
+    while (switching) {
+        switching = false;
+        rows = table.querySelectorAll(".peca-row");
+
+        for (i = 0; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].querySelectorAll("td")[columnIndex];
+            y = rows[i + 1].querySelectorAll("td")[columnIndex];
+
+            if (columnIndex === 8) { // Se a coluna for a de Data
+                var dateX = new Date(x.textContent.split('/').reverse().join('-'));
+                var dateY = new Date(y.textContent.split('/').reverse().join('-'));
+                if (dir == "asc") {
+                    if (dateX > dateY) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (dateX < dateY) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            } else {
+                if (dir == "asc") {
+                    if (x.textContent.toLowerCase() > y.textContent.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.textContent.toLowerCase() < y.textContent.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+        } else {
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}
