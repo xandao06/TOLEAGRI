@@ -82,7 +82,7 @@ namespace TOLEAGRI.Controllers
         public IActionResult DeletarPeca(int id)
         {
             estoqueService.Delete(id);
-            return RedirectToAction("EstoqueManage");
+            return RedirectToAction("EstoqueIndex");
         }
 
 
@@ -101,7 +101,7 @@ namespace TOLEAGRI.Controllers
         public IActionResult DeletarAllPeca()
         {
             estoqueService.DeleteAll();
-            return RedirectToAction("EstoqueManage");
+            return RedirectToAction("EstoqueIndex");
         }
 
 

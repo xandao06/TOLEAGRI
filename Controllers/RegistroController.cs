@@ -37,7 +37,7 @@ namespace TOLEAGRI.Controllers
         public IActionResult DeletarRegistro(int id)
         {
             registroService.Delete(id);
-            return RedirectToAction("RegistroManage");
+            return RedirectToAction("RegistroIndex");
         }
 
         // Abertura do Modal que deleta todos os registros
@@ -52,7 +52,7 @@ namespace TOLEAGRI.Controllers
         public IActionResult DeletarAllRegistro()
         {
             registroService.DeleteAll();
-            return RedirectToAction("RegistroManage");
+            return RedirectToAction("RegistroIndex");
         }
 
         // Método que busca o serviço de filtragem de registros

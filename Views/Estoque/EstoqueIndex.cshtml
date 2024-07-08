@@ -1,18 +1,24 @@
-﻿@model IEnumerable<TOLEAGRI.Model.Domain.Peca>
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+
+@model IEnumerable<TOLEAGRI.Model.Domain.Peca>
 @{
     ViewData["Title"] = "EstoqueIndex";
     var PecasOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
 }
+@{
+    var isAdmin = User.IsInRole("Admin");
+}
 
-<div id="container" class="container" >
+<div id="container" class="container">
     <div>
         <div class="mb-4" style="display:flex;justify-content:space-between">
-            <div >
+            <div>
                 <a class="btn btn-outline-secondary" onClick="ModalEntradaSaidaEstoque()">
-                    <img  src="~/Images/abrirModalEntradaSaida.png" style="width:45px" />
+                    <img src="~/Images/abrirModalEntradaSaida.png" style="width:45px" />
                 </a>
             </div>
-            
+
             <div style="display:flex">
                 <input type="text" id="searchBarPeca" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="EnterPeca(event)">
                 <input type="date" id="start-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Inicial">
@@ -35,6 +41,14 @@
                 <th onclick="sortTablePecas(6)">Observação</th>
                 <th onclick="sortTablePecas(7)">Usuário</th>
                 <th onclick="sortTablePecas(8)">Data</th>
+                @if (isAdmin)
+                    {
+                        <th style="width:1px">
+                            <a onClick="ModalDeletarAllPeca()">
+                                <i class="bi bi-trash3-fill"></i>
+                            </a>
+                        </th>
+                    }
             </tr>
         </thead>
         <tbody id="pecas-list">
@@ -50,6 +64,14 @@
                     <td>@item.Observacao</td>
                     <td>@item.Usuario</td>
                     <td>@item.Data.ToShortDateString()</td>
+                    @if (isAdmin)
+                    {
+                        <td style="width:1px">
+                            <a onClick="ModalDeletarPeca(@item.Id)">
+                                <i class="bi bi-trash3-fill"></i>
+                            </a>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>
@@ -57,3 +79,4 @@
 </div>
 
 <script src="~/js/EstoqueScript.js"></script>
+<script src="~/js/ManagerScript.js"></script>

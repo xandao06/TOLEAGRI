@@ -27,20 +27,10 @@ namespace TOLEAGRI.Controllers
             this.registroService = registroService;
         }
 
-        // Faz a abertura da view estoque para manager
-        public IActionResult EstoqueManager()
-        {
-            var model = estoqueService.GetAll();
-            return View(model);
-        }
-
-
-        // Faz a abertura do Modal que cria uma peça
         [HttpGet]
-
-        public IActionResult ModalLoginManager()
+        public IActionResult LoginManager()
         {
-            return View("Modal/LoginManager");
+            return View();
         }
 
         [HttpPost]
@@ -58,27 +48,22 @@ namespace TOLEAGRI.Controllers
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
-                return RedirectToAction("EstoqueIndex");
+                return RedirectToAction("EstoqueIndex", "Estoque");
             }
             else
             {
                 ViewBag.ErrorMessage = "Usuário ou senha inválidos.";
-                return View("Modal/LoginManager");
+                return View("LoginManager");
             }
         }
 
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("ModalLoginManager");
+            return RedirectToAction("LoginManager");
         }
 
 
-        // Faz a abertura da view estoque para manager
-        public IActionResult RegistroManager()
-        {
-            var model = registroService.GetAll();
-            return View(model);
-        }
+
     }
 }

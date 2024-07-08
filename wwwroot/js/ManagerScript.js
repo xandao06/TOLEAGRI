@@ -203,9 +203,9 @@ function ModalDeletarPeca(idPeca) {
 
 //Modal para deletar todo o estoque
     function ModalDeletarAllPeca() {
-        $.get("/Estoque/ModalDeletarAllPeca", function (data) {
+        $.get("/Estoque/ModalDeletarPeca", function (data) {
             $("#modalTOLEAGRI").html(data);
-            $("#modalDeletarAllPeca").modal("show");
+            $("#modalDeletarPeca").modal("show");
         })
     };
 
@@ -213,10 +213,3 @@ function ModalDeletarPeca(idPeca) {
  ////
 
 
-//Modal para login Manager
-    function ModalLoginManager() {
-        $.get("/Manager/ModalLoginManager", function (data) {
-            $("#modalTOLEAGRI").html(data);
-            $("#modalLoginManager").modal("show");
-        })
-    };

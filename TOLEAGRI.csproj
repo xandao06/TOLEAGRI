@@ -29,11 +29,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="Views\Estoque\Modal\DeletarAllPeca.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>

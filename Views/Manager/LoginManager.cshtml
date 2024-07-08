@@ -1,0 +1,22 @@
+﻿@model TOLEAGRI.Model.Domain.Login
+
+@{
+    Layout = null;
+}
+
+<div class="LoginManager">
+    <form class="" method="post" asp-action="Login" asp-controller="Manager">
+        <input type="hidden" asp-for="Id" />
+        <input type="text" id="usuario" asp-for="Usuario" placeholder="Usuário" />
+        <input type="password" id="senha" asp-for="Senha" placeholder="Senha" />
+        <div>
+            <button type="submit" class="btn btn-secondary">Salvar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+    </form>
+</div>
+
+
+
+<script src="~/js/ManagerScript.js"></script>
+<script src="~/js/EstoqueScript.js"></script>

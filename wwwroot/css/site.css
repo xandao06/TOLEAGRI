@@ -80,3 +80,11 @@ html {
     right: 0;
     padding: 10px;
 }
+
+LoginManager {
+    height: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
