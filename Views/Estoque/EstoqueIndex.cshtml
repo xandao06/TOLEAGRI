@@ -18,6 +18,16 @@
                     <img src="~/Images/abrirModalEntradaSaida.png" style="width:45px" />
                 </a>
             </div>
+            <div>
+                <a class="btn btn-outline-secondary " type="button" asp-controller="Estoque" asp-action="EstoqueIndex">
+                    <img src="/Images/abrirEstoque.png" alt="Logo" class="custom-logo" style="width:40px" />
+                </a>
+            </div>
+            <div>
+                <a class="btn btn-outline-secondary ms-1 me-4" type="button" asp-controller="Registro" asp-action="RegistroIndex">
+                    <img src="/Images/abrirRegistro.png" alt="Relogio" class="custom-logo" style="width:43px;" />
+                </a>
+            </div>
 
             <div style="display:flex">
                 <input type="text" id="searchBarPeca" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="EnterPeca(event)">

@@ -1,27 +1,30 @@
-html {
-  font-size: 14px;
-}
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        min-height: 100%;
+        background-size: cover;
+    }
 }
 
-.html {
-  position: relative;
-  min-height: 100%;
+.layout {
+    background: linear-gradient(to bottom, rgb(14 52 137),rgb(5 12 54 / 70%),rgb(11 32 104 / 50%),rgb(67 76 102 / 30%));
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
-/*header {
-    background: #393939;
-}*/
 
 .body {
     margin-bottom: 60px;
-    /*background: #F7F5F4;*/
-    font-weight: bold;
-    
+    font-weight: 900;
+    text-shadow: 100px 100px 100px;    
+}
+
+.btn, .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem black, 0 0 0.60rem #258cfb;
+}
+
+input::placeholder {
+    opacity: 1;
+    font-weight: 750;
 }
 
 .custom-radio input[type="radio"] {
@@ -54,17 +57,17 @@ html {
     }
 
 .logo {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display:flex;
 }
 
 .container {
-    padding:15px;
+    padding: 25px;
+    font-weight: 900;
 }
 
 .a {
     cursor: pointer;
+    opacity:1
 }
 
 .footer {
@@ -74,17 +77,11 @@ html {
     font-size:18px;
 }
 
-.login {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-}
-
-LoginManager {
+.LoginManager {
     height: 100%;
     margin: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
+    padding:100px;
 }

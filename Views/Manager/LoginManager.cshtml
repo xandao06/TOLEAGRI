@@ -1,14 +1,14 @@
 ﻿@model TOLEAGRI.Model.Domain.Login
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Login";
 }
 
 <div class="LoginManager">
-    <form class="" method="post" asp-action="Login" asp-controller="Manager">
+    <form method="post" asp-action="Login" asp-controller="Manager">
         <input type="hidden" asp-for="Id" />
-        <input type="text" id="usuario" asp-for="Usuario" placeholder="Usuário" />
-        <input type="password" id="senha" asp-for="Senha" placeholder="Senha" />
+        <input type="text" id="usuario" class="form-control mb-2" asp-for="Usuario" placeholder="Usuário" />
+        <input type="password" id="senha" class="form-control mb-2" asp-for="Senha" placeholder="Senha" />
         <div>
             <button type="submit" class="btn btn-secondary">Salvar</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

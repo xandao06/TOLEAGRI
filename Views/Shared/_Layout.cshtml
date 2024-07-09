@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TOLEAGRI</title>
+    <title>@ViewData["Layout"] - TOLEAGRI</title>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -11,32 +11,15 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body class="layout">
     
-    <header class="card-header">
-        <div class="login">
-            <a class="btn btn-outline-secondary" asp-action="LoginManager" asp-controller="Manager">Login</a>
-        </div>
+    <header >
         <div class="logo">
             <a asp-area="" asp-controller="Estoque" asp-action="EstoqueIndex">
-                <img src="~/Images/Logo.png" alt="Logo" style="width:400px" />
+                <img src="~/Images/logo1.png" alt="Logo" style="width:150px" />
             </a>
         </div>
 
-        <nav class=" mb-4 navbar-brand text-white justify-content-md-center d-flex">
-                <div>
-                <a class="btn btn-outline-secondary " type="button"  asp-controller="Estoque" asp-action="EstoqueIndex">
-                        <img src="/Images/abrirEstoque.png" alt="Logo" class="custom-logo" style="width:40px" />
-                    </a>
-            </div>
-            <div>
-                <a class="btn btn-outline-secondary ms-1 me-4" type="button" asp-controller="Registro" asp-action="RegistroIndex">
-                        <img src="/Images/abrirRegistro.png" alt="Relogio" class="custom-logo" style="width:43px;" />
-                    </a>
-                </div>
-           
-        </nav>
- 
     </header>
     <div class="container">
         <main role="main" class="pb-3">

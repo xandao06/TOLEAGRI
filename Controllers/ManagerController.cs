@@ -36,7 +36,7 @@ namespace TOLEAGRI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Login login)
         {
-            if (login.Usuario == "admin" && login.Senha == "admin")
+            if (login.Usuario == "admin" && login.Senha == "pal4568#")
             {
                 var claims = new List<Claim>
                 {
