@@ -78,6 +78,11 @@ function displayPecaResults(pecas) {
                 <td>${peca.observacao}</td>
                 <td>${peca.usuario}</td>
                 <td>${new Date(peca.data).toLocaleDateString()}</td>
+                <td style="width:1px">
+                    <a onClick="ModalDeletarPeca(${peca.id})">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                    </td>
             `;
         resultsList.appendChild(tr);
         })
@@ -91,6 +96,7 @@ function ModalEntradaSaidaEstoque() {
         $.get("/Estoque/ModalEntradaSaidaEstoque", function (data) {
             $("#modalTOLEAGRI").html(data);
             $("#modalEntradaSaidaEstoque").modal("show");
+            $('#CodigoSistema').trigger('focus');
         });
 };
 

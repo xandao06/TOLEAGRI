@@ -10,9 +10,8 @@
             <form method="post" asp-action="DeletarRegistro">
                 <input asp-for="Id" type="hidden">
                 <div class="modal-header">
-                    <h5 class="modal-title">Excluir</h5>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="font-weight:650">
                     <p>Tem certeza que deseja excluir?</p>
                 </div>
                 <div class="modal-footer">
@@ -26,7 +25,7 @@
 
 @* ////////// DELETAR TODOS OS REGISTROS //////////// *@
 
-<div id="modalDeletarAllRegistro" class="modal" tabindex="-1">
+@* <div id="modalDeletarAllRegistro" class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <form method="post" asp-action="DeletarAllRegistro">
@@ -44,6 +43,6 @@
             </form>
         </div>
     </div>
-</div>
+</div> *@
 
 <script src="~/js/ManagerScript.js"></script>

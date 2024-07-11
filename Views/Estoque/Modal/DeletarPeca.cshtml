@@ -8,13 +8,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form method="post" asp-action="DeletarPeca">
+                <input asp-for="Id" type="hidden">
                 <div class="modal-header">
-                    <h5 class="modal-title">Excluir</h5>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="font-weight:650">
                     <p>Tem certeza que deseja excluir?</p>
-                    <input asp-for="Id" type="hidden">
-                    <input type="text" class="form-control" style="display:none">
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-secondary">Sim</button>
@@ -28,15 +26,14 @@
 
 @* ////////// DELETAR TODAS AS PEÇAS /////////// *@ 
 
-<div id="modalDeletarAllPeca" class="modal" tabindex="-1">
+@* <div id="modalDeletarAllPeca" class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <form method="post" asp-action="DeletarAllPeca">
                 <input asp-for="Id" type="hidden">
                 <div class="modal-header">
-                    <h5 class="modal-title">Excluir</h5>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="font-weight:650">
                     <p>Tem certeza que deseja excluir todos os itens?</p>
                     <input type="text" class="form-control" style="display:none">
                 </div>
@@ -47,9 +44,9 @@
             </form>
         </div>
     </div>
-</div>
+</div> *@
 
 
-<script src="~/js/ManageScript.js"></script>
+<script src="~/js/ManagerScript.js"></script>
 
 

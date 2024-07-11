@@ -11,37 +11,28 @@
 }
 
 <div id="container" class="container">
-    <div>
         <div class="barra_tarefas">
             <div>
-                <a class="btn btn-outline-secondary" onClick="ModalEntradaSaidaEstoque()">
-                    <img src="~/Images/abrirModalEntradaSaida.png" style="width:45px" />
+                <a class="btn btn-outline-secondary ml-1" onClick="ModalEntradaSaidaEstoque()">
+                    <img src="~/Images/abrirModalEntradaSaida.png" style="width:40px" />
                 </a>
-            </div>
-            <div>
-                <a class="btn btn-outline-secondary " type="button" asp-controller="Estoque" asp-action="EstoqueIndex">
-                    <img src="/Images/abrirEstoque.png" alt="Logo" class="custom-logo" style="width:40px" />
-                </a>
-            </div>
-            <div>
-                <a class="btn btn-outline-secondary ms-1 me-4" type="button" asp-controller="Registro" asp-action="RegistroIndex">
+                <a class="btn btn-outline-secondary ms-1" type="button" asp-controller="Registro" asp-action="RegistroIndex">
                     <img src="/Images/abrirRegistro.png" alt="Relogio" class="custom-logo" style="width:43px;" />
                 </a>
             </div>
 
-            <div style="display:flex">
-                <input type="text" id="searchBarPeca" style="height:40px;width:265px" class="form-control search" placeholder="Buscar" onkeydown="EnterPeca(event)">
-                <input type="date" id="start-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Inicial">
-                <input type="date" id="end-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Final">
+            <div class="search_bar">
+                <input type="text" id="searchBarPeca" style="height:40px;width:265px;margin-right:5px" class="form-control search" placeholder="Buscar" onkeydown="EnterPeca(event)">
+                <input type="date" id="start-date" style="height:40px;width:150px;margin-right:5px" class="form-control search" placeholder="Data Inicial">
+            <input type="date" id="end-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Final">
                 <a id="searchIconPecas" onclick="searchIconPecas()">
                     <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
                 </a>
             </div>
-        </div>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
+    <table class="table table-hover table-bordered table-dark">
+        <thead >
+            <tr >
                 <th onclick="sortTablePecas(0)">Código</th>
                 <th onclick="sortTablePecas(1)">Locação</th>
                 <th onclick="sortTablePecas(2)">Marca</th>
@@ -54,7 +45,7 @@
                 @if (isAdmin)
                     {
                         <th style="width:1px">
-                            <a onClick="ModalDeletarAllPeca()">
+                            <a>
                                 <i class="bi bi-trash3-fill"></i>
                             </a>
                         </th>

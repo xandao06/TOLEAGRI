@@ -10,21 +10,16 @@
     background: linear-gradient(to bottom, rgb(14 52 137),rgb(5 12 54 / 70%),rgb(11 32 104 / 50%),rgb(67 76 102 / 30%));
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment:fixed;
 }
 
-.body {
-    margin-bottom: 60px;
-    font-weight: 900;
-    text-shadow: 100px 100px 100px;    
-}
-
-.btn, .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn, .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus, .form-control{
     box-shadow: 0 0 0 0.1rem black, 0 0 0.60rem #258cfb;
 }
 
 input::placeholder {
     opacity: 1;
-    font-weight: 750;
+    font-weight: 700;
 }
 
 .custom-radio input[type="radio"] {
@@ -57,12 +52,16 @@ input::placeholder {
     }
 
 .logo {
-    display:flex;
+    display: flex;
+    mix-blend-mode: multiply;
+    filter:brightness(100%)
 }
 
+/*grayscale(), sepia(), saturate(), opacity(), brightness(), contrast() e invert().*/
+
 .container {
-    padding: 25px;
-    font-weight: 900;
+    padding: 5px;
+    font-weight: 250;
 }
 
 .a {
@@ -91,3 +90,14 @@ input::placeholder {
     justify-content:space-between;
     margin-bottom:12px
 }
+
+.search_bar{
+    display:flex;
+}
+
+.modal {
+    font-weight: 200;
+
+}
+
+

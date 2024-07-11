@@ -88,21 +88,21 @@ namespace TOLEAGRI.Controllers
 
 
         // Abertura do Modal que deleta todas as peças
-        [HttpGet]
-        public IActionResult ModalDeletarAllPeca()
-        {
-            return View("Modal/DeletarAllPeca");
-        }
+        //[HttpGet]
+        //public IActionResult ModalDeletarAllPeca()
+        //{
+        //    return View("Modal/DeletarPeca");
+        //}
 
 
 
         // Método que deleta todas as peças
-        [HttpPost]
-        public IActionResult DeletarAllPeca()
-        {
-            estoqueService.DeleteAll();
-            return RedirectToAction("EstoqueIndex");
-        }
+        //[HttpPost]
+        //public IActionResult DeletarAllPeca()
+        //{
+        //    estoqueService.DeleteAll();
+        //    return RedirectToAction("EstoqueIndex");
+        //}
 
 
 

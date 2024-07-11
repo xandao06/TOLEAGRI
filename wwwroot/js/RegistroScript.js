@@ -44,12 +44,19 @@ function displayRegistroResults(registros) {
                 <td>${registro.notaOuPedido}</td>
                 <td>${registro.observacao}</td>
                 <td>${registro.usuario}</td>
-                <td>${new Date(registro.data).toLocaleDateString()}</td>
+                <td>${new Date(registro.data).toLocaleDateString()}</td>  \\ajeitar isso aqui
                 <td>${registro.entradaOuSaida}</td>
+                <td style="width:1px">
+                    <a onClick="ModalDeletarRegistro(${registro.id})">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                    </td>
             `;
         resultsList.appendChild(tr);
         })
     };
+
+ ////
 
 ///////////////////////////
 

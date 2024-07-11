@@ -41,19 +41,19 @@ namespace TOLEAGRI.Controllers
         }
 
         // Abertura do Modal que deleta todos os registros
-        [HttpGet]
-        public IActionResult ModalDeletarAllRegistro()
-        {
-            return View("Modal/DeletarAllRegistro");
-        }
+        //[HttpGet]
+        //public IActionResult ModalDeletarAllRegistro()
+        //{
+        //    return View("Modal/DeletarAllRegistro");
+        //}
 
         // Método que deleta todos os registros
-        [HttpPost]
-        public IActionResult DeletarAllRegistro()
-        {
-            registroService.DeleteAll();
-            return RedirectToAction("RegistroIndex");
-        }
+        //[HttpPost]
+        //public IActionResult DeletarAllRegistro()
+        //{
+        //    registroService.DeleteAll();
+        //    return RedirectToAction("RegistroIndex");
+        //}
 
         // Método que busca o serviço de filtragem de registros
         [HttpGet]
