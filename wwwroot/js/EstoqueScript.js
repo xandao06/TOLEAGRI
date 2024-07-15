@@ -91,11 +91,22 @@ function displayPecaResults(pecas) {
  ////////////////////////////
 
 
-//Modal para criar uma entrada/saida no estoque
-function ModalEntradaSaidaEstoque() {
-        $.get("/Estoque/ModalEntradaSaidaEstoque", function (data) {
+//Modal para criar uma entrada no estoque
+function ModalEntradaEstoque() {
+        $.get("/Estoque/ModalEntradaEstoque", function (data) {
             $("#modalTOLEAGRI").html(data);
-            $("#modalEntradaSaidaEstoque").modal("show");
+            $("#modalEntradaEstoque").modal("show");
+            $('#CodigoSistema').trigger('focus');
+        });
+};
+
+/////////////////////////
+
+//Modal para criar uma saida no estoque
+function ModalSaidaEstoque() {
+        $.get("/Estoque/ModalSaidaEstoque", function (data) {
+            $("#modalTOLEAGRI").html(data);
+            $("#modalSaidaEstoque").modal("show");
             $('#CodigoSistema').trigger('focus');
         });
 };

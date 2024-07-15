@@ -28,14 +28,30 @@ namespace TOLEAGRI.Controllers
             return View(model);
         }
 
-
-
-        // Faz a abertura do Modal que cria uma peça
+        // Faz a abertura do Modal que da saida a uma peça
         [HttpGet]
 
-        public IActionResult ModalEntradaSaidaEstoque()
+        public IActionResult ModalSaidaEstoque()
         {
-            return View("Modal/EntradaSaidaEstoque", new Peca());
+            return View("Modal/SaidaEstoque");
+        }
+
+         // Método que busca o serviço que mostra as informações da peça, se não houver informações cria uma peça nova
+        [HttpPost]
+
+        public IActionResult SaidaEstoque(Peca peca)
+        {
+            estoqueService.BuscarModificarSaida(peca);
+            return RedirectToAction("EstoqueIndex");
+        }
+
+
+        // Faz a abertura do Modal que da entrada a uma peça
+        [HttpGet]
+
+        public IActionResult ModalEntradaEstoque()
+        {
+            return View("Modal/EntradaEstoque", new Peca());
         }
 
 
@@ -43,7 +59,7 @@ namespace TOLEAGRI.Controllers
         // Método que busca o serviço que mostra as informações da peça, se não houver informações cria uma peça nova
         [HttpPost]
 
-        public IActionResult EntradaSaidaEstoque(Peca peca)
+        public IActionResult EntradaEstoque(Peca peca)
         {
             estoqueService.BuscarModificarCriar(peca);
             return RedirectToAction("EstoqueIndex");

@@ -109,6 +109,48 @@ namespace TOLEAGRI.Model.Services
 
         }
 
+
+        // Busca uma Peca pelo Codigo do Sistema, se existir no banco vai modificar a Peca, se não existir vai criar uma nova
+        public void BuscarModificarSaida(Peca peca)
+        {
+            Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
+
+            if (existingPeca != null)
+            {
+                // Atualiza a peça existente
+                existingPeca.Locacao = peca.Locacao;
+                existingPeca.Marca = peca.Marca;
+                existingPeca.Modelo = peca.Modelo;
+                existingPeca.Quantidade = peca.Quantidade;
+                existingPeca.NotaOuPedido = peca.NotaOuPedido;
+                existingPeca.Observacao = peca.Observacao;
+                existingPeca.Usuario = peca.Usuario;
+
+
+                dbContext.Pecas.Update(existingPeca);
+            }
+
+            dbContext.SaveChanges();
+
+            var registro = new RegistroPeca
+            {
+                CodigoSistema = peca.CodigoSistema,
+                Locacao = peca.Locacao,
+                Marca = peca.Marca,
+                Modelo = peca.Modelo,
+                Quantidade = peca.Quantidade,
+                NotaOuPedido = peca.NotaOuPedido,
+                Observacao = peca.Observacao,
+                Usuario = peca.Usuario,
+                Data = DateTime.Now, // Data da operação atual
+                EntradaOuSaida = peca.EntradaOuSaida,
+            };
+
+            dbContext.Set<RegistroPeca>().Add(registro);
+            dbContext.SaveChanges();
+
+        }
+
         // Cria a string que retorna o Codigo do Sistema das Pecas gravado no banco
         public Peca GetByCodigoSistema(string codigoSistema)
         {
