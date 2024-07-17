@@ -15,14 +15,15 @@
     <div>
         <div class="barra_tarefas">
             <div>
-                <a class="btn btn-outline-secondary ml-1" type="button" asp-controller="Estoque" asp-action="EstoqueIndex">
+                <a class="btn btn-dark border-light ml-1" type="button" asp-controller="Estoque" asp-action="EstoqueIndex">
                     <img src="/Images/abrirEstoque.png" alt="Logo" class="custom-logo" style="width:40px" />
+                    Estoque
                 </a>
             </div>
             <div style="display:flex">
-                <input type="text" id="searchBarRegistro" style="height:40px;width:265px;margin-right:5px" class="form-control search" placeholder="Buscar" onkeydown="EnterRegistro(event)">
-                <input type="date" id="start-date" style="height:40px;width:150px;margin-right:5px" class="form-control search" placeholder="Data Inicial">
-                <input type="date" id="end-date" style="height:40px;width:150px" class="form-control search" placeholder="Data Final">
+                <input type="text" id="searchBarRegistro" style="height:40px;width:265px;margin-right:5px" class="form-control btn-dark border-light search" placeholder="Buscar" onkeydown="EnterRegistro(event)">
+                <input type="date" id="start-date" style="height:40px;width:150px;margin-right:5px" class="form-control btn-dark border-light search" placeholder="Data Inicial">
+                <input type="date" id="end-date" style="height:40px;width:150px" class="form-control btn-dark border-light search" placeholder="Data Final">
                 <a id="searchIconRegistros" onclick="searchIconRegistros()" style="cursor: pointer;">
                     <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
                 </a>

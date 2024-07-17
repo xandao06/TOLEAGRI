@@ -113,6 +113,7 @@ namespace TOLEAGRI.Model.Services
         // Busca uma Peca pelo Codigo do Sistema, se existir no banco vai modificar a Peca, se não existir vai criar uma nova
         public void BuscarModificarSaida(Peca peca)
         {
+
             Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
 
             if (existingPeca != null)
@@ -126,9 +127,9 @@ namespace TOLEAGRI.Model.Services
                 existingPeca.Observacao = peca.Observacao;
                 existingPeca.Usuario = peca.Usuario;
 
-
                 dbContext.Pecas.Update(existingPeca);
             }
+
 
             dbContext.SaveChanges();
 

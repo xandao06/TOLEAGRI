@@ -100,6 +100,7 @@ function ModalEntradaEstoque() {
         });
 };
 
+
 /////////////////////////
 
 //Modal para criar uma saida no estoque
@@ -172,3 +173,36 @@ function sortTablePecas(columnIndex) {
         }
     }
 }
+
+
+
+
+function validarFormulario(event) {
+        event.preventDefault(); // Impede o envio imediato do formulário
+
+        var codigoSistema = $('#CodigoSistema').val().trim();
+        if (codigoSistema === '') {
+            alert('Código do Sistema não pode ser vazio.');
+            return false;
+        }
+
+        // Faz uma chamada AJAX para verificar se o CodigoSistema existe no banco de dados
+        $.ajax({
+            url: '/Estoque/VerificarCodigoSistema',
+            type: 'GET',
+            data: { codigoSistema: codigoSistema },
+            success: function (response) {
+                if (response.existe) {
+                    // Se o código existe, submete o formulário
+                    $('#formEntradaEstoque').off('submit').submit();
+                } else {
+                    alert('Código do Sistema não encontrado.');
+                }
+            },
+            error: function () {
+                alert('Erro ao verificar o Código do Sistema.');
+            }
+        });
+
+        return false; // Impede o envio do formulário para aguardar a resposta da AJAX
+    }

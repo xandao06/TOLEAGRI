@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Azure.Messaging;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using System.Data;
 
 namespace TOLEAGRI.Controllers
 {
@@ -16,9 +17,11 @@ namespace TOLEAGRI.Controllers
         //private readonly TOLEDbContext _dbContext;
         private readonly EstoqueService estoqueService;
 
-        public EstoqueController(EstoqueService estoqueService)
+        private readonly TOLEDbContext _dbContext;
+        public EstoqueController(EstoqueService estoqueService, TOLEDbContext dbContext)
         {
             this.estoqueService = estoqueService;
+            this. _dbContext = dbContext;
         }
 
         /// Faz a abertura da view estoque para cliente
@@ -33,7 +36,7 @@ namespace TOLEAGRI.Controllers
 
         public IActionResult ModalSaidaEstoque()
         {
-            return View("Modal/SaidaEstoque");
+            return View("Modal/SaidaEstoque", new Peca());
         }
 
          // Método que busca o serviço que mostra as informações da peça, se não houver informações cria uma peça nova
@@ -128,6 +131,15 @@ namespace TOLEAGRI.Controllers
         {
             var pecas = estoqueService.SearchPecas(query, startDate, endDate);
             return Json(pecas);
+        }
+
+
+
+        [HttpGet]
+        public IActionResult VerificarCodigoSistema(string codigoSistema)
+        {
+            bool existe = _dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
+            return Json(new { existe });
         }
     }
 }

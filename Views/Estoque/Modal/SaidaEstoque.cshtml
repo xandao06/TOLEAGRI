@@ -6,8 +6,8 @@
 
 <div id="modalSaidaEstoque" class="modal custom-modal-bg" tabindex="-1">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="formEntradaEstoque" method="post" asp-action="SaidaEstoque">
+        <div class="modal-content border-light" style="background-color:#212529;color:white;">
+            <form id="formEntradaEstoque" method="post" asp-action="SaidaEstoque" onsubmit="return validarFormulario(event)">
                 <div class="modal-header">
                     <h5 class="modal-title">Saida de Estoque</h5>
                 </div>
@@ -15,11 +15,8 @@
                     <div class="mb-1 ">
                         <input asp-for="Id" id="Id" name="Id" type="hidden">
                         <input required asp-for="Data" type="date" class="form-control mb-2" id="Data" placeholder="Data">
-                        <div class="form-check form-switch">
-                                <input asp-for="EntradaOuSaida" class="form-check-input" type="checkbox" id="SaidaDisabled" checked disabled>
-                                <label class="form-check-label" for="SaidaDisabled">Saída</label>
-                        </div>
-                        <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código" autofocus>
+                        <input asp-for="EntradaOuSaida" value="Saída" type="hidden" id="SaidaDisabled">
+                        <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
                         <input required asp-for="Quantidade" value="" type="number" class="form-control mb-2" id="Quantidade" placeholder="Quantidade">
                         <input required asp-for="NotaOuPedido" type="int" class="form-control mb-2" id="NotaOuPedido" placeholder="Nota Fiscal/Pedido">
@@ -30,8 +27,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary">Salvar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-dark border-light">Salvar</button>
+                    <button type="button" class="btn btn-dark border-light" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </form>
         </div>
