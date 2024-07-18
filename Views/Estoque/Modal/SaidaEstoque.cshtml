@@ -7,7 +7,8 @@
 <div id="modalSaidaEstoque" class="modal custom-modal-bg" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content border-light" style="background-color:#212529;color:white;">
-            <form id="formEntradaEstoque" method="post" asp-action="SaidaEstoque" onsubmit="return validarFormulario(event)">
+            <form id="formSaidaEstoque" method="post" asp-action="SaidaEstoque" onsubmit="return validarCodigoSistema(event)">
+                @* onsubmit="return validarFormulario(event)" *@
                 <div class="modal-header">
                     <h5 class="modal-title">Saida de Estoque</h5>
                 </div>
@@ -21,7 +22,7 @@
                         <input required asp-for="Quantidade" value="" type="number" class="form-control mb-2" id="Quantidade" placeholder="Quantidade">
                         <input required asp-for="NotaOuPedido" type="int" class="form-control mb-2" id="NotaOuPedido" placeholder="Nota Fiscal/Pedido">
                         <input required asp-for="Observacao" type="text" class="form-control mb-2" id="Observacao" placeholder="Observação">
-                        <input required asp-for="Usuario" type="text" class="form-control mb-2" id="Usuario" placeholder="Usuário">
+                        <input asp-for="Usuario" type="text" class="form-control mb-2" id="Usuario" placeholder="Usuário">
                         <input asp-for="Marca" type="text" class="form-control mb-2" id="Marca" placeholder="Marca">
                         <input asp-for="Modelo" type="text" class="form-control mb-2" id="Modelo" placeholder="Modelo">
                     </div>

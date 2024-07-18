@@ -17,11 +17,11 @@ namespace TOLEAGRI.Controllers
         //private readonly TOLEDbContext _dbContext;
         private readonly EstoqueService estoqueService;
 
-        private readonly TOLEDbContext _dbContext;
+        private readonly TOLEDbContext dbContext;
         public EstoqueController(EstoqueService estoqueService, TOLEDbContext dbContext)
         {
             this.estoqueService = estoqueService;
-            this. _dbContext = dbContext;
+            this.dbContext = dbContext;
         }
 
         /// Faz a abertura da view estoque para cliente
@@ -36,7 +36,7 @@ namespace TOLEAGRI.Controllers
 
         public IActionResult ModalSaidaEstoque()
         {
-            return View("Modal/SaidaEstoque", new Peca());
+            return View("Modal/SaidaEstoque");
         }
 
          // Método que busca o serviço que mostra as informações da peça, se não houver informações cria uma peça nova
@@ -134,13 +134,13 @@ namespace TOLEAGRI.Controllers
         }
 
 
-
-        [HttpGet]
-        public IActionResult VerificarCodigoSistema(string codigoSistema)
+       [HttpGet]
+        public IActionResult ValidarCodigoSistema(string codigoSistema)
         {
-            bool existe = _dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
+            bool existe = dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
             return Json(new { existe });
         }
+
     }
 }
 

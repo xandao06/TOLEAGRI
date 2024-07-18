@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -6,8 +7,11 @@ using Microsoft.Identity.Client;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 using TOLEAGRI.Model.Domain;
 using TOLEAGRI.Model.Persistence;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace TOLEAGRI.Model.Services
@@ -130,7 +134,11 @@ namespace TOLEAGRI.Model.Services
                 dbContext.Pecas.Update(existingPeca);
             }
 
-
+            else
+            {
+                return new ValidationResult(ValidationMessage<TimeSpan>("Código do Sistema não encontrado"));
+            }
+           
             dbContext.SaveChanges();
 
             var registro = new RegistroPeca
@@ -189,5 +197,25 @@ namespace TOLEAGRI.Model.Services
 
 
         }
+
+
+        //public bool ValidarCodigoSistema(string codigoSistema)
+        //{
+        //    return dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
+        //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
