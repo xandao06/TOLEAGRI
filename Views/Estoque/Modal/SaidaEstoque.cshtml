@@ -7,17 +7,21 @@
 <div id="modalSaidaEstoque" class="modal custom-modal-bg" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content border-light" style="background-color:#212529;color:white;">
-            <form id="formSaidaEstoque" method="post" asp-action="SaidaEstoque" onsubmit="return validarCodigoSistema(event)">
+            
+            <form id="formSaidaEstoque" method="post" asp-action="SaidaEstoque" >
                 @* onsubmit="return validarFormulario(event)" *@
                 <div class="modal-header">
                     <h5 class="modal-title">Saida de Estoque</h5>
                 </div>
                 <div class="modal-body">
+                    @Html.HiddenFor(m => m.Id)
                     <div class="mb-1 ">
                         <input asp-for="Id" id="Id" name="Id" type="hidden">
                         <input required asp-for="Data" type="date" class="form-control mb-2" id="Data" placeholder="Data">
                         <input asp-for="EntradaOuSaida" value="Saída" type="hidden" id="SaidaDisabled">
+                        <label asp-for="CodigoSistema"></label>
                         <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">
+                        <span asp-validation-for="CodigoSistema" class="text-danger"></span>
                         <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
                         <input required asp-for="Quantidade" value="" type="number" class="form-control mb-2" id="Quantidade" placeholder="Quantidade">
                         <input required asp-for="NotaOuPedido" type="int" class="form-control mb-2" id="NotaOuPedido" placeholder="Nota Fiscal/Pedido">
@@ -35,6 +39,12 @@
         </div>
     </div>
 </div>
+
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@
 
 <script src="~/js/EstoqueScript.js"></script>
 <script src="~/js/ManagerScript.js"></script>

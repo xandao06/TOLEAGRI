@@ -1,0 +1,29 @@
+﻿@model TOLEAGRI.Model.Domain.Peca
+@{
+    Layout = null;
+}
+
+
+@* ////////// DELETAR TODAS AS PEÇAS /////////// *@ 
+
+ <div id="modalDeleteAllPeca" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content border-light" style="background-color:#212529;color:white;">
+            <form method="post" asp-action="DeleteAllPeca">
+                <input asp-for="Id" type="hidden">
+                <div class="modal-body" style="font-weight:570">
+                    <p>Tem certeza que deseja excluir todos os itens?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary">Sim</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 
+
+
+<script src="~/js/ManagerScript.js"></script>
+
+

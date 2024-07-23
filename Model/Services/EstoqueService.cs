@@ -115,6 +115,57 @@ namespace TOLEAGRI.Model.Services
 
 
         // Busca uma Peca pelo Codigo do Sistema, se existir no banco vai modificar a Peca, se não existir vai criar uma nova
+        //[HttpPost]
+        //public void BuscarModificarSaida(Peca peca)
+        //{
+
+        //    Peca existingPeca = dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == peca.CodigoSistema);
+
+        //    if (existingPeca != null)
+        //    {
+        //        // Atualiza a peça existente
+        //        existingPeca.Locacao = peca.Locacao;
+        //        existingPeca.Marca = peca.Marca;
+        //        existingPeca.Modelo = peca.Modelo;
+        //        existingPeca.Quantidade = peca.Quantidade;
+        //        existingPeca.NotaOuPedido = peca.NotaOuPedido;
+        //        existingPeca.Observacao = peca.Observacao;
+        //        existingPeca.Usuario = peca.Usuario;
+
+        //        dbContext.Pecas.Update(existingPeca);
+        //        dbContext.SaveChanges();
+
+
+        //        dbContext.SaveChanges();
+
+
+        //        var registro = new RegistroPeca
+        //        {
+        //            CodigoSistema = peca.CodigoSistema,
+        //            Locacao = peca.Locacao,
+        //            Marca = peca.Marca,
+        //            Modelo = peca.Modelo,
+        //            Quantidade = peca.Quantidade,
+        //            NotaOuPedido = peca.NotaOuPedido,
+        //            Observacao = peca.Observacao,
+        //            Usuario = peca.Usuario,
+        //            Data = DateTime.Now, // Data da operação atual
+        //            EntradaOuSaida = peca.EntradaOuSaida,
+
+        //        };
+
+        //        dbContext.Set<RegistroPeca>().Add(registro);
+        //        dbContext.SaveChanges();
+
+        //        return Json(new { success = true, message = "Peça atualizada com sucesso." });
+        //    }
+        //    else
+        //    {
+        //        return Json(new { success = false, message = "Código do Sistema não encontrado." });
+        //    }
+
+        //}
+
         public void BuscarModificarSaida(Peca peca)
         {
 
@@ -122,6 +173,9 @@ namespace TOLEAGRI.Model.Services
 
             if (existingPeca != null)
             {
+                //    throw new Exception("Código do Sistema não encontrado.");
+                //}
+
                 // Atualiza a peça existente
                 existingPeca.Locacao = peca.Locacao;
                 existingPeca.Marca = peca.Marca;
@@ -132,14 +186,9 @@ namespace TOLEAGRI.Model.Services
                 existingPeca.Usuario = peca.Usuario;
 
                 dbContext.Pecas.Update(existingPeca);
-            }
+                dbContext.SaveChanges();
 
-            else
-            {
-                return new ValidationResult(ValidationMessage<TimeSpan>("Código do Sistema não encontrado"));
             }
-           
-            dbContext.SaveChanges();
 
             var registro = new RegistroPeca
             {
@@ -157,11 +206,16 @@ namespace TOLEAGRI.Model.Services
 
             dbContext.Set<RegistroPeca>().Add(registro);
             dbContext.SaveChanges();
-
         }
 
-        // Cria a string que retorna o Codigo do Sistema das Pecas gravado no banco
-        public Peca GetByCodigoSistema(string codigoSistema)
+        public bool VerificarCodigoSistema(string codigoSistema)
+        {
+            return dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
+        }
+
+
+    // Cria a string que retorna o Codigo do Sistema das Pecas gravado no banco
+    public Peca GetByCodigoSistema(string codigoSistema)
         {
             return dbContext.Pecas.FirstOrDefault(e => e.CodigoSistema == codigoSistema);
         }
@@ -203,18 +257,6 @@ namespace TOLEAGRI.Model.Services
         //{
         //    return dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
         //}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

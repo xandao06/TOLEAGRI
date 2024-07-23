@@ -36,18 +36,49 @@ namespace TOLEAGRI.Controllers
 
         public IActionResult ModalSaidaEstoque()
         {
-            return View("Modal/SaidaEstoque");
+            return View("Modal/SaidaEstoque", new Peca());
         }
 
-         // Método que busca o serviço que mostra as informações da peça, se não houver informações cria uma peça nova
+        // Método que busca o serviço que mostra as informações da peça, se não houver informações cria uma peça nova
         [HttpPost]
 
         public IActionResult SaidaEstoque(Peca peca)
         {
+            
+
+            if (!dbContext.Pecas.Any(e => e.CodigoSistema == peca.CodigoSistema))
+            {
+                ModelState.AddModelError("CodigoSistema", "Código do Sistema não encontrado.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return PartialView("Modal/SaidaEstoque", peca);
+            }
+
             estoqueService.BuscarModificarSaida(peca);
-            return RedirectToAction("EstoqueIndex");
+            return Json(new { success = true });
         }
 
+        //[HttpPost]
+        //public IActionResult SaidaEstoque(Peca peca)
+        //{
+        //    // Validação personalizada
+        //    if (!dbContext.Pecas.Any(e => e.CodigoSistema == peca.CodigoSistema))
+        //    {
+        //        ModelState.AddModelError("CodigoSistema", "Código do Sistema não encontrado.");
+        //    }
+
+        //    if (!ModelState.IsValid)
+        //    {
+        //        // Se houver erros de validação, retorne a partial view com os erros
+        //        return PartialView("Modal/SaidaEstoque");
+        //    }
+
+        //    // Se estiver tudo certo, prossiga com o salvamento
+        //    estoqueService.BuscarModificarSaida(peca);
+        //    return Json(new { success = true });
+        //}
 
         // Faz a abertura do Modal que da entrada a uma peça
         [HttpGet]
@@ -106,22 +137,22 @@ namespace TOLEAGRI.Controllers
 
 
 
-        // Abertura do Modal que deleta todas as peças
-        //[HttpGet]
-        //public IActionResult ModalDeletarAllPeca()
-        //{
-        //    return View("Modal/DeletarPeca");
-        //}
+        //Abertura do Modal que deleta todas as peças
+       [HttpGet]
+        public IActionResult ModalDeleteAllPeca()
+        {
+            return View("Modal/DeleteAllPeca");
+        }
 
 
 
-        // Método que deleta todas as peças
-        //[HttpPost]
-        //public IActionResult DeletarAllPeca()
-        //{
-        //    estoqueService.DeleteAll();
-        //    return RedirectToAction("EstoqueIndex");
-        //}
+       //Método que deleta todas as peças
+       [HttpPost]
+        public IActionResult DeleteAllPeca()
+        {
+            estoqueService.DeleteAll();
+            return RedirectToAction("EstoqueIndex");
+        }
 
 
 
@@ -134,10 +165,17 @@ namespace TOLEAGRI.Controllers
         }
 
 
-       [HttpGet]
-        public IActionResult ValidarCodigoSistema(string codigoSistema)
+        //[HttpGet]
+        // public IActionResult ValidarCodigoSistema(string codigoSistema)
+        // {
+        //     bool existe = dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
+        //     return Json(new { existe });
+        // }
+
+        [HttpGet]
+        public JsonResult VerificarCodigoSistema(string codigoSistema)
         {
-            bool existe = dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
+            bool existe = estoqueService.VerificarCodigoSistema(codigoSistema);
             return Json(new { existe });
         }
 

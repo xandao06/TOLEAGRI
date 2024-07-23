@@ -174,35 +174,32 @@ function sortTablePecas(columnIndex) {
     }
 }
 
+  
+$(document).ready(function () {
+    $('#formSaidaEstoque').submit(function (event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
 
-
-
-
-    
-     function validarCodigoSistema(){
-     $('#CodigoSistema').on('keypress', function (e) {
-     if (e.which === 13) { // Enter key pressed
-         var codigoSistema = $(this).val();
+        var form = $(this);
+        var url = form.attr('action');
 
         $.ajax({
-            url: '/Estoque/ValidarCodigoSistema',
-            type: 'GET',
-             data: { codigoSistema: codigoSistema },
-             success: function (data) {
-                 if (data.existe) {
-      //               Se o código existe, submete o formulário
-                     $('#formSaidaEstoque').off('submit').submit();
-                 } else {
-                     alert('Código do Sistema não encontrado.');
+            type: "POST",
+            url: url,
+            data: form.serialize(), // Serializa os dados do formulário
+            success: function (response) {
+                if (response.success) {
+                    // Fechar o modal e atualizar a página ou fazer outra ação
+                    $('#modalSaidaEstoque').modal('hide');
+                    location.reload(); // Atualize a página ou faça outra ação necessária
+                } else {
+                    // Atualiza o conteúdo do modal com a partial view renderizada
+                    $('#modalSaidaEstoque.modal-content').html(response);
                 }
-            },
-            error: function () {
-                alert('Erro ao verificar o Código do Sistema.');
             }
-            });
-      };
-        return false; // Impede o envio do formulário para aguardar a resposta da AJAX
-        
+        });
     });
-    };
+});
+
+    
+     
 

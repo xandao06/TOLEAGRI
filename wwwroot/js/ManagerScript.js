@@ -16,12 +16,12 @@ function ModalDeletarRegistro(idRegistro) {
 
 
 //Modal para deletar todos os registros
-//function ModalDeletarAllRegistro() {
-    //$.get("/Registro/ModalDeletarAllRegistro", function (data) {
-        //$("#modalTOLEAGRI").html(data);
-        //$("#modalDeletarAllRegistro").modal("show");
-    //})
-//};
+function ModalDeleteAllRegistro() {
+    $.get("/Registro/ModalDeleteAllRegistro", function (data) {
+        $("#modalTOLEAGRI").html(data);
+        $("#modalDeleteAllRegistro").modal("show");
+    })
+};
 
 
 
@@ -41,12 +41,12 @@ function ModalDeletarPeca(idPeca) {
 
 
 //Modal para deletar todo o estoque
-    //function ModalDeletarAllPeca() {
-        //$.get("/Estoque/ModalDeletarAllPeca", function (data) {
-            //$("#modalTOLEAGRI").html(data);
-            //$("#modalDeletarAllPeca").modal("show");
-        //})
-    //};
+    function ModalDeleteAllPeca() {
+        $.get("/Estoque/ModalDeleteAllPeca", function (data) {
+            $("#modalTOLEAGRI").html(data);
+            $("#modalDeleteAllPeca").modal("show");
+        })
+    };
 
 
  ////
