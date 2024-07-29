@@ -6,27 +6,46 @@
 
 <div id="modalEntradaEstoque" class="modal" tabindex="-1">
     <div class="modal-dialog ">
-        <div class="modal-content border-light" style="background-color:#212529;color:white;">
+        <div class="modal-content border-light">
             <form id="formEntradaEstoque" method="post" asp-action="EntradaEstoque" >
-                <div class="modal-header">
+                <div class="modal-header" style="height:50px">
                     <h5 class="modal-title">Entrada de Estoque</h5>
                 </div>
-                <div class="modal-body" >
-                    <div class="mb-1 ">
+                <div class="modal-body">
+                    <div>
                         <input asp-for="Id" id="Id" name="Id" type="hidden">
-                        <input required asp-for="Data" type="date" class="form-control mb-2" id="Data" placeholder="Data">
-                        <input asp-for="EntradaOuSaida" type="hidden" value="Entrada" id="EntradaDisabled">
-                        <input required asp-for="CodigoSistema" type="text" class="form-control mb-2" id="CodigoSistema" placeholder="Código">
-                        <input required asp-for="Locacao" type="text" class="form-control mb-2" id="Locacao" placeholder="Locação">
-                        <input required asp-for="Quantidade" value="" type="number" class="form-control mb-2" id="Quantidade" placeholder="Quantidade">
-                        <input required asp-for="NotaOuPedido" type="int" class="form-control mb-2" id="NotaOuPedido" placeholder="Nota Fiscal/Pedido">
-                        <input required asp-for="Observacao" type="text" class="form-control mb-2" id="Observacao" placeholder="Observação">
-                        <input asp-for="Usuario" type="text" class="form-control mb-2" id="Usuario" placeholder="Usuário">
-                        <input asp-for="Marca" type="text" class="form-control mb-2" id="Marca" placeholder="Marca">
-                        <input asp-for="Modelo" type="text" class="form-control mb-2" id="Modelo" placeholder="Modelo">
+
+                        <input required asp-for="Data" type="date" class="form-control mb-2" id="Data">
+
+                        <input asp-for="EntradaOuSaida" value="Entrada" type="hidden" id="Entrada">
+
+                        <label asp-for="CodigoSistema">*Código da Peça*</label>
+                        <input required asp-for="CodigoSistema" type="text" class="form-control" id="CodigoSistema">
+
+                        <label asp-for="Locacao">*Locação*</label>
+                        <input required asp-for="Locacao" type="text" class="form-control" id="Locacao">
+
+                        <label asp-for="Quantidade">*Quantidade*</label>
+                        <input required asp-for="Quantidade" value="" type="number" class="form-control" id="Quantidade">
+
+                        <label asp-for="NotaOuPedido">*Nota Fiscal/Pedido*</label>
+                        <input required asp-for="NotaOuPedido" type="int" class="form-control" id="NotaOuPedido">
+
+                        <label asp-for="Observacao">*Observação*</label>
+                        <input required asp-for="Observacao" type="text" class="form-control" id="Observacao">
+
+                        <label asp-for="Usuario">Usuário</label>
+                        <input asp-for="Usuario" type="text" class="form-control" id="Usuario">
+
+                        <label asp-for="Marca">Marca</label>
+                        <input asp-for="Marca" type="text" class="form-control" id="Marca">
+
+                        <label asp-for="Modelo">Modelo</label>
+                        <input asp-for="Modelo" type="text" class="form-control" id="Modelo">
+
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" style="height:60px">
                     <button type="submit" class="btn btn-dark border-light">Salvar</button>
                     <button type="button" class="btn btn-dark border-light" data-bs-dismiss="modal">Cancelar</button>
                 </div>

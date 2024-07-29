@@ -16,14 +16,12 @@ $('#CodigoSistema').on('keypress', function (e) {
                     $('#Marca').val(data.marca);
                     $('#Modelo').val(data.modelo);
                     $('#Quantidade').val(data.quantidade);
-                    $('#NotaOuPedido').val(data.notaoupedido);
                 } else {
                     // Limpar os campos do formulário se o código não existir
                     $('#Locacao').val(data.locacao);
                     $('#Marca').val(data.marca);
                     $('#Modelo').val(data.modelo);
                     $('#Quantidade').val(data.quantidade);
-                    $('#NotaOuPedido').val(data.notaoupedido);
                 }
             }
         })
@@ -174,17 +172,15 @@ function sortTablePecas(columnIndex) {
     }
 }
 
-  
-$(document).ready(function () {
-    $('#formSaidaEstoque').submit(function (event) {
-        event.preventDefault(); // Impede o envio padrão do formulário
-
+/// ///////////GARANTE QUE O MODAL DE SAIDA NÃO CRIE REGISTRO CASO O CODIGO DIGITADO NÃO EXISTA NO BANCO DE DADOS
+    $('#formSaidaEstoque').on('submit', function (event) {
+        event.preventDefault();
         var form = $(this);
         var url = form.attr('action');
 
         $.ajax({
             type: "POST",
-            url: url,
+            url: '/Estoque/SaidaEstoque',
             data: form.serialize(), // Serializa os dados do formulário
             success: function (response) {
                 if (response.success) {
@@ -193,13 +189,9 @@ $(document).ready(function () {
                     location.reload(); // Atualize a página ou faça outra ação necessária
                 } else {
                     // Atualiza o conteúdo do modal com a partial view renderizada
-                    $('#modalSaidaEstoque.modal-content').html(response);
+                    $('#modalSaidaEstoque').html(response);
+                    $('#modalSaidaEstoque').modal('show');
                 }
             }
         });
     });
-});
-
-    
-     
-

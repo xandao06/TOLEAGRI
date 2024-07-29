@@ -45,10 +45,7 @@
                 <th onclick="sortTablePecas(2)">Marca</th>
                 <th onclick="sortTablePecas(3)">Modelo</th>
                 <th onclick="sortTablePecas(4)">Quantidade</th>
-                <th onclick="sortTablePecas(5)">NF ou Pedido</th>
-                <th onclick="sortTablePecas(6)">Observação</th>
-                <th onclick="sortTablePecas(7)">Usuário</th>
-                <th onclick="sortTablePecas(8)">Data</th>
+                <th onclick="sortTablePecas(8)">Data da ultima entrada</th>
                 @if (isAdmin)
                     {
                         <th style="width:1px">
@@ -68,9 +65,6 @@
                     <td>@item.Marca</td>
                     <td>@item.Modelo</td>
                     <td>@item.Quantidade</td>
-                    <td>@item.NotaOuPedido</td>
-                    <td>@item.Observacao</td>
-                    <td>@item.Usuario</td>
                     <td>@item.Data.ToShortDateString()</td>
                     @if (isAdmin)
                     {

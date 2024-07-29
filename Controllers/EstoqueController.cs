@@ -44,43 +44,25 @@ namespace TOLEAGRI.Controllers
 
         public IActionResult SaidaEstoque(Peca peca)
         {
-            
+
 
             if (!dbContext.Pecas.Any(e => e.CodigoSistema == peca.CodigoSistema))
             {
                 ModelState.AddModelError("CodigoSistema", "Código do Sistema não encontrado.");
             }
 
-            if (!ModelState.IsValid)
-            {
-                return PartialView("Modal/SaidaEstoque", peca);
+            if (!ModelState.IsValid) 
+            { 
+                
+                return View("Modal/SaidaEstoque", peca);
             }
-
-            estoqueService.BuscarModificarSaida(peca);
-            return Json(new { success = true });
+            
+                estoqueService.BuscarModificarSaida(peca);
+                return Json(new { success = true });
         }
 
-        //[HttpPost]
-        //public IActionResult SaidaEstoque(Peca peca)
-        //{
-        //    // Validação personalizada
-        //    if (!dbContext.Pecas.Any(e => e.CodigoSistema == peca.CodigoSistema))
-        //    {
-        //        ModelState.AddModelError("CodigoSistema", "Código do Sistema não encontrado.");
-        //    }
 
-        //    if (!ModelState.IsValid)
-        //    {
-        //        // Se houver erros de validação, retorne a partial view com os erros
-        //        return PartialView("Modal/SaidaEstoque");
-        //    }
-
-        //    // Se estiver tudo certo, prossiga com o salvamento
-        //    estoqueService.BuscarModificarSaida(peca);
-        //    return Json(new { success = true });
-        //}
-
-        // Faz a abertura do Modal que da entrada a uma peça
+        // FAZ A ABERTURA DO MODAL QUE DA ENTRADA A UMA PEÇA
         [HttpGet]
 
         public IActionResult ModalEntradaEstoque()
@@ -162,21 +144,6 @@ namespace TOLEAGRI.Controllers
         {
             var pecas = estoqueService.SearchPecas(query, startDate, endDate);
             return Json(pecas);
-        }
-
-
-        //[HttpGet]
-        // public IActionResult ValidarCodigoSistema(string codigoSistema)
-        // {
-        //     bool existe = dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
-        //     return Json(new { existe });
-        // }
-
-        [HttpGet]
-        public JsonResult VerificarCodigoSistema(string codigoSistema)
-        {
-            bool existe = estoqueService.VerificarCodigoSistema(codigoSistema);
-            return Json(new { existe });
         }
 
     }

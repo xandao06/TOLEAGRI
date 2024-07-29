@@ -173,8 +173,6 @@ namespace TOLEAGRI.Model.Services
 
             if (existingPeca != null)
             {
-                //    throw new Exception("Código do Sistema não encontrado.");
-                //}
 
                 // Atualiza a peça existente
                 existingPeca.Locacao = peca.Locacao;
@@ -206,11 +204,6 @@ namespace TOLEAGRI.Model.Services
 
             dbContext.Set<RegistroPeca>().Add(registro);
             dbContext.SaveChanges();
-        }
-
-        public bool VerificarCodigoSistema(string codigoSistema)
-        {
-            return dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
         }
 
 

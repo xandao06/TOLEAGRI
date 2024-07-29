@@ -6,9 +6,9 @@
 
 <div id="modalDeletarPeca" class="modal" tabindex="-1">
     <div class="modal-dialog">
-        <div class="modal-content border-light" style="background-color:#212529;color:white;">
+        <div class="modal-content border-light">
             <form method="post" asp-action="DeletarPeca">
-                <div class="modal-body" style="font-weight:570">
+                <div class="modal-body">
                     <p>Tem certeza que deseja excluir?</p>
                     <input asp-for="Id" type="hidden">
                 </div>
@@ -22,27 +22,6 @@
 </div>
 
 
-@* ////////// DELETAR TODAS AS PEÇAS /////////// *@ 
-
-@* <div id="modalDeletarAllPeca" class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form method="post" asp-action="DeletarAllPeca">
-                <input asp-for="Id" type="hidden">
-                <div class="modal-header">
-                </div>
-                <div class="modal-body" style="font-weight:650">
-                    <p>Tem certeza que deseja excluir todos os itens?</p>
-                    <input type="text" class="form-control" style="display:none">
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary">Sim</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div> *@
 
 
 <script src="~/js/ManagerScript.js"></script>
