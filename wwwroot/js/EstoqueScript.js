@@ -72,9 +72,6 @@ function displayPecaResults(pecas) {
                 <td>${peca.marca}</td>
                 <td>${peca.modelo}</td>
                 <td>${peca.quantidade}</td>
-                <td>${peca.notaOuPedido}</td>
-                <td>${peca.observacao}</td>
-                <td>${peca.usuario}</td>
                 <td>${new Date(peca.data).toLocaleDateString()}</td>
                 <td style="width:1px">
                     <a onClick="ModalDeletarPeca(${peca.id})">

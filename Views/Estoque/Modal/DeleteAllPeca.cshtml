@@ -8,15 +8,15 @@
 
  <div id="modalDeleteAllPeca" class="modal" tabindex="-1">
     <div class="modal-dialog">
-        <div class="modal-content border-light">
+        <div class="modal-content" style="background-color:rgb(67 76 102);color:white">
             <form method="post" asp-action="DeleteAllPeca">
                 <input asp-for="Id" type="hidden">
                 <div class="modal-body">
                     <p>Tem certeza que deseja excluir todos os itens?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary">Sim</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-dark border-light">Sim</button>
+                    <button type="button" class="btn btn-dark border-light" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </form>
         </div>

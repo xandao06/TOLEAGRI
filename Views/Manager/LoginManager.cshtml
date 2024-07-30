@@ -4,14 +4,14 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="LoginManager">
+<div class="LoginManager border-dark">
     <form method="post" asp-action="Login" asp-controller="Manager">
         <input type="hidden" asp-for="Id" />
-        <input type="text" id="usuario" class="form-control mb-2" asp-for="Usuario" placeholder="Usuário" />
-        <input type="password" id="senha" class="form-control mb-2" asp-for="Senha" placeholder="Senha" />
+        <input type="text" id="usuario" class="form-control btn-dark border-light mb-2" asp-for="Usuario" placeholder="Usuário" />
+        <input type="password" id="senha" class="form-control btn-dark border-light mb-2" asp-for="Senha" placeholder="Senha" />
         <div>
-            <button type="submit" class="btn btn-secondary">Salvar</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-dark border-light">Salvar</button>
+            <button type="button" class="btn btn-dark border-light" data-bs-dismiss="modal">Cancelar</button>
         </div>
     </form>
 </div>

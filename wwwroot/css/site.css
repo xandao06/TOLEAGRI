@@ -17,9 +17,10 @@
     box-shadow: 0 0 0 0.1rem black, 0 0 0.60rem #258cfb;
 }*/
 
-input, input::placeholder{
+input, input::placeholder {
     opacity: 1;
     font-weight: 570;
+    font-size: 18px;
 }
 
 /*.custom-radio input[type="radio"] {
@@ -62,11 +63,12 @@ input, input::placeholder{
 .container {
     padding: 5px;
     font-weight: 250;
+    font-size: 18px;
 }
 
 .a {
     cursor: pointer;
-    opacity:1
+    opacity:1;
 }
 
 /*.footer {
@@ -96,13 +98,18 @@ input, input::placeholder{
 
 }
 
-
-.form-switch{
-    margin-left:25px;
-    width:50px;
-    margin-bottom:5px;
+.modal-content {
+    font-weight: 570;
+    font-size: 17px;
 }
 
-.modal-body {
-    font-weight:570;
+
+.form-control {
+    opacity: 1;
 }
+
+.text-danger {
+    font-weight: 650;
+    font-size: 18px;
+}
+

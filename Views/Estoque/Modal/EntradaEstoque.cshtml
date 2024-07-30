@@ -4,9 +4,10 @@
     Layout = null;
 }
 
-<div id="modalEntradaEstoque" class="modal" tabindex="-1">
+<div id="modalEntradaEstoque" class="modal" tabindex="-1" style="display:block">
     <div class="modal-dialog ">
-        <div class="modal-content border-light">
+        <div class="modal-content" style="background-color:rgb(67 76 102);color:white">
+
             <form id="formEntradaEstoque" method="post" asp-action="EntradaEstoque" >
                 <div class="modal-header" style="height:50px">
                     <h5 class="modal-title">Entrada de Estoque</h5>
@@ -19,29 +20,34 @@
 
                         <input asp-for="EntradaOuSaida" value="Entrada" type="hidden" id="Entrada">
 
-                        <label asp-for="CodigoSistema">*Código da Peça*</label>
+                        <label asp-for="CodigoSistema"> **Código da Peça** </label>
                         <input required asp-for="CodigoSistema" type="text" class="form-control" id="CodigoSistema">
 
-                        <label asp-for="Locacao">*Locação*</label>
-                        <input required asp-for="Locacao" type="text" class="form-control" id="Locacao">
+                        <div class="input-group mt-3">
+                            <label class="mr-2" asp-for="Locacao">**Locação**</label>
+                            <input required asp-for="Locacao" style="width:90px" type="text" class="form-control" id="Locacao">
 
-                        <label asp-for="Quantidade">*Quantidade*</label>
-                        <input required asp-for="Quantidade" value="" type="number" class="form-control" id="Quantidade">
+                            <label class="mr-2 ml-2" asp-for="Quantidade">**Quantidade**</label>
+                            <input required asp-for="Quantidade" value="" type="number" class="form-control" id="Quantidade">
+                        </div>
 
-                        <label asp-for="NotaOuPedido">*Nota Fiscal/Pedido*</label>
+                        <label class="mt-2" asp-for="NotaOuPedido">**Nota Fiscal/Pedido**</label>
                         <input required asp-for="NotaOuPedido" type="int" class="form-control" id="NotaOuPedido">
 
-                        <label asp-for="Observacao">*Observação*</label>
-                        <input required asp-for="Observacao" type="text" class="form-control" id="Observacao">
-
-                        <label asp-for="Usuario">Usuário</label>
+                        <label class="mt-1" asp-for="Usuario">Responsável</label>
                         <input asp-for="Usuario" type="text" class="form-control" id="Usuario">
 
-                        <label asp-for="Marca">Marca</label>
-                        <input asp-for="Marca" type="text" class="form-control" id="Marca">
+                        <div class="input-group mt-3">
+                            <label class="mr-2" asp-for="Marca">Marca</label>
+                            <input asp-for="Marca" type="text" class="form-control" id="Marca">
 
-                        <label asp-for="Modelo">Modelo</label>
-                        <input asp-for="Modelo" type="text" class="form-control" id="Modelo">
+                            <label class="mr-2 ml-2" asp-for="Modelo">Modelo</label>
+                            <input asp-for="Modelo" type="text" class="form-control" id="Modelo">
+                        </div>
+
+                        <label class="mt-1" asp-for="Observacao">**Observação**</label>
+                        <input required asp-for="Observacao" type="text" class="form-control" id="Observacao">
+
 
                     </div>
                 </div>
