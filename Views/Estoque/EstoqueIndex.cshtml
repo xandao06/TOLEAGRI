@@ -4,7 +4,7 @@
 @model IEnumerable<TOLEAGRI.Model.Domain.Peca>
 @{
     ViewData["Title"] = "EstoqueIndex";
-    var PecasOrdenados = Model.OrderBy(c => c.CodigoSistema).ToList();
+    var PecasOrdenados = Model.OrderByDescending(e => e.Data.Date).ToList();
 }
 @{
     var isAdmin = User.IsInRole("Admin");
@@ -30,8 +30,8 @@
 
             <div class="search_bar">
             <input type="text" id="searchBarPeca" style="height:40px;width:265px;margin-right:5px" class="form-control btn-dark border-light search" placeholder="Buscar" onkeydown="EnterPeca(event)">
-            <input type="date" id="start-date" style="height:40px;width:150px;margin-right:5px" class="form-control btn-dark border-light search">
-            <input type="date" id="end-date" style="height:40px;width:150px" class="form-control btn-dark border-light search">
+            <input type="date" id="start-date" style="height:40px;width:150px;margin-right:5px" class="form-control btn-dark border-light search" onkeydown="EnterPeca(event)">
+            <input type="date" id="end-date" style="height:40px;width:150px" class="form-control btn-dark border-light search" onkeydown="EnterPeca(event)">
                 <a id="searchIconPecas" onclick="searchIconPecas()">
                     <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
                 </a>
@@ -60,8 +60,12 @@
             @foreach (var item in PecasOrdenados)
             {
                 <tr class="peca-row">
-                    <td>@item.CodigoSistema</td>
-                    <td>@item.Locacao</td>
+                    <td class="@(item.CodigoSistema == item.CodigoSistema ? "text-danger" : "")">
+                        @item.CodigoSistema
+                    </td>
+                    <td class="@(item.Locacao == item.Locacao ? "text-warning" : "")">
+                        @item.Locacao
+                    </td>
                     <td>@item.Marca</td>
                     <td>@item.Modelo</td>
                     <td>@item.Quantidade</td>

@@ -7,50 +7,17 @@
 }
 
 .layout {
-    background: linear-gradient(to bottom, rgb(14 52 137),rgb(5 12 54 / 70%),rgb(11 32 104 / 50%),rgb(67 76 102 / 30%));
+    background: linear-gradient(to bottom, rgb(14 52 137),rgb(5 12 54 / 50%),rgb(11 32 104 / 30%),rgb(67 76 102 / 30%));
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment:fixed;
 }
-
-/*.btn, .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus, .form-control{
-    box-shadow: 0 0 0 0.1rem black, 0 0 0.60rem #258cfb;
-}*/
 
 input, input::placeholder {
     opacity: 1;
     font-weight: 570;
     font-size: 18px;
 }
-
-/*.custom-radio input[type="radio"] {
-    position: absolute;
-    opacity: 1;
-}*/
-
-    /*.custom-radio input[type="radio"] + .form-check-label {
-        position: relative;
-        padding-left: 25px;
-        cursor: pointer;
-        display: unset;
-    }
-
-        .custom-radio input[type="radio"] + .form-check-label::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #007bff;
-            border-radius: 100%;
-            background: #fff;
-        }*/
-
-    /*.custom-radio input[type="radio"]:checked + .form-check-label::before {
-        background-color: #007bff;
-        box-shadow: inset 0 0 0 3px #fff;
-    }*/
 
 .logo {
     display: flex;
@@ -70,13 +37,6 @@ input, input::placeholder {
     cursor: pointer;
     opacity:1;
 }
-
-/*.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    font-size:18px;
-}*/
 
 .LoginManager {
     height: 100%;
@@ -108,7 +68,7 @@ input, input::placeholder {
     opacity: 1;
 }
 
-.text-danger {
+.text-danger, .text-warning, .text-success, .text-primary {
     font-weight: 650;
     font-size: 18px;
 }

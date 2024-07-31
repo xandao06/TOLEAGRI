@@ -22,10 +22,10 @@ function EnterRegistro(event) {
 };
 
 //"lupa"
-function searchIconRegistros () {
-    document.getElementById('searchIconRegistros').addEventListener( 'click', function () {
-    searchRegistros();
-})
+function searchIconRegistros() {
+    document.getElementById('searchIconRegistros').addEventListener('click', function () {
+        searchRegistros();
+    })
 };
 
 //Função Pesquisa que mostra os resultados
@@ -36,8 +36,12 @@ function displayRegistroResults(registros) {
         const tr = document.createElement('tr');
         tr.className = 'registro-row';
         tr.innerHTML = `
-                <td>${registro.codigoSistema}</td>
-                <td>${registro.locacao}</td>
+                <td class="${(registro.CodigoSistema == registro.CodigoSistema ? "text-danger" : "")}">
+                ${registro.codigoSistema}
+                </td >
+                <td class="${(registro.Locacao == registro.Locacao ? "text-warning" : "")}">
+                ${registro.locacao}
+                </td>
                 <td>${registro.marca}</td>
                 <td>${registro.modelo}</td>
                 <td>${registro.quantidade}</td>
@@ -45,18 +49,20 @@ function displayRegistroResults(registros) {
                 <td>${registro.observacao}</td>
                 <td>${registro.usuario}</td>
                 <td>${new Date(registro.data).toLocaleDateString()}</td>
-                <td>${registro.entradaOuSaida}</td>
-                <td style="width:1px">
-                    <a onClick="ModalDeletarRegistro(${registro.id})">
-                        <i class="bi bi-trash3-fill"></i>
-                    </a>
-                    </td>
+                <td class="${(registro.entradaOuSaida == "Entrada" ? "text-success" : registro.EntradaOuSaida == "Saída" ? "text-primary" : "")}">
+                ${registro.entradaOuSaida}
+                
             `;
         resultsList.appendChild(tr);
-        })
-    };
+    })
+};
 
- ////
+//</td >
+//    <td style="width:1px">
+//        <a onClick="ModalDeletarRegistro(${registro.id})">
+//            <i class="bi bi-trash3-fill"></i>
+//        </a>
+//    </td>
 
 ///////////////////////////
 
@@ -65,7 +71,7 @@ function sortTableRegistros(columnIndex) {
     table = document.querySelector(".table");
     switching = true;
     dir = "asc";
-    
+
     while (switching) {
         switching = false;
         rows = table.querySelectorAll(".registro-row");

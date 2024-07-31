@@ -246,11 +246,6 @@ namespace TOLEAGRI.Model.Services
         }
 
 
-        //public bool ValidarCodigoSistema(string codigoSistema)
-        //{
-        //    return dbContext.Pecas.Any(e => e.CodigoSistema == codigoSistema);
-        //}
-
 
     }
 }
