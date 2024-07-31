@@ -49,8 +49,9 @@ function displayRegistroResults(registros) {
                 <td>${registro.observacao}</td>
                 <td>${registro.usuario}</td>
                 <td>${new Date(registro.data).toLocaleDateString()}</td>
-                <td class="${(registro.entradaOuSaida == "Entrada" ? "text-success" : registro.EntradaOuSaida == "Saída" ? "text-primary" : "")}">
+                <td class="${(registro.entradaOuSaida == "Entrada" ? "text-success" : registro.entradaOuSaida == "Saída" ? "text-primary" : "")}">
                 ${registro.entradaOuSaida}
+                </td>
                 
             `;
         resultsList.appendChild(tr);
