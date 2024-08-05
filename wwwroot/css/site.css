@@ -10,7 +10,7 @@
     background: linear-gradient(to bottom, rgb(14 52 137),rgb(5 12 54 / 50%),rgb(11 32 104 / 30%),rgb(67 76 102 / 30%));
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment:fixed;
+    background-attachment: fixed;
 }
 
 input, input::placeholder {
@@ -20,9 +20,12 @@ input, input::placeholder {
 }
 
 .logo {
-    display: flex;
     mix-blend-mode: multiply;
-    filter:brightness(100%)
+    filter:brightness(100%);
+}
+
+.Logoimg {
+    width: 150px;
 }
 
 /*grayscale(), sepia(), saturate(), opacity(), brightness(), contrast() e invert().*/
@@ -47,15 +50,8 @@ input, input::placeholder {
     padding:100px;
 }
 
-.barra_tarefas{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:12px
-}
-
 .search_bar {
     display: flex;
-
 }
 
 .modal-content {
@@ -73,3 +69,57 @@ input, input::placeholder {
     font-size: 18px;
 }
 
+.nav {
+
+    align-items:center;
+    justify-content:center;
+    justify-content:start;
+    display:flex;
+    
+}
+
+/*.Reglogo{
+    width:30px;
+}*/
+
+.Entlogo {
+    width:30px;
+}
+
+.Sailogo {
+    width: 30px;
+}
+
+.Rellogo{
+    width:30px;
+}
+
+.barra_tarefas{
+    display:flex;
+    margin-left:20px;
+}
+
+/*d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"*/
+
+.bar{
+    height:40px;
+    width:265px;
+    margin-right:5px;
+}
+
+.start_date{
+    height:40px;
+    width:150px;
+    margin-right:5px;
+}
+
+.end_date{
+    height:40px;
+    width:150px;
+}
+
+.icon{
+    width:25px;
+    margin-top:5px;
+    margin-left:5px;
+}
