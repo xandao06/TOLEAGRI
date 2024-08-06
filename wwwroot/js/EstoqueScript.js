@@ -15,13 +15,11 @@ $('#CodigoSistema').on('keypress', function (e) {
                     $('#Locacao').val(data.locacao);
                     $('#Marca').val(data.marca);
                     $('#Modelo').val(data.modelo);
-                    $('#Quantidade').val(data.quantidade);
                 } else {
                     // Limpar os campos do formulário se o código não existir
                     $('#Locacao').val(data.locacao);
                     $('#Marca').val(data.marca);
                     $('#Modelo').val(data.modelo);
-                    $('#Quantidade').val(data.quantidade);
                 }
             }
         })
@@ -175,26 +173,47 @@ function sortTablePecas(columnIndex) {
     }
 }
 
-/// ///////////GARANTE QUE O MODAL DE SAIDA NÃO CRIE REGISTRO CASO O CODIGO DIGITADO NÃO EXISTA NO BANCO DE DADOS
-    $('#formSaidaEstoque').on('submit', function (event) {
-        event.preventDefault();
-        var form = $(this);
-        var url = form.attr('action');
+//GERA RELATÓRIO EM PDF
+function generateReportPDF(filterType) {
+    const query = document.getElementById('searchBarPeca').value;
+    const startDate = document.getElementById('start-date').value;
+    const endDate = document.getElementById('end-date').value;
+    const url = new URL(`/Estoque/GenerateReportPDF`, window.location.origin);
 
-        $.ajax({
-            type: "POST",
-            url: '/Estoque/SaidaEstoque',
-            data: form.serialize(), // Serializa os dados do formulário
-            success: function (response) {
-                if (response.success) {
-                    // Fechar o modal e atualizar a página ou fazer outra ação
-                    $('#modalSaidaEstoque').modal('hide');
-                    location.reload(); // Atualize a página ou faça outra ação necessária
-                } else {
-                    // Atualiza o conteúdo do modal com a partial view renderizada
-                    $('#modalSaidaEstoque').html(response);
-                    $('#modalSaidaEstoque').modal('show');
-                }
-            }
-        });
+    // Adicionar parâmetros apenas se estiverem preenchidos
+    if (query.trim() !== '') url.searchParams.append('query', query.trim());
+    if (startDate.trim() !== '') url.searchParams.append('startDate', startDate.trim());
+    if (endDate.trim() !== '') url.searchParams.append('endDate', endDate.trim());
+    url.searchParams.append('filterType', filterType);
+
+    window.location.href = url.toString();
+}
+
+//GERA RELATÓRIO EM EXCEL
+function generateReportExcel(filterType) {
+    const query = document.getElementById('searchBarPeca').value;
+    const startDate = document.getElementById('start-date').value;
+    const endDate = document.getElementById('end-date').value;
+    const url = new URL(`/Estoque/GenerateReportExcel`, window.location.origin);
+
+    if (query.trim() !== '') url.searchParams.append('query', query.trim());
+    if (startDate.trim() !== '') url.searchParams.append('startDate', startDate.trim());
+    if (endDate.trim() !== '') url.searchParams.append('endDate', endDate.trim());
+    url.searchParams.append('filterType', filterType);
+
+    window.location.href = url.toString();
+}
+    // ABERTURA DO BOTÃO DE RELATÓRIOS
+$(document).ready(function () {
+    $('.dropdown-submenu a.dropdown-toggle').on("click", function (e) {
+        var $submenu = $(this).next('.dropdown-menu');
+        var $parent = $(this).parents('.dropdown-menu').first();
+
+        $parent.find('.dropdown-menu').not($submenu).removeClass('show');
+        $submenu.toggleClass('show');
+
+        e.stopPropagation();
+        e.preventDefault();
     });
+});
+  

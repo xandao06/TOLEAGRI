@@ -6,7 +6,7 @@
 
 <div id="modalEntradaEstoque" class="modal" tabindex="-1" style="display:block">
     <div class="modal-dialog ">
-        <div class="modal-content" style="background-color:rgb(67 76 102);color:white">
+        <div class="modal-content" style="background-color:rgb(245,245,245);">
 
             <form id="formEntradaEstoque" method="post" asp-action="EntradaEstoque" >
                 <div class="modal-header" style="height:50px">
@@ -45,8 +45,8 @@
                             <input asp-for="Modelo" type="text" class="form-control" id="Modelo">
                         </div>
 
-                        <label class="mt-1" asp-for="Observacao">**Observação**</label>
-                        <input required asp-for="Observacao" type="text" class="form-control" id="Observacao">
+                        <label class="mt-1" asp-for="Observacao">Observação</label>
+                        <input asp-for="Observacao" type="text" class="form-control" id="Observacao">
 
 
                     </div>

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     @* <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> *@
 </head>
 
@@ -31,12 +32,9 @@
                 <img src="~/Images/saida.png " class="Sailogo" />
                 Saída
             </a>
-            @* <a class="btn btn-dark border-light" type="button" asp-controller="Registro" asp-action="RegistroIndex">
-                <img src="/Images/abrirRegistro.png" alt="Relogio" class="Reglogo" />
-                Registros
-            </a> *@
+        
 
-            <div class="dropdown">
+        <div class="dropdown">
                 <button class="btn btn-dark border-light dropdown-toggle ml-1" type="button" id="mainDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="/Images/Relatorio.png" alt="Relatorio" class="Rellogo" />
                     Relatórios
@@ -45,24 +43,29 @@
                     <div class="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#">Relatório em PDF</a>
                         <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#" onclick="generateReportPDF('CodigoSistema')">Relatório por Código no Sistema </a>
+                            <a class="dropdown-item" href="#" onclick="generateReportPDF('locacao')">Relatório por Locação</a>
+                            <a class="dropdown-item" href="#" onclick="generateReportPDF('marca')">Relatório por Marca</a>
+                            <a class="dropdown-item" href="#" onclick="generateReportPDF('NotaOuPedido')">Relatório por Nota ou Pedido</a>
+                            <a class="dropdown-item" href="#" onclick="generateReportPDF('EntradaOuSaida')">Relatório por Entrada ou Saída</a>
+                            <a class="dropdown-item" href="#" onclick="generateReportPDF('usuario')">Relatório por responsável</a>
                             <a class="dropdown-item" href="#" onclick="generateReportPDF('data')">Relatório por Data</a>
-                            <a class="dropdown-item" href="#" onclick="generateReportPDF('status')">Relatório por Status</a>
-                            <a class="dropdown-item" href="#" onclick="generateReportPDF('contrato')">Relatório por Contratos</a>
-                            <a class="dropdown-item" href="#" onclick="generateReportPDF('urgencia')">Relatório por Urgência</a>
                         </div>
                     </div>
                     <div class="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#">Relatório em Excel</a>
                         <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#" onclick="generateReportExcel('CodigoSistema')">Relatório por Código no Sistema </a>
+                            <a class="dropdown-item" href="#" onclick="generateReportExcel('locacao')">Relatório por Locação</a>
+                            <a class="dropdown-item" href="#" onclick="generateReportExcel('marca')">Relatório por Marca</a>
+                            <a class="dropdown-item" href="#" onclick="generateReportExcel('NotaOuPedido')">Relatório por Nota ou Pedido</a>
+                            <a class="dropdown-item" href="#" onclick="generateReportExcel('EntradaOuSaida')">Relatório por Entrada ou Saída</a>
+                            <a class="dropdown-item" href="#" onclick="generateReportExcel('usuario')">Relatório por responsável</a>
                             <a class="dropdown-item" href="#" onclick="generateReportExcel('data')">Relatório por Data</a>
-                            <a class="dropdown-item" href="#" onclick="generateReportExcel('status')">Relatório por Status</a>
-                            <a class="dropdown-item" href="#" onclick="generateReportExcel('contrato')">Relatório por Contratos</a>
-                            <a class="dropdown-item" href="#" onclick="generateReportExcel('urgencia')">Relatório por Urgência</a>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="search_bar ml-4">

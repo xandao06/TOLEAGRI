@@ -22,6 +22,7 @@ input, input::placeholder {
 .logo {
     mix-blend-mode: multiply;
     filter:brightness(100%);
+    width:10px;
 }
 
 .Logoimg {
@@ -50,10 +51,6 @@ input, input::placeholder {
     padding:100px;
 }
 
-.search_bar {
-    display: flex;
-}
-
 .modal-content {
     font-weight: 570;
     font-size: 17px;
@@ -78,10 +75,6 @@ input, input::placeholder {
     
 }
 
-/*.Reglogo{
-    width:30px;
-}*/
-
 .Entlogo {
     width:30px;
 }
@@ -94,12 +87,30 @@ input, input::placeholder {
     width:30px;
 }
 
-.barra_tarefas{
-    display:flex;
-    margin-left:20px;
+.Reglogo{
+    width:30px;
 }
 
-/*d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"*/
+.Regbtn{
+    margin-bottom:3px;
+}
+
+.Estbtn{
+    margin-bottom:3px;
+}
+
+.Estlogo {
+    width: 30px;
+}
+
+.barra_tarefas{
+    display:flex;
+    margin-left:195px;
+}
+
+.search_bar {
+    display: flex;
+}
 
 .bar{
     height:40px;
@@ -123,3 +134,4 @@ input, input::placeholder {
     margin-top:5px;
     margin-left:5px;
 }
+

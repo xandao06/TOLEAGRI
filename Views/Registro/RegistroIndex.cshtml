@@ -12,24 +12,13 @@
 } 
 
 <div id="container" class="container">
-    <div>
-        <div class="barra_tarefas">
             <div>
-                <a class="btn btn-dark border-light ml-1" type="button" asp-controller="Estoque" asp-action="EstoqueIndex">
-                    <img src="/Images/abrirEstoque.png" alt="Logo" class="custom-logo" style="width:40px" />
+                <a class="btn btn-dark border-light Estbtn" type="button" asp-controller="Estoque" asp-action="EstoqueIndex">
+                    <img src="/Images/abrirEstoque.png" alt="Logo" class="custom-logo Estlogo" />
                     Estoque
                 </a>
-            </div>
-            <div style="display:flex">
-                <input type="text" id="searchBarRegistro" style="height:40px;width:265px;margin-right:5px" class="form-control btn-dark border-light search" placeholder="Buscar" onkeydown="EnterRegistro(event)">
-                <input type="date" id="start-date" style="height:40px;width:150px;margin-right:5px" class="form-control btn-dark border-light search" placeholder="Data Inicial" onkeydown="EnterRegistro(event)">
-                <input type="date" id="end-date" style="height:40px;width:150px" class="form-control btn-dark border-light search" placeholder="Data Final" onkeydown="EnterRegistro(event)">
-                <a id="searchIconRegistros" onclick="searchIconRegistros()" style="cursor: pointer;">
-                    <img src="~/Images/Pesquisa.png" style="width:25px;margin-top:5px;margin-left:5px" />
-                </a>
-            </div>
-        </div>
-    </div>
+                </div>
+            
     <table class="table table-hover table-bordered table-dark">
         <thead>
             <tr>

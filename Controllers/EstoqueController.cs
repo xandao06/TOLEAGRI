@@ -4,11 +4,11 @@ using TOLEAGRI.Model.Domain;
 using TOLEAGRI.Model.Persistence;
 using TOLEAGRI.Model;
 using System.Diagnostics;
-using Microsoft.EntityFrameworkCore;
-using Azure.Messaging;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using System.Data;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
 
 namespace TOLEAGRI.Controllers
 {
@@ -18,6 +18,7 @@ namespace TOLEAGRI.Controllers
         private readonly EstoqueService estoqueService;
 
         private readonly TOLEDbContext dbContext;
+
         public EstoqueController(EstoqueService estoqueService, TOLEDbContext dbContext)
         {
             this.estoqueService = estoqueService;
@@ -53,8 +54,7 @@ namespace TOLEAGRI.Controllers
 
             if (!ModelState.IsValid) 
             { 
-                
-                return View("Modal/SaidaEstoque", peca);
+                return View("Modal/SaidaEstoque");
             }
             
                 estoqueService.BuscarModificarSaida(peca);
@@ -91,7 +91,7 @@ namespace TOLEAGRI.Controllers
 
             if (peca != null)
             {
-                return Json(new { locacao = peca.Locacao, marca = peca.Marca, modelo = peca.Modelo, quantidade = peca.Quantidade, notaoupedido = peca.NotaOuPedido});
+                return Json(new { locacao = peca.Locacao, marca = peca.Marca, modelo = peca.Modelo});
             }
 
             return Json(null);
@@ -146,6 +146,155 @@ namespace TOLEAGRI.Controllers
             return Json(pecas);
         }
 
+        //GERA RELATÓRIO EM PDF
+        [HttpGet]
+        public IActionResult GenerateReportPDF(string query, DateTime? startDate, DateTime? endDate, string filterType)
+        {
+            var pecas = estoqueService.GetAll(); // Recupera todos os registros
+
+            if (!string.IsNullOrEmpty(query) || startDate.HasValue || endDate.HasValue)
+            {
+                pecas = estoqueService.SearchPecas(query, startDate, endDate);
+            }
+
+            IEnumerable<Peca> filteredPecas = pecas;
+
+            //if (filterType == "data")
+            //{
+            //    filteredPecas = filteredPecas.OrderByDescending(c => c.Data);
+            //}
+            if (filterType == "CodigoSistema")
+            {
+                filteredPecas = filteredPecas.OrderBy(c => c.CodigoSistema);
+            }
+            else if (filterType == "Locacao")
+            {
+                filteredPecas = filteredPecas.OrderBy(c => c.Locacao);
+            }
+            else if (filterType == "Marca")
+            {
+                filteredPecas = filteredPecas.OrderBy(c => c.Marca);
+            }
+            else if (filterType == "Modelo")
+            {
+                filteredPecas = filteredPecas.OrderBy(c => c.Modelo);
+            }
+            else if (filterType == "Marca")
+            {
+                filteredPecas = filteredPecas.OrderBy(c => c.Quantidade);
+            }
+            else if (filterType == "Marca")
+            {
+                filteredPecas = filteredPecas.OrderByDescending(c => c.Data);
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                Document document = new Document();
+                PdfWriter.GetInstance(document, memoryStream);
+                document.Open();
+
+                PdfPTable table = new PdfPTable(7);
+                table.AddCell("Codigo no Sistema");
+                table.AddCell("Locação");
+                table.AddCell("Marca");
+                table.AddCell("Modelo");
+                table.AddCell("Quantidade");
+                table.AddCell("Data da ultima entrada");
+
+                foreach (var chamado in filteredPecas)
+                {
+                    table.AddCell(chamado.CodigoSistema);
+                    table.AddCell(chamado.Locacao);
+                    table.AddCell(chamado.Marca);
+                    table.AddCell(chamado.Modelo);
+                    table.AddCell(chamado.Quantidade.ToString());
+                    table.AddCell(chamado.Data.ToString("dd/MM/yyyy"));
+                }
+
+                document.Add(table);
+                document.Close();
+
+                return File(memoryStream.ToArray(), "application/pdf", "RelatorioEstoque.pdf");
+            }
+
+        }
+
+        //GERA RELATÓRIO EM EXCEL
+        [HttpGet]
+        public IActionResult GenerateReportExcel(string query, DateTime? startDate, DateTime? endDate, string filterType)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            var pecas = estoqueService.GetAll();
+
+            if (!string.IsNullOrEmpty(query) || startDate.HasValue || endDate.HasValue)
+            {
+                pecas = estoqueService.SearchPecas(query, startDate, endDate);
+            }
+
+            IEnumerable<Peca> filteredPecas = pecas;
+
+            //if (filterType == "data")
+            //{
+            //    filteredPecas = filteredPecas.OrderByDescending(c => c.Data);
+            //}
+            if (filterType == "CodigoSistema")
+            {
+                filteredPecas = filteredPecas.OrderBy(c => c.CodigoSistema);
+            }
+            else if (filterType == "Locacao")
+            {
+                filteredPecas = filteredPecas.OrderBy(c => c.Locacao);
+            }
+            else if (filterType == "Marca")
+            {
+                filteredPecas = filteredPecas.OrderBy(c => c.Marca);
+            }
+            else if (filterType == "Modelo")
+            {
+                filteredPecas = filteredPecas.OrderBy(c => c.Modelo);
+            }
+            else if (filterType == "Marca")
+            {
+                filteredPecas = filteredPecas.OrderBy(c => c.Quantidade);
+            }
+            else if (filterType == "Marca")
+            {
+                filteredPecas = filteredPecas.OrderByDescending(c => c.Data);
+            }
+
+            using (var package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("RelatorioEstoque");
+
+                worksheet.Cells[1, 1].Value = "Codigo no Sistema";
+                worksheet.Cells[1, 2].Value = "Locação";
+                worksheet.Cells[1, 3].Value = "Marca";
+                worksheet.Cells[1, 4].Value = "Modelo";
+                worksheet.Cells[1, 5].Value = "Quantidade";
+                worksheet.Cells[1, 6].Value = "Data";
+
+                int row = 2;
+                foreach (var peca in filteredPecas)
+                {
+                    worksheet.Cells[row, 2].Value = peca.CodigoSistema;
+                    worksheet.Cells[row, 3].Value = peca.Locacao;
+                    worksheet.Cells[row, 4].Value = peca.Marca;
+                    worksheet.Cells[row, 5].Value = peca.Modelo;
+                    worksheet.Cells[row, 6].Value = peca.Quantidade;
+                    worksheet.Cells[row, 7].Value = peca.Data.ToString("dd/MM/yyyy");
+                    row++;
+                }
+
+                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+                var memoryStream = new MemoryStream();
+                package.SaveAs(memoryStream);
+
+                return File(memoryStream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "RelatorioEstoque.xlsx");
+            }
+        }
     }
 }
 
